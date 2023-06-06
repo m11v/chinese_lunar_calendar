@@ -1,3 +1,4 @@
 library chinese_lunar_calendar;
 
-export 'src/chinese_lunar_calendar_base.dart';
+export 'src/lunar_calendar/lunar_calendar.dart';
+export 'src/utils/utils.dart';
