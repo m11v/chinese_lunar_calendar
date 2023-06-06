@@ -1,4 +1,6 @@
 const startYear = 1901;
+const monthDayBit = 12;
+const leapMonthNumBit = 13;
 
 /// 农历数据 每个元素的存储格式如下：
 /// *17~14    13          12~1
