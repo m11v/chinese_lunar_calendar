@@ -1,0 +1,14 @@
+name: chinese_lunar_calendar
+description: A starting point for Dart libraries or applications.
+version: 1.0.0
+repository: https://github.com/m11v/chinese_lunar_calendar
+
+environment:
+  sdk: ^3.0.3
+
+dependencies:
+  equatable: ^2.0.5
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.21.0
