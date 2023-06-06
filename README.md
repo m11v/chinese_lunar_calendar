@@ -6,17 +6,19 @@
 
 [![Dart CI](https://github.com/m11v/chinese_lunar_calendar/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/m11v/chinese_lunar_calendar)
 [![License](https://img.shields.io/github/license/m11v/chinese_lunar_calendar)](https://github.com/m11v/chinese_lunar_calendar/blob/main/LICENSE)
+[![Pub](https://img.shields.io/pub/v/chinese_lunar_calendar?label=Pub)](https://pub.dev/packages/chinese_lunar_calendar)
+[![Package publisher](https://img.shields.io/pub/publisher/chinese_lunar_calendar.svg)](https://pub.dev/packages/chinese_lunar_calendar/publisher)
 
 ## 功能
 - 查询春节日期.
 
-## Getting started
+## 安装
 
 Add the following to your `pubspec.yaml`:
 
 ```dart
 dependencies:
-  chinese_lunar_calendar: any
+  chinese_lunar_calendar: ^0.0.1
 ```
 
 ## 示例
