@@ -1,39 +1,38 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Chinese Lunar Calendar
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+中国万年历查询
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+本项目参考 [cnLunar](https://github.com/OPN48/cnlunar/tree/master), 用Dart重写成一个Dart Package。
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+[![Dart CI](https://github.com/m11v/chinese_lunar_calendar/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/m11v/chinese_lunar_calendar)
+[![License](https://img.shields.io/github/license/m11v/chinese_lunar_calendar)](https://github.com/m11v/chinese_lunar_calendar/blob/main/LICENSE)
 
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+## 功能
+- 查询春节日期.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+Add the following to your `pubspec.yaml`:
 
 ```dart
-const like = 'sample';
+dependencies:
+  chinese_lunar_calendar: any
 ```
 
-## Additional information
+## 示例
+### 查询春节日期
+```dart
+import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+void main() {
+  // 输入查询年份
+  var lunarCalendar = LunarCalendar(dateTime: DateTime(2000));
+  // 输出春节阳历日期
+  print('春节: ${lunarCalendar.chineseNewYearString}');
+}
+
+```
+输出结果
+```bash
+春节: 2000 年 2 月 5 日
+```
