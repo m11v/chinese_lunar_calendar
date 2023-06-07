@@ -67,5 +67,10 @@ void main() {
           LunarDate(year: 2023, month: 9, day: 23, isLeapMonth: false);
       expect(getLunarDate(date6), expectLunarDate6);
     });
+
+    test('Test getLunarYear8Char', () {
+      expect(getLunarYear8Char(lunarYear: 2023), '癸卯');
+      expect(getLunarYear8Char(lunarYear: 1670), '庚戌');
+    });
   });
 }

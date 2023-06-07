@@ -20,3 +20,7 @@ class LunarMonth extends Equatable {
   @override
   bool get stringify => true;
 }
+
+extension LunarMonthIsLongMonth on LunarMonth {
+  bool get isLongMonth => days == 30;
+}

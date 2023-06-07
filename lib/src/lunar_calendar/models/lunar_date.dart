@@ -1,3 +1,5 @@
+import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
+import 'package:chinese_lunar_calendar/src/constants/configs.dart';
 import 'package:equatable/equatable.dart';
 
 class LunarDate extends Equatable {
@@ -21,12 +23,31 @@ class LunarDate extends Equatable {
   bool get stringify => true;
 }
 
+extension LunarDateDaysInThisMonth on LunarDate {
+  bool get isLongMonth => getLunarYear(year)
+      .months
+      .firstWhere((element) =>
+          element.index == month && element.isLeapMonth == isLeapMonth)
+      .isLongMonth;
+}
+
 extension LunarDateCN on LunarDate {
-  // String get lunarYearCN {
-  //   final yearString = year.toString();
-  //   String yearCN;
-  //   for(var i = 0; i< yearString.length; i++) {
-  //     yearCN  = yearCN + int.parse(source)
-  //   }
-  // }
+  String get lunarYearCN =>
+      year.digits.map((e) => upperCNNum[e]).toList().join();
+
+  String get lunarMonthCN {
+    String monthCN = lunarMonthNameList[month - 1];
+    if (isLeapMonth) {
+      monthCN = '闰$monthCN';
+    }
+
+    if (isLongMonth) {
+      monthCN = '$monthCN大';
+    } else {
+      monthCN = '$monthCN小';
+    }
+    return monthCN;
+  }
+
+  String get lunarDayCN => lunarDayNameList[day - 1];
 }

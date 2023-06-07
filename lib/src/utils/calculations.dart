@@ -53,3 +53,15 @@ LunarDate getLunarDate(DateTime date) {
   }
   return lunarYear.getXthDay(spanDays);
 }
+
+List<String> heavenlyStemsEarthlyBranches() {
+  final List<String> list = [];
+  for (int i = 0; i < 60; i++) {
+    list.add(the10HeavenlyStems[i % 10] + the12EarthlyBranches[i % 12]);
+  }
+  return list;
+}
+
+String getLunarYear8Char({required int lunarYear}) {
+  return the10HeavenlyStemsAnd12EarthlyBranches[(lunarYear - 4) % 60];
+}

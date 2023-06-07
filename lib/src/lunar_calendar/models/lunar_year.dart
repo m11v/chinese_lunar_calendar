@@ -2,6 +2,8 @@ import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../constants/configs.dart';
+
 class LunarYear extends Equatable {
   final int year;
   final List<LunarMonth> months;
@@ -30,6 +32,10 @@ extension LunarYearX on LunarYear {
   int get monthsCount => months.length;
 
   bool get hasLeapMonth => monthsCount == 13;
+
+  String get zodiac => chineseZodiacNameList[(year - 4) % 12];
+
+  //String getHeavenlyStem => the10HeavenlyStems[(year + 1) % 10]
 }
 
 extension LunarYearXthDay on LunarYear {
