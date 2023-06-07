@@ -4,7 +4,12 @@ import 'package:equatable/equatable.dart';
 class LunarCalendar extends Equatable {
   final DateTime _dateTime;
 
-  LunarCalendar({DateTime? dateTime}) : _dateTime = dateTime ?? DateTime.now();
+  // 阴历日期
+  final LunarDate lunarDate;
+
+  LunarCalendar({required DateTime dateTime})
+      : _dateTime = dateTime,
+        lunarDate = getLunarDate(dateTime);
 
   @override
   List<Object?> get props => [_dateTime];
