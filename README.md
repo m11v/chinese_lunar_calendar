@@ -49,6 +49,9 @@ void main() {
   
   // 输出阴历汉字
   print('阴历汉字: ${lunarCalendar.lunarDate.fullCNString}');
+  
+  // 输出汉字星期
+  print('星期：${lunarCalendar.weekDayCN}');
 }
 
 ```
@@ -58,4 +61,5 @@ void main() {
 春节: 2023 年 1 月 22 日
 阴历数字: 2023, 4, 19, 闰月：false
 阴历汉字: 二零二三 癸卯[兔]年 四月大十九
+星期：星期二
 ```

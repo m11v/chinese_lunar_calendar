@@ -22,3 +22,7 @@ extension LunarCalendarChineseNewYear on LunarCalendar {
     return '${chineseNewYear.year} 年 ${chineseNewYear.month} 月 ${chineseNewYear.day} 日';
   }
 }
+
+extension LunarCalendarX on LunarCalendar {
+  String get weekDayCN => getWeekDayCN(_dateTime);
+}

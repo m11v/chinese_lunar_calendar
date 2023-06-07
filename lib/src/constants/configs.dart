@@ -5,6 +5,9 @@ const leapMonthNumBit = 13;
 // 数字汉字
 const upperCNNum = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
 
+// 汉字星期
+const weekDayCN = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'];
+
 // 月份汉字
 const lunarMonthNameList = [
   '正月',

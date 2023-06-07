@@ -72,5 +72,11 @@ void main() {
       expect(getLunarYear8Char(lunarYear: 2023), '癸卯');
       expect(getLunarYear8Char(lunarYear: 1670), '庚戌');
     });
+
+    test('Test getWeekDayCN', () {
+      expect(getWeekDayCN(DateTime(2023, 6, 4)), '星期日');
+
+      expect(getWeekDayCN(DateTime(2023, 6, 6)), '星期二');
+    });
   });
 }

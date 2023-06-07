@@ -1,6 +1,8 @@
 import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 import 'package:chinese_lunar_calendar/src/constants/configs.dart';
 
+String getWeekDayCN(DateTime date) => weekDayCN[date.weekday - 1];
+
 DateTime getChineseNewYear(int year) {
   final codeYear = lunarNewYearList[year - startYear];
 
