@@ -1,8 +1,10 @@
 import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 import 'package:chinese_lunar_calendar/src/constants/configs.dart';
 
+// 计算汉字星期
 String getWeekDayCN(DateTime date) => weekDayCN[date.weekday - 1];
 
+// 计算春节日期
 DateTime getChineseNewYear(int year) {
   final codeYear = lunarNewYearList[year - startYear];
 
@@ -11,6 +13,7 @@ DateTime getChineseNewYear(int year) {
   return DateTime(year, month, day);
 }
 
+// 阳历年转换成阴历年
 LunarYear getLunarYear(int year) {
   final tmp = lunarMonthData[year - startYear];
 
@@ -38,6 +41,7 @@ LunarYear getLunarYear(int year) {
   return LunarYear(year: year, months: lunarMonthList);
 }
 
+// 阳历日转换成阴历日
 LunarDate getLunarDate(DateTime date) {
   // 获取当前日期与当年春节的差日
   final newYear = getChineseNewYear(date.year).toUtc();
@@ -56,6 +60,7 @@ LunarDate getLunarDate(DateTime date) {
   return lunarYear.getXthDay(spanDays);
 }
 
+// 计算六十天干地支
 List<String> heavenlyStemsEarthlyBranches() {
   final List<String> list = [];
   for (int i = 0; i < 60; i++) {
@@ -64,6 +69,7 @@ List<String> heavenlyStemsEarthlyBranches() {
   return list;
 }
 
+// 根据阴历年计算天干记年
 String getLunarYear8Char({required int lunarYear}) {
   return the10HeavenlyStemsAnd12EarthlyBranches[(lunarYear - 4) % 60];
 }

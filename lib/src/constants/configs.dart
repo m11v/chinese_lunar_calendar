@@ -1,4 +1,6 @@
+// 本万年历从1901年始
 const startYear = 1901;
+
 const monthDayBit = 12;
 const leapMonthNumBit = 13;
 

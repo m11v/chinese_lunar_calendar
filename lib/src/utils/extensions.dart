@@ -1,3 +1,4 @@
+// Calculate days between two DateTime
 extension DateTimeDaysBetween on DateTime {
   // Reference: https://stackoverflow.com/questions/52713115/flutter-find-the-number-of-days-between-two-dates/67679455#67679455
   int daysBetween({required DateTime fromDate}) {
@@ -7,6 +8,7 @@ extension DateTimeDaysBetween on DateTime {
   }
 }
 
+// Convert integer to an array of its digits
 extension IntDigits on int {
   List<int> get digits {
     final List<int> list = [];

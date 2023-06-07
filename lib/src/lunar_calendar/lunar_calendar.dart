@@ -16,13 +16,16 @@ class LunarCalendar extends Equatable {
 }
 
 extension LunarCalendarChineseNewYear on LunarCalendar {
+  // DateTime春节日期
   DateTime get chineseNewYear => getChineseNewYear(_dateTime.year);
 
+  // 汉字春节日期
   String get chineseNewYearString {
     return '${chineseNewYear.year} 年 ${chineseNewYear.month} 月 ${chineseNewYear.day} 日';
   }
 }
 
 extension LunarCalendarX on LunarCalendar {
+  // 汉字星期
   String get weekDayCN => getWeekDayCN(_dateTime);
 }

@@ -4,8 +4,11 @@ import 'package:equatable/equatable.dart';
 
 import '../../constants/configs.dart';
 
+// 阴历年
 class LunarYear extends Equatable {
+  // 年份
   final int year;
+  // 月列表：有闰月时每年13个月，无闰月时每年12个月
   final List<LunarMonth> months;
 
   const LunarYear({
@@ -24,19 +27,25 @@ class LunarYear extends Equatable {
 }
 
 extension LunarYearX on LunarYear {
+  // 天数
   int get days => months.map((e) => e.days).reduce((a, b) => a + b);
 
+  // 闰月
   LunarMonth? get leapMonth =>
       months.firstWhereOrNull((element) => element.isLeapMonth);
 
+  // 月数量
   int get monthsCount => months.length;
 
+  // 是否有闰月
   bool get hasLeapMonth => monthsCount == 13;
 
+  // 生肖
   String get zodiac => chineseZodiacNameList[(year - 4) % 12];
 }
 
 extension LunarYearXthDay on LunarYear {
+  // 计算阴历年的第X天
   LunarDate getXthDay(int xthDay) {
     if (xthDay > days) {
       return LunarDate.empty;
