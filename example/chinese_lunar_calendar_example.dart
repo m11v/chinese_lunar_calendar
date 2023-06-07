@@ -7,4 +7,5 @@ void main() {
   print(
       '阴历数字: ${lunarCalendar.lunarDate.year}, ${lunarCalendar.lunarDate.month}, ${lunarCalendar.lunarDate.day}, 闰月：${lunarCalendar.lunarDate.isLeapMonth}');
   print('阴历汉字: ${lunarCalendar.lunarDate.fullCNString}');
+  print('星期：${lunarCalendar.weekDayCN}');
 }
