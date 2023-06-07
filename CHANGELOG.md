@@ -1,3 +1,7 @@
+# Changelog
 ## 0.0.1
+- Calculate Chinese New Year day.
 
-- 增加查询春节日期的API
+## 0.0.2
+- Calculate LunarYear.
+- Calculate LunarDate.
