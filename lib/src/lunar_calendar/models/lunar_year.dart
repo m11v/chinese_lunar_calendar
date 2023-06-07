@@ -27,5 +27,30 @@ extension LunarYearX on LunarYear {
   LunarMonth? get leapMonth =>
       months.firstWhereOrNull((element) => element.isLeapMonth);
 
-  bool get hasLeapMonth => months.length == 13;
+  int get monthsCount => months.length;
+
+  bool get hasLeapMonth => monthsCount == 13;
+}
+
+extension LunarYearXthDay on LunarYear {
+  LunarDate getXthDay(int xthDay) {
+    if (xthDay > days) {
+      return LunarDate.empty;
+    }
+
+    int spanDays = xthDay;
+    for (var i = 0; i < monthsCount; i++) {
+      final currentMonth = months[i];
+      if (spanDays < currentMonth.days) {
+        return LunarDate(
+            year: year,
+            month: currentMonth.index,
+            day: spanDays + 1,
+            isLeapMonth: currentMonth.isLeapMonth);
+      } else {
+        spanDays = spanDays - currentMonth.days;
+      }
+    }
+    return LunarDate.empty;
+  }
 }
