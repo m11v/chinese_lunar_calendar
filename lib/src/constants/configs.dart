@@ -2,6 +2,8 @@ const startYear = 1901;
 const monthDayBit = 12;
 const leapMonthNumBit = 13;
 
+const upperCNNum = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+
 /// 农历数据 每个元素的存储格式如下：
 /// *17~14    13          12~1
 /// 闰几月 闰月日数  12-1 月份农历日数 0=29天 1=30天

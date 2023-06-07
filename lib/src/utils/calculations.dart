@@ -33,5 +33,46 @@ LunarYear getLunarYear(int year) {
     lunarMonthList.insert(leapMonth.index, leapMonth);
   }
 
-  return LunarYear(months: lunarMonthList);
+  return LunarYear(year: year, months: lunarMonthList);
+}
+
+LunarDate getLunarDate(DateTime date) {
+  // 获取当前日期与当年春节的差日
+  final newYear = getChineseNewYear(date.year).toUtc();
+  int spanDays = date.daysBetween(fromDate: newYear);
+  if (spanDays >= 0) {
+    // 如果春节已过, 那么阴历年和阳历年是同一年
+    final year = date.year;
+    final lunarMonthList = getLunarYear(year).months;
+    for (var i = 0; i < lunarMonthList.length; i++) {
+      if (spanDays < lunarMonthList[i].days) {
+        return LunarDate(
+            year: year,
+            month: lunarMonthList[i].index,
+            day: spanDays + 1,
+            isLeapMonth: lunarMonthList[i].isLeapMonth);
+      } else {
+        spanDays = spanDays - lunarMonthList[i].days;
+      }
+    }
+    return LunarDate.empty;
+  } else {
+    // 如果春节未过，那么阴历年是阳历年的前一年
+    final year = date.year - 1;
+    final lunarYear = getLunarYear(year);
+    final lunarMonthList = getLunarYear(year).months;
+    spanDays = lunarYear.days + spanDays;
+    for (var i = 0; i < lunarMonthList.length; i++) {
+      if (spanDays < lunarMonthList[i].days) {
+        return LunarDate(
+            year: year,
+            month: lunarMonthList[i].index,
+            day: spanDays + 1,
+            isLeapMonth: lunarMonthList[i].isLeapMonth);
+      } else {
+        spanDays = spanDays - lunarMonthList[i].days;
+      }
+    }
+  }
+  return LunarDate.empty;
 }

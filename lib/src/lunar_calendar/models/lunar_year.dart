@@ -3,14 +3,17 @@ import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
 
 class LunarYear extends Equatable {
+  final int year;
   final List<LunarMonth> months;
 
   const LunarYear({
+    required this.year,
     required this.months,
   });
 
   @override
   List<Object?> get props => [
+        year,
         months,
       ];
 
