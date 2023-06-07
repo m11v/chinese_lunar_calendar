@@ -50,4 +50,12 @@ extension LunarDateCN on LunarDate {
   }
 
   String get lunarDayCN => lunarDayNameList[day - 1];
+
+  String get lunarYear8Char => getLunarYear8Char(lunarYear: year);
+
+  String get zodiac => chineseZodiacNameList[(year - 4) % 12];
+
+  String get fullCNString {
+    return '$lunarYearCN $lunarYear8Char[$zodiac]年 $lunarMonthCN$lunarDayCN';
+  }
 }

@@ -34,8 +34,6 @@ extension LunarYearX on LunarYear {
   bool get hasLeapMonth => monthsCount == 13;
 
   String get zodiac => chineseZodiacNameList[(year - 4) % 12];
-
-  //String getHeavenlyStem => the10HeavenlyStems[(year + 1) % 10]
 }
 
 extension LunarYearXthDay on LunarYear {
