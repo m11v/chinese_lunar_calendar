@@ -28,7 +28,7 @@ class LunarDate extends Equatable {
   bool get stringify => true;
 }
 
-extension LunarDateDaysInThisMonth on LunarDate {
+extension LunarDateIsLongMonth on LunarDate {
   // LunarDate 所在月是否大月
   bool get isLongMonth => getLunarYear(year)
       .months
