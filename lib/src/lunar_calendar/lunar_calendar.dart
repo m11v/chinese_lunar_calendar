@@ -28,4 +28,7 @@ extension LunarCalendarChineseNewYear on LunarCalendar {
 extension LunarCalendarX on LunarCalendar {
   // 汉字星期
   String get weekDayCN => getWeekDayCN(_dateTime);
+
+  // 月相
+  String get phaseOfMoon => getPhaseOfMoon(lunarDay: lunarDate.day);
 }

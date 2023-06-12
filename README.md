@@ -52,6 +52,9 @@ void main() {
   
   // 输出汉字星期
   print('星期：${lunarCalendar.weekDayCN}');
+  
+  // 输出月相
+  print('月相：${lunarCalendar.phaseOfMoon}');
 }
 
 ```
@@ -62,4 +65,5 @@ void main() {
 阴历数字: 2023, 4, 19, 闰月：false
 阴历汉字: 二零二三 癸卯[兔]年 四月大十九
 星期：星期二
+月相：渐亏凸月
 ```

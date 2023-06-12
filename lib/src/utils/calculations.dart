@@ -73,3 +73,26 @@ List<String> heavenlyStemsEarthlyBranches() {
 String getLunarYear8Char({required int lunarYear}) {
   return the10HeavenlyStemsAnd12EarthlyBranches[(lunarYear - 4) % 60];
 }
+
+// 根据阴历日计算月相
+String getPhaseOfMoon({required int lunarDay}) {
+  if (lunarDay == 1) {
+    return phaseOfMoon[0];
+  } else if (2 <= lunarDay && lunarDay <= 6) {
+    return phaseOfMoon[1];
+  } else if (7 <= lunarDay && lunarDay <= 8) {
+    return phaseOfMoon[2];
+  } else if (9 <= lunarDay && lunarDay <= 14) {
+    return phaseOfMoon[3];
+  } else if (lunarDay == 15) {
+    return phaseOfMoon[4];
+  } else if (16 <= lunarDay && lunarDay <= 21) {
+    return phaseOfMoon[5];
+  } else if (22 <= lunarDay && lunarDay <= 23) {
+    return phaseOfMoon[6];
+  } else if (24 <= lunarDay && lunarDay <= 29) {
+    return phaseOfMoon[7];
+  } else {
+    return phaseOfMoon[8];
+  }
+}
