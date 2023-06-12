@@ -5,3 +5,6 @@
 ## 0.0.2
 - Calculate LunarYear.
 - Calculate LunarDate.
+
+## 0.0.3 
+- Calculate Chinese weekday.
