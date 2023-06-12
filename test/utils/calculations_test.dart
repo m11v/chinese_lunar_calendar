@@ -78,5 +78,46 @@ void main() {
 
       expect(getWeekDayCN(DateTime(2023, 6, 6)), '星期二');
     });
+
+    test('Test getPhaseOfMoon', () {
+      final List<String> list = [];
+      for (var i = 1; i <= 30; i++) {
+        list.add(getPhaseOfMoon(lunarDay: i));
+      }
+
+      final List<String> expectList = [
+        '朔',
+        '上蛾眉月',
+        '上蛾眉月',
+        '上蛾眉月',
+        '上蛾眉月',
+        '上蛾眉月',
+        '上弦月',
+        '上弦月',
+        '渐盈凸月',
+        '渐盈凸月',
+        '渐盈凸月',
+        '渐盈凸月',
+        '渐盈凸月',
+        '渐盈凸月',
+        '望',
+        '渐亏凸月',
+        '渐亏凸月',
+        '渐亏凸月',
+        '渐亏凸月',
+        '渐亏凸月',
+        '渐亏凸月',
+        '下弦月',
+        '下弦月',
+        '下蛾眉月',
+        '下蛾眉月',
+        '下蛾眉月',
+        '下蛾眉月',
+        '下蛾眉月',
+        '下蛾眉月',
+        '晦'
+      ];
+      expect(list, expectList);
+    });
   });
 }
