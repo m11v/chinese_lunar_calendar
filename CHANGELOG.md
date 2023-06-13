@@ -8,3 +8,6 @@
 
 ## 0.0.3 
 - Calculate Chinese weekday.
+
+## 0.04
+- Calculate phase of moon.
