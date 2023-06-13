@@ -9,5 +9,13 @@ void main() {
 
       expect(num.digits, expectDigits);
     });
+
+    test('Test LastTwoDigitsString', () {
+      expect(0.lastTwoDigitsString, '00');
+      expect(3.lastTwoDigitsString, '03');
+      expect(34.lastTwoDigitsString, '34');
+      expect(345.lastTwoDigitsString, '45');
+      expect(3456.lastTwoDigitsString, '56');
+    });
   });
 }

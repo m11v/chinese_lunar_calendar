@@ -21,3 +21,15 @@ extension IntDigits on int {
     return list.reversed.toList();
   }
 }
+
+// Get an integer's last two digits in String
+extension IntTwoDigitsString on int {
+  String get lastTwoDigitsString {
+    final str = toString();
+    if (this < 100) {
+      return str.padLeft(2, '0');
+    } else {
+      return str.substring(str.length - 2);
+    }
+  }
+}
