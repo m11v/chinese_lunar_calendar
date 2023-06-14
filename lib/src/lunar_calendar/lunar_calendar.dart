@@ -25,6 +25,16 @@ extension LunarCalendarChineseNewYear on LunarCalendar {
   }
 }
 
+extension LunarCalendarSolarTerms on LunarCalendar {
+  Map<String, SolarTerm> get localSolarTerms => {
+        for (var solarTerm in getSolarTerms(_dateTime.year))
+          solarTerm.local.solarTermsKey: solarTerm
+      };
+
+  String get todayLocalSolarTerm =>
+      localSolarTerms[_dateTime.solarTermsKey]?.name ?? '无';
+}
+
 extension LunarCalendarX on LunarCalendar {
   // 汉字星期
   String get weekDayCN => getWeekDayCN(_dateTime);

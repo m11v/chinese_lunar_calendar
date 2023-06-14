@@ -11,3 +11,4 @@
 
 ## 0.04
 - Calculate phase of moon.
+- Calculate solar terms.
