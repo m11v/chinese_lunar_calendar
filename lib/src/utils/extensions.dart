@@ -8,6 +8,11 @@ extension DateTimeDaysBetween on DateTime {
   }
 }
 
+extension DateTimeSolarTermsKey on DateTime {
+  String get solarTermsKey =>
+      '$year-${month.lastTwoDigitsString}-${day.lastTwoDigitsString}';
+}
+
 // Convert integer to an array of its digits
 extension IntDigits on int {
   List<int> get digits {

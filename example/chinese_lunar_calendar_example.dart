@@ -9,4 +9,7 @@ void main() {
   print('阴历汉字: ${lunarCalendar.lunarDate.fullCNString}');
   print('星期：${lunarCalendar.weekDayCN}');
   print('月相：${lunarCalendar.phaseOfMoon}');
+  print(
+      '本年节气: ${lunarCalendar.localSolarTerms.values.map((value) => '${value.name}: ${value.local}').toList()}');
+  print('本日节气：${lunarCalendar.todayLocalSolarTerm}');
 }
