@@ -15,3 +15,5 @@
 
 ## 0.0.5
 - Add option for calculating lunar calendar using China Standard Time or local time
+
+## 0.0.6
