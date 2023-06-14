@@ -17,3 +17,6 @@ pubspec.lock
 
 # VS Code related
 .vscode/
+
+# document
+doc/
