@@ -31,12 +31,11 @@ $ flutter pub add chinese_lunar_calendar
 ```
 
 ## 示例
-### 查询春节日期
 ```dart
 import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 
 void main() {
-  // 输入查询日期
+  // 创建LunarCalendar，输入查询日期
   final lunarCalendar = LunarCalendar(dateTime: DateTime(2023, 6, 6));
   print('2023年6月6日');
   
