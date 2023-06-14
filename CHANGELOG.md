@@ -9,6 +9,6 @@
 ## 0.0.3 
 - Calculate Chinese weekday.
 
-## 0.04
+## 0.0.4
 - Calculate phase of moon.
 - Calculate solar terms.
