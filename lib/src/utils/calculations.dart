@@ -1,7 +1,6 @@
 import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 import 'package:chinese_lunar_calendar/src/constants/configs.dart';
 import 'package:chinese_lunar_calendar/src/constants/solar_terms.dart';
-import 'package:chinese_lunar_calendar/src/lunar_calendar/models/solar_term.dart';
 
 // 计算汉字星期
 String getWeekDayCN(DateTime date) => weekDayCN[date.weekday - 1];
