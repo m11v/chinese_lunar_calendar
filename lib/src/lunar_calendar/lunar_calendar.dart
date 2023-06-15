@@ -57,13 +57,20 @@ extension LunarCalendarSolarTerms on LunarCalendar {
   SolarTerm? get todaySolarTerm => solarTerms[dateTime.solarTermsKey];
 }
 
+/// 八字相关扩展
+extension LunarCalendar8Char on LunarCalendar {
+  /// 年干支
+  String get year8Char => lunarDate.lunarYear8Char;
+
+  /// 月干支
+  String get month8Char => getLunarMonth8Char(
+      dateTime: dateTime, useCSTToCalculate: useCSTToCalculate);
+}
+
 extension LunarCalendarX on LunarCalendar {
   // 汉字星期
   String get weekDayCN => getWeekDayCN(dateTime);
 
   // 月相
   String get phaseOfMoon => getPhaseOfMoon(lunarDay: lunarDate.day);
-
-  String get lunarMonth8Char => getLunarMonth8Char(
-      dateTime: dateTime, useCSTToCalculate: useCSTToCalculate);
 }
