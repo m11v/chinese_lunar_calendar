@@ -2,13 +2,13 @@ import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 import 'package:equatable/equatable.dart';
 
 class LunarCalendar extends Equatable {
-  // UTC 时间
+  /// UTC 时间
   final DateTime _utc;
 
-  // true: 使用中国标准时间计算; false: 使用本地时间计算
+  /// true: 使用中国标准时间计算; false: 使用本地时间计算
   final bool useCSTToCalculate;
 
-  // 阴历日期
+  /// 阴历日期
   LunarDate get lunarDate => getLunarDate(dateTime);
 
   LunarCalendar({
@@ -22,25 +22,25 @@ class LunarCalendar extends Equatable {
 }
 
 extension LunarCalendarTime on LunarCalendar {
-  // 本地时间
+  /// 本地时间
   DateTime get localTime {
     return _utc.toLocal();
   }
 
-  // 中国标准时间
+  /// 中国标准时间
   DateTime get cst {
     return utcToCST(utc: _utc);
   }
 
-  // 计算用时间
+  /// 计算用时间
   DateTime get dateTime => useCSTToCalculate ? cst : localTime;
 }
 
 extension LunarCalendarChineseNewYear on LunarCalendar {
-  // DateTime春节日期
+  /// DateTime春节日期
   DateTime get chineseNewYear => getChineseNewYear(dateTime.year);
 
-  // 汉字春节日期
+  /// 汉字春节日期
   String get chineseNewYearString {
     return '${chineseNewYear.year} 年 ${chineseNewYear.month} 月 ${chineseNewYear.day} 日';
   }
@@ -68,9 +68,9 @@ extension LunarCalendar8Char on LunarCalendar {
 }
 
 extension LunarCalendarX on LunarCalendar {
-  // 汉字星期
+  /// 汉字星期
   String get weekDayCN => getWeekDayCN(dateTime);
 
-  // 月相
+  /// 月相
   String get phaseOfMoon => getPhaseOfMoon(lunarDay: lunarDate.day);
 }

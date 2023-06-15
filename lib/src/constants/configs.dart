@@ -1,16 +1,16 @@
-// 本万年历从1901年始
+/// 本万年历从1901年始
 const startYear = 1901;
 
 const monthDayBit = 12;
 const leapMonthNumBit = 13;
 
-// 数字汉字
+/// 数字汉字
 const upperCNNum = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
 
-// 汉字星期
+/// 汉字星期
 const weekDayCN = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'];
 
-// 月份汉字
+/// 月份汉字
 const lunarMonthNameList = [
   '正月',
   '二月',
@@ -26,7 +26,7 @@ const lunarMonthNameList = [
   '腊月'
 ];
 
-// 日期汉字
+/// 日期汉字
 const lunarDayNameList = [
   '初一',
   '初二',
@@ -60,7 +60,7 @@ const lunarDayNameList = [
   '三十'
 ];
 
-// 生肖
+/// 生肖
 const chineseZodiacNameList = [
   '鼠',
   '牛',
@@ -76,9 +76,10 @@ const chineseZodiacNameList = [
   '猪'
 ];
 
-//天干
+/// 天干
 const the10HeavenlyStems = ['甲', '乙', '丙', '丁', '戊', '己', '庚', '辛', '壬', '癸'];
-// 地支
+
+/// 地支
 const the12EarthlyBranches = [
   '子',
   '丑',
@@ -93,7 +94,8 @@ const the12EarthlyBranches = [
   '戌',
   '亥'
 ];
-// 六十天干地支组合
+
+/// 六十天干地支组合
 const the10HeavenlyStemsAnd12EarthlyBranches = [
   '甲子',
   '乙丑',
@@ -171,7 +173,7 @@ const Map<String, List<String>> yearStemToMonthStemChart = {
   '癸': ['甲', '乙', '丙', '丁', '戊', '己', '庚', '辛', '壬', '癸', '甲', '乙'],
 };
 
-// 月相名
+/// 月相名
 const phaseOfMoon = [
   '朔',
   '上蛾眉月',
@@ -184,7 +186,7 @@ const phaseOfMoon = [
   '晦'
 ];
 
-// 节气名
+/// 节气名
 const solarTerms = [
   '小寒',
   '大寒',

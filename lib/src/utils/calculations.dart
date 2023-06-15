@@ -2,10 +2,10 @@ import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 import 'package:chinese_lunar_calendar/src/constants/configs.dart';
 import 'package:chinese_lunar_calendar/src/constants/solar_terms.dart';
 
-// 计算汉字星期
+/// 计算汉字星期
 String getWeekDayCN(DateTime date) => weekDayCN[date.weekday - 1];
 
-// 计算春节日期
+/// 计算春节日期
 DateTime getChineseNewYear(int year) {
   final codeYear = lunarNewYearList[year - startYear];
 
@@ -14,7 +14,7 @@ DateTime getChineseNewYear(int year) {
   return DateTime(year, month, day);
 }
 
-// 阳历年转换成阴历年
+/// 阳历年转换成阴历年
 LunarYear getLunarYear(int year) {
   final tmp = lunarMonthData[year - startYear];
 
@@ -42,18 +42,18 @@ LunarYear getLunarYear(int year) {
   return LunarYear(year: year, months: lunarMonthList);
 }
 
-// 阳历日转换成阴历日
+/// 阳历日转换成阴历日
 LunarDate getLunarDate(DateTime date) {
-  // 获取当前日期与当年春节的差日
+  /// 获取当前日期与当年春节的差日
   final newYear = getChineseNewYear(date.year).toUtc();
   int spanDays = date.daysBetween(fromDate: newYear);
   LunarYear lunarYear;
   if (spanDays >= 0) {
-    // 如果春节已过, 那么阴历年和阳历年是同一年
+    /// 如果春节已过, 那么阴历年和阳历年是同一年
     final year = date.year;
     lunarYear = getLunarYear(year);
   } else {
-    // 如果春节未过，那么阴历年是阳历年的前一年
+    /// 如果春节未过，那么阴历年是阳历年的前一年
     final year = date.year - 1;
     lunarYear = getLunarYear(year);
     spanDays = lunarYear.days + spanDays;
@@ -61,12 +61,12 @@ LunarDate getLunarDate(DateTime date) {
   return lunarYear.getXthDay(spanDays);
 }
 
-// 获取当年节气
+/// 获取当年节气
 List<SolarTerm> getSolarTerms(int year) {
   return solarTermsTimeByYear['$year'] ?? List.empty();
 }
 
-// 计算六十天干地支
+/// 计算六十天干地支
 List<String> heavenlyStemsEarthlyBranches() {
   final List<String> list = [];
   for (int i = 0; i < 60; i++) {
@@ -75,7 +75,7 @@ List<String> heavenlyStemsEarthlyBranches() {
   return list;
 }
 
-// 根据阴历年计算天干记年
+/// 根据阴历年计算天干记年
 String getLunarYear8Char({required int lunarYear}) {
   return the10HeavenlyStemsAnd12EarthlyBranches[(lunarYear - 4) % 60];
 }
@@ -135,7 +135,7 @@ String getLunarMonth8Char(
   return '$monthStem$monthBranch';
 }
 
-// 根据阴历日计算月相
+/// 根据阴历日计算月相
 String getPhaseOfMoon({required int lunarDay}) {
   if (lunarDay == 1) {
     return phaseOfMoon[0];
