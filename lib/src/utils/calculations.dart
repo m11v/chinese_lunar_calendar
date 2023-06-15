@@ -135,6 +135,18 @@ String getLunarMonth8Char(
   return '$monthStem$monthBranch';
 }
 
+/// 计算日干支
+String getDay8Char({required DateTime dateTime}) {
+  /// 2023年5月6日的日干支是“甲子”
+  DateTime start = DateTime(2023, 5, 6);
+  int days = dateTime.daysBetween(fromDate: start);
+  days = days % 60;
+  if (days < 0) {
+    days = 60 - days;
+  }
+  return the10HeavenlyStemsAnd12EarthlyBranches[days];
+}
+
 /// 根据阴历日计算月相
 String getPhaseOfMoon({required int lunarDay}) {
   if (lunarDay == 1) {

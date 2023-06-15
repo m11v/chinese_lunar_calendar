@@ -65,6 +65,9 @@ extension LunarCalendar8Char on LunarCalendar {
   /// 月干支
   String get month8Char => getLunarMonth8Char(
       dateTime: dateTime, useCSTToCalculate: useCSTToCalculate);
+
+  /// 日干支
+  String get day8Char => getDay8Char(dateTime: dateTime);
 }
 
 extension LunarCalendarX on LunarCalendar {

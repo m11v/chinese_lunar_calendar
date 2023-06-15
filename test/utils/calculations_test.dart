@@ -81,6 +81,11 @@ void main() {
           '戊午');
     });
 
+    test('Test getDay8Char', () {
+      expect(getDay8Char(dateTime: DateTime(2023, 6, 24)), '癸丑');
+      expect(getDay8Char(dateTime: DateTime(2010, 6, 24)), '乙巳');
+    });
+
     test('Test getWeekDayCN', () {
       expect(getWeekDayCN(DateTime(2023, 6, 4)), '星期日');
 
