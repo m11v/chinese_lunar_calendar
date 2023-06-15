@@ -63,4 +63,7 @@ extension LunarCalendarX on LunarCalendar {
 
   // 月相
   String get phaseOfMoon => getPhaseOfMoon(lunarDay: lunarDate.day);
+
+  String get lunarMonth8Char => getLunarMonth8Char(
+      dateTime: dateTime, useCSTToCalculate: useCSTToCalculate);
 }
