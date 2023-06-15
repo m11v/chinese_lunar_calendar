@@ -68,6 +68,12 @@ extension LunarCalendar8Char on LunarCalendar {
 
   /// 日干支
   String get day8Char => getDay8Char(dateTime: dateTime);
+
+  /// 时干支
+  String get twoHour8Char => getTwoHour8Char(dateTime: dateTime);
+
+  /// 八字
+  String get eightChar => '$year8Char $month8Char $day8Char $twoHour8Char';
 }
 
 extension LunarCalendarX on LunarCalendar {

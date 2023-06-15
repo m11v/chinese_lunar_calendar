@@ -147,13 +147,31 @@ String getDay8Char({required DateTime dateTime}) {
   return the10HeavenlyStemsAnd12EarthlyBranches[days];
 }
 
-/// 计算时辰
-String getTwoHourPeriods({required int hour}) {
+int _getTwoHourPeriodsIndex({required int hour}) {
   int index = ((hour + 1) / 2).floor();
   if (index == 12) {
     index = 0;
   }
-  return the12EarthlyBranches[index];
+  return index;
+}
+
+/// 计算时辰
+String getTwoHourPeriods({required int hour}) {
+  return the12EarthlyBranches[_getTwoHourPeriodsIndex(hour: hour)];
+}
+
+/// 计算时干支
+String getTwoHour8Char({required DateTime dateTime}) {
+  // 计算时支
+  final twoHourBranch = getTwoHourPeriods(hour: dateTime.hour);
+
+  /// 用日干和日干时干转换表计算时干
+  final dayStem = getDay8Char(dateTime: dateTime).substring(0, 1);
+  final twoHourStem = dayStemToTwoHoursStemChart[dayStem]
+          ?[_getTwoHourPeriodsIndex(hour: dateTime.hour)] ??
+      '';
+
+  return '$twoHourStem$twoHourBranch';
 }
 
 /// 根据阴历日计算月相
