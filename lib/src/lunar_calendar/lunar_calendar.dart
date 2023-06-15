@@ -55,6 +55,25 @@ extension LunarCalendarSolarTerms on LunarCalendar {
       };
 
   SolarTerm? get todaySolarTerm => solarTerms[dateTime.solarTermsKey];
+
+  /// 使用节气修正月份：这个月的节气之前的日子不算在这个月，而是算在上一个月
+  int get adjustedMonthBySolarTerm {
+    /// 当月的第一个节气日期
+    final primarySolarTermDate =
+        getTheFirstSolarTerm(year: dateTime.year, month: dateTime.month)
+            .getTime(useCSTToCalculate: useCSTToCalculate);
+
+    /// 当月节气的日子
+    final primarySolarTermDay = primarySolarTermDate.day;
+
+    /// 从立春开始算1月，因此小寒是12月，惊蛰是2月，清明是3月，等等，即节气月-1
+    /// 如果这个月的节之前的日子不算在这个月，而是算在上一个月，即节气月-2
+    if (dateTime.day >= primarySolarTermDay) {
+      return primarySolarTermDate.month - 1;
+    } else {
+      return primarySolarTermDate.month - 2;
+    }
+  }
 }
 
 extension LunarCalendarX on LunarCalendar {
@@ -63,4 +82,7 @@ extension LunarCalendarX on LunarCalendar {
 
   // 月相
   String get phaseOfMoon => getPhaseOfMoon(lunarDay: lunarDate.day);
+
+  String get lunarMonth8Char => getLunarMonth8Char(
+      dateTime: dateTime, useCSTToCalculate: useCSTToCalculate);
 }
