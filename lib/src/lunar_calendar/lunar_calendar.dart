@@ -60,7 +60,7 @@ extension LunarCalendarSolarTerms on LunarCalendar {
 /// 八字相关扩展
 extension LunarCalendar8Char on LunarCalendar {
   /// 年干支
-  String get year8Char => lunarDate.lunarYear8Char;
+  String get year8Char => getYear8CharFromDateTime(dateTime: dateTime);
 
   /// 月干支
   String get month8Char => getLunarMonth8Char(
