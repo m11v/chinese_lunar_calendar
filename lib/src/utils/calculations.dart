@@ -75,9 +75,15 @@ List<String> heavenlyStemsEarthlyBranches() {
   return list;
 }
 
-/// 根据阴历年计算天干记年
-String getLunarYear8Char({required int lunarYear}) {
+/// 根据阴历年份数字计算天干记年
+String getYear8Char({required int lunarYear}) {
   return the10HeavenlyStemsAnd12EarthlyBranches[(lunarYear - 4) % 60];
+}
+
+/// 根据阳历日期计算天干记年
+String getYear8CharFromDateTime({required DateTime dateTime}) {
+  final lunarYear = getLunarYear(dateTime.year);
+  return getYear8Char(lunarYear: lunarYear.year);
 }
 
 /// 获取当月的第一个节气
@@ -124,8 +130,7 @@ String getLunarMonth8Char(
   }
 
   /// 从年干计算月干
-  final yearStem =
-      getLunarYear8Char(lunarYear: adjustedLunarYear).substring(0, 1);
+  final yearStem = getYear8Char(lunarYear: adjustedLunarYear).substring(0, 1);
   final monthStem =
       yearStemToMonthStemChart[yearStem]?[adjustedMonth - 1] ?? '';
 

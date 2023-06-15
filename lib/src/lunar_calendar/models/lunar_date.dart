@@ -64,13 +64,13 @@ extension LunarDateCN on LunarDate {
   String get lunarDayCN => lunarDayNameList[day - 1];
 
   /// 干支纪年
-  String get lunarYear8Char => getLunarYear8Char(lunarYear: year);
+  String get year8Char => getYear8Char(lunarYear: year);
 
   /// 生肖
   String get zodiac => chineseZodiacNameList[(year - 4) % 12];
 
   /// 汉字阴历日期
   String get fullCNString {
-    return '$lunarYearCN $lunarYear8Char[$zodiac]年 $lunarMonthCN$lunarDayCN';
+    return '$lunarYearCN $year8Char[$zodiac]年 $lunarMonthCN$lunarDayCN';
   }
 }
