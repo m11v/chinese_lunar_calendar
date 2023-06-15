@@ -21,3 +21,4 @@
 - Refactor SolarTerm class.
 
 ## 0.0.7
+- Calculate day 8 char.
