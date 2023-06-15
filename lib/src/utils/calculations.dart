@@ -147,6 +147,15 @@ String getDay8Char({required DateTime dateTime}) {
   return the10HeavenlyStemsAnd12EarthlyBranches[days];
 }
 
+/// 计算时辰
+String getTwoHourPeriods({required int hour}) {
+  int index = ((hour + 1) / 2).floor();
+  if (index == 12) {
+    index = 0;
+  }
+  return the12EarthlyBranches[index];
+}
+
 /// 根据阴历日计算月相
 String getPhaseOfMoon({required int lunarDay}) {
   if (lunarDay == 1) {
