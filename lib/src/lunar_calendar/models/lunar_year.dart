@@ -8,6 +8,7 @@ import '../../constants/configs.dart';
 class LunarYear extends Equatable {
   /// 年份
   final int year;
+
   /// 月列表：有闰月时每年13个月，无闰月时每年12个月
   final List<LunarMonth> months;
 
