@@ -2,15 +2,18 @@ import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 import 'package:chinese_lunar_calendar/src/constants/configs.dart';
 import 'package:equatable/equatable.dart';
 
-//阴历日期
+/// 阴历日期
 class LunarDate extends Equatable {
-  // 年
+  /// 年
   final int year;
-  // 月
+
+  /// 月
   final int month;
-  // 日
+
+  /// 日
   final int day;
-  // 是否闰月
+
+  /// 是否闰月
   final bool isLeapMonth;
 
   const LunarDate(
@@ -29,7 +32,7 @@ class LunarDate extends Equatable {
 }
 
 extension LunarDateIsLongMonth on LunarDate {
-  // LunarDate 所在月是否大月
+  /// LunarDate 所在月是否大月
   bool get isLongMonth => getLunarYear(year)
       .months
       .firstWhere((element) =>
@@ -38,11 +41,11 @@ extension LunarDateIsLongMonth on LunarDate {
 }
 
 extension LunarDateCN on LunarDate {
-  // 汉字阴历年
+  /// 汉字阴历年
   String get lunarYearCN =>
       year.digits.map((e) => upperCNNum[e]).toList().join();
 
-  // 汉字阴历月
+  /// 汉字阴历月
   String get lunarMonthCN {
     String monthCN = lunarMonthNameList[month - 1];
     if (isLeapMonth) {
@@ -57,16 +60,16 @@ extension LunarDateCN on LunarDate {
     return monthCN;
   }
 
-  // 汉字阴历日
+  /// 汉字阴历日
   String get lunarDayCN => lunarDayNameList[day - 1];
 
-  // 干支纪年
+  /// 干支纪年
   String get lunarYear8Char => getLunarYear8Char(lunarYear: year);
 
-  // 生肖
+  /// 生肖
   String get zodiac => chineseZodiacNameList[(year - 4) % 12];
 
-  // 汉字阴历日期
+  /// 汉字阴历日期
   String get fullCNString {
     return '$lunarYearCN $lunarYear8Char[$zodiac]年 $lunarMonthCN$lunarDayCN';
   }

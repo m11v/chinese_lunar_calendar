@@ -1,6 +1,6 @@
-// Calculate days between two DateTime
+/// Calculate days between two DateTime
 extension DateTimeDaysBetween on DateTime {
-  // Reference: https://stackoverflow.com/questions/52713115/flutter-find-the-number-of-days-between-two-dates/67679455#67679455
+  /// Reference: https://stackoverflow.com/questions/52713115/flutter-find-the-number-of-days-between-two-dates/67679455#67679455
   int daysBetween({required DateTime fromDate}) {
     final to = DateTime(year, month, day);
     final from = DateTime(fromDate.year, fromDate.month, fromDate.day);
@@ -8,12 +8,13 @@ extension DateTimeDaysBetween on DateTime {
   }
 }
 
+/// Generate the key for indicating solar term
 extension DateTimeSolarTermsKey on DateTime {
   String get solarTermsKey =>
       '$year-${month.lastTwoDigitsString}-${day.lastTwoDigitsString}';
 }
 
-// Convert integer to an array of its digits
+/// Convert integer to an array of its digits
 extension IntDigits on int {
   List<int> get digits {
     final List<int> list = [];
@@ -27,7 +28,8 @@ extension IntDigits on int {
   }
 }
 
-// Get an integer's last two digits in String
+/// Get an integer's last two digits in String
+/// if the integer is single digit, add a '0' on the left
 extension IntTwoDigitsString on int {
   String get lastTwoDigitsString {
     final str = toString();

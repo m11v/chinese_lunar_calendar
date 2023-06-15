@@ -1,6 +1,6 @@
 import 'package:chinese_lunar_calendar/src/utils/utils.dart';
 
-// Convert a CST time to UTC
+/// Convert a CST time to UTC
 DateTime parseCSTToUTC(int year,
         [int month = 1,
         int day = 1,
@@ -10,8 +10,8 @@ DateTime parseCSTToUTC(int year,
     DateTime.parse(
         '$year-${month.lastTwoDigitsString}-${day.lastTwoDigitsString}T${hour.lastTwoDigitsString}:${minute.lastTwoDigitsString}:${second.lastTwoDigitsString}+0800');
 
-// Convert UTC to CST
+/// Convert UTC to CST
 DateTime utcToCST({required DateTime utc}) => utc.add(Duration(hours: 8));
 
-// Convert CST to UTC
+/// Convert CST to UTC
 DateTime cstToUTC({required DateTime cst}) => cst.add(Duration(hours: -8));
