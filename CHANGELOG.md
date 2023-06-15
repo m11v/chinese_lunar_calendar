@@ -18,3 +18,4 @@
 
 ## 0.0.6
 - Calculate month 8 char.
+- Refactor SolarTerm class.
