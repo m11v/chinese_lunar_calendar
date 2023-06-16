@@ -23,3 +23,5 @@
 ## 0.0.7
 - Calculate day 8 char.
 - Calculate two-hour 8 char.
+
+## 0.0.8
