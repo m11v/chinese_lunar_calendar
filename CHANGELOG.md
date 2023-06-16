@@ -25,3 +25,4 @@
 - Calculate two-hour 8 char.
 
 ## 0.0.8
+- Calculate two-hour period lucky list.

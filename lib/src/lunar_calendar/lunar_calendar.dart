@@ -76,6 +76,13 @@ extension LunarCalendar8Char on LunarCalendar {
   String get eightChar => '$year8Char $month8Char $day8Char $twoHour8Char';
 }
 
+/// 时辰相关扩展
+extension LunarCalendarTwoHourPeriod on LunarCalendar {
+  /// 本日吉时列表
+  List<String> get twoHourPeriodLuckyList =>
+      getTwoHourPeriodLuckyList(dateTime);
+}
+
 extension LunarCalendarX on LunarCalendar {
   /// 汉字星期
   String get weekDayCN => getWeekDayCN(dateTime);

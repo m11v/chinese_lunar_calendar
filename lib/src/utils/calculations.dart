@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 import 'package:chinese_lunar_calendar/src/constants/configs.dart';
 import 'package:chinese_lunar_calendar/src/constants/solar_terms.dart';
@@ -177,6 +179,30 @@ String getTwoHour8Char({required DateTime dateTime}) {
       '';
 
   return '$twoHourStem$twoHourBranch';
+}
+
+/// 计算当日吉时
+List<String> getTwoHourPeriodLuckyList(DateTime dateTime) {
+  /// 计算日干支
+  final day8Char = getDay8Char(dateTime: dateTime);
+
+  /// 计算日干支在天干地支表中的序号
+  final day8CharIndex = the10HeavenlyStemsAnd12EarthlyBranches
+      .indexWhere((element) => element == day8Char);
+
+  /// 查询时辰吉凶时间表
+  final seed = twoHourPeriodLuckyTimeList[day8CharIndex];
+
+  /// 根据查询到的时辰吉凶时间计算
+  final List<String> list = [];
+  for (int i = 1; i < 13; i++) {
+    var s = '吉';
+    if ((seed & pow(2, (12 - i)).toInt()) > 0) {
+      s = '凶';
+    }
+    list.add(s);
+  }
+  return list;
 }
 
 /// 根据阴历日计算月相
