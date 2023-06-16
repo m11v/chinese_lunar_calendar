@@ -181,18 +181,6 @@ String getTwoHour8Char({required DateTime dateTime}) {
   return '$twoHourStem$twoHourBranch';
 }
 
-List<String> seedTwoHourPeriodLuckyList(int seed) {
-  final List<String> list = [];
-  for (int i = 1; i < 13; i++) {
-    var s = '吉';
-    if ((seed & pow(2, (12 - i)).toInt()) > 0) {
-      s = '凶';
-    }
-    list.add(s);
-  }
-  return list;
-}
-
 /// 计算当日吉时
 List<String> getTwoHourPeriodLuckyList(DateTime dateTime) {
   /// 计算日干支
