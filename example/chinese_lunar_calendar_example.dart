@@ -17,4 +17,5 @@ void main() {
   print(
       '本年节气: ${lunarCalendar.solarTerms.values.map((value) => '${value.name}: ${value.getTime(useCSTToCalculate: lunarCalendar.useCSTToCalculate)}').toList()}');
   print('本日节气：${lunarCalendar.todaySolarTerm}');
+  print('本日吉时列表：${lunarCalendar.twoHourPeriodLuckyList}');
 }
