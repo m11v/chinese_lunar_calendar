@@ -17,6 +17,11 @@ void main() {
   print(
       '本年节气: ${lunarCalendar.solarTerms.values.map((value) => '${value.name}: ${value.getTime(useCSTToCalculate: lunarCalendar.useCSTToCalculate)}').toList()}');
   print('本日节气：${lunarCalendar.todaySolarTerm}');
-  print('本日吉时列表：${lunarCalendar.twoHourPeriodLuckyList}');
-  print('本日时辰列表：${lunarCalendar.twoHourPeriodList}');
+  print('当前时辰：${lunarCalendar.twoHourPeriod}');
+
+  final twoHourPeriodsString = lunarCalendar.twoHourPeriodList
+      .map((e) =>
+          '${e.twoHourPeriodIndex}: ${e.nameInTheDay} (${e.nameInHanDynasty}) ${e.isLuckyName}')
+      .toList();
+  print('本日时辰：$twoHourPeriodsString');
 }
