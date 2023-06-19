@@ -78,12 +78,11 @@ extension LunarCalendar8Char on LunarCalendar {
 
 /// 时辰相关扩展
 extension LunarCalendarTwoHourPeriod on LunarCalendar {
-  /// 本日吉时列表
-  List<String> get twoHourPeriodLuckyList =>
-      getTwoHourPeriodLuckyList(dateTime);
+  /// 时辰
+  TwoHourPeriod get twoHourPeriod => TwoHourPeriod.from(dateTime: dateTime);
 
   /// 本日时辰列表
-  List<String> get twoHourPeriodList => getTwoHourPeriodList(dateTime);
+  List<TwoHourPeriod> get twoHourPeriodList => getTwoHourPeriodList(dateTime);
 }
 
 extension LunarCalendarX on LunarCalendar {

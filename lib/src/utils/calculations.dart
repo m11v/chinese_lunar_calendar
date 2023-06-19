@@ -182,7 +182,8 @@ String getTwoHour8Char({required DateTime dateTime}) {
 }
 
 /// 计算当日吉时
-List<String> getTwoHourPeriodLuckyList(DateTime dateTime) {
+/// true 为吉，false 为凶
+List<bool> getTwoHourPeriodLuckyList(DateTime dateTime) {
   /// 计算日干支
   final day8Char = getDay8Char(dateTime: dateTime);
 
@@ -194,32 +195,34 @@ List<String> getTwoHourPeriodLuckyList(DateTime dateTime) {
   final seed = twoHourPeriodLuckyTimeList[day8CharIndex];
 
   /// 根据查询到的时辰吉凶时间计算
-  final List<String> list = [];
+  final List<bool> list = [];
   for (int i = 1; i < 13; i++) {
-    var s = '吉';
+    var s = true;
     if ((seed & pow(2, (12 - i)).toInt()) > 0) {
-      s = '凶';
+      s = false;
     }
     list.add(s);
   }
   return list;
 }
 
+/// 计算时辰序号
+int getTwoHourPeriodIndex(int hour) {
+  return (hour / 2).floor();
+}
+
 /// 计算当日时辰列表
-List<String> getTwoHourPeriodList(DateTime dateTime) {
-  List<String> res = [];
+List<TwoHourPeriod> getTwoHourPeriodList(DateTime dateTime) {
+  List<TwoHourPeriod> res = [];
 
-  /// 计算日干
-  final dayStem = getDay8Char(dateTime: dateTime).substring(0, 1);
   for (int hour = 0; hour < 24; hour += 2) {
-    /// 计算时支
-    final twoHourBranch = getTwoHourPeriods(hour: hour);
-
-    /// 用日干和日干时干转换表计算时干
-    final twoHourStem = dayStemToTwoHoursStemChart[dayStem]
-            ?[_getTwoHourPeriodsIndex(hour: hour)] ??
-        '';
-    res.add('$twoHourStem$twoHourBranch');
+    res.add(TwoHourPeriod.from(
+        dateTime: DateTime(
+      dateTime.year,
+      dateTime.month,
+      dateTime.day,
+      hour,
+    )));
   }
   return res;
 }

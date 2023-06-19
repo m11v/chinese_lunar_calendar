@@ -187,6 +187,22 @@ const Map<String, List<String>> dayStemToTwoHoursStemChart = {
   '癸': ['壬', '癸', '甲', '乙', '丙', '丁', '戊', '己', '庚', '辛', '壬', '癸'],
 };
 
+/// 十二时辰汉代命名
+const twoHourPeriodHanName = [
+  '夜半',
+  '鸡鸣',
+  '平旦',
+  '日出',
+  '食时',
+  '隅中',
+  '日中',
+  '日昳',
+  '晡时',
+  '日入',
+  '黄昏',
+  '人定'
+];
+
 /// 月相名
 const phaseOfMoon = [
   '朔',
