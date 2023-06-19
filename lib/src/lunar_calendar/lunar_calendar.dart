@@ -1,8 +1,6 @@
 import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 import 'package:equatable/equatable.dart';
 
-import '../constants/configs.dart';
-
 class LunarCalendar extends Equatable {
   /// UTC 时间
   final DateTime _utc;
