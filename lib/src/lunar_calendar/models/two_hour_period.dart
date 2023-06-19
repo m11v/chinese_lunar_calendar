@@ -41,4 +41,7 @@ extension TwoHourPeriodX on TwoHourPeriod {
 
   /// 吉凶时名
   String get isLuckyName => isLucky ? '吉' : '凶';
+
+  /// 时辰经络
+  String get meridian => meridiansName[twoHourPeriodIndex];
 }

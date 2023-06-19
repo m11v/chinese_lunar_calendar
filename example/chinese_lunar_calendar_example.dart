@@ -21,7 +21,7 @@ void main() {
 
   final twoHourPeriodsString = lunarCalendar.twoHourPeriodList
       .map((e) =>
-          '${e.twoHourPeriodIndex}: ${e.nameInTheDay} (${e.nameInHanDynasty}) ${e.isLuckyName}')
+          '${e.twoHourPeriodIndex}: ${e.nameInTheDay} (${e.nameInHanDynasty}) ${e.meridian} ${e.isLuckyName}')
       .toList();
   print('本日时辰：$twoHourPeriodsString');
 }
