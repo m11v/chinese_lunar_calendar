@@ -26,3 +26,4 @@
 
 ## 0.0.8
 - Calculate two-hour period lucky list.
+- Calculate two-hour period list.

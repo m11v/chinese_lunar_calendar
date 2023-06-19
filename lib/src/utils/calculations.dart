@@ -205,6 +205,25 @@ List<String> getTwoHourPeriodLuckyList(DateTime dateTime) {
   return list;
 }
 
+/// 计算当日时辰列表
+List<String> getTwoHourPeriodList(DateTime dateTime) {
+  List<String> res = [];
+
+  /// 计算日干
+  final dayStem = getDay8Char(dateTime: dateTime).substring(0, 1);
+  for (int hour = 0; hour < 24; hour += 2) {
+    /// 计算时支
+    final twoHourBranch = getTwoHourPeriods(hour: hour);
+
+    /// 用日干和日干时干转换表计算时干
+    final twoHourStem = dayStemToTwoHoursStemChart[dayStem]
+            ?[_getTwoHourPeriodsIndex(hour: hour)] ??
+        '';
+    res.add('$twoHourStem$twoHourBranch');
+  }
+  return res;
+}
+
 /// 根据阴历日计算月相
 String getPhaseOfMoon({required int lunarDay}) {
   if (lunarDay == 1) {

@@ -81,6 +81,9 @@ extension LunarCalendarTwoHourPeriod on LunarCalendar {
   /// 本日吉时列表
   List<String> get twoHourPeriodLuckyList =>
       getTwoHourPeriodLuckyList(dateTime);
+
+  /// 本日时辰列表
+  List<String> get twoHourPeriodList => getTwoHourPeriodList(dateTime);
 }
 
 extension LunarCalendarX on LunarCalendar {
