@@ -203,6 +203,22 @@ const twoHourPeriodHanName = [
   '人定'
 ];
 
+/// 时辰经络
+const meridiansName = [
+  '胆',
+  '肝',
+  '肺',
+  '大肠',
+  '胃',
+  '脾',
+  '心',
+  '小肠',
+  '膀胱',
+  '肾',
+  '心包',
+  '三焦'
+];
+
 /// 月相名
 const phaseOfMoon = [
   '朔',
