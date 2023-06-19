@@ -85,21 +85,7 @@ extension LunarCalendarTwoHourPeriod on LunarCalendar {
       getTwoHourPeriodLuckyList(dateTime);
 
   /// 本日时辰列表
-  List<String> get twoHourPeriodList {
-    List<String> res = [];
-
-    /// 计算日干
-    final dayStem = getDay8Char(dateTime: dateTime).substring(0, 1);
-    for (int hour = 0; hour < 24; hour += 2) {
-      /// 计算时支
-      final twoHourBranch = getTwoHourPeriods(hour: hour);
-      final twoHourStem = dayStemToTwoHoursStemChart[dayStem]
-              ?[getTwoHourPeriodsIndex(hour: hour)] ??
-          '';
-      res.add('$twoHourStem$twoHourBranch');
-    }
-    return res;
-  }
+  List<String> get twoHourPeriodList => getTwoHourPeriodList(dateTime);
 }
 
 extension LunarCalendarX on LunarCalendar {

@@ -154,7 +154,7 @@ String getDay8Char({required DateTime dateTime}) {
   return the10HeavenlyStemsAnd12EarthlyBranches[days];
 }
 
-int getTwoHourPeriodsIndex({required int hour}) {
+int _getTwoHourPeriodsIndex({required int hour}) {
   int index = ((hour + 1) / 2).floor();
   if (index == 12) {
     index = 0;
@@ -164,7 +164,7 @@ int getTwoHourPeriodsIndex({required int hour}) {
 
 /// 计算时辰
 String getTwoHourPeriods({required int hour}) {
-  return the12EarthlyBranches[getTwoHourPeriodsIndex(hour: hour)];
+  return the12EarthlyBranches[_getTwoHourPeriodsIndex(hour: hour)];
 }
 
 /// 计算时干支
@@ -175,7 +175,7 @@ String getTwoHour8Char({required DateTime dateTime}) {
   /// 用日干和日干时干转换表计算时干
   final dayStem = getDay8Char(dateTime: dateTime).substring(0, 1);
   final twoHourStem = dayStemToTwoHoursStemChart[dayStem]
-          ?[getTwoHourPeriodsIndex(hour: dateTime.hour)] ??
+          ?[_getTwoHourPeriodsIndex(hour: dateTime.hour)] ??
       '';
 
   return '$twoHourStem$twoHourBranch';
@@ -203,6 +203,25 @@ List<String> getTwoHourPeriodLuckyList(DateTime dateTime) {
     list.add(s);
   }
   return list;
+}
+
+/// 计算当日时辰列表
+List<String> getTwoHourPeriodList(DateTime dateTime) {
+  List<String> res = [];
+
+  /// 计算日干
+  final dayStem = getDay8Char(dateTime: dateTime).substring(0, 1);
+  for (int hour = 0; hour < 24; hour += 2) {
+    /// 计算时支
+    final twoHourBranch = getTwoHourPeriods(hour: hour);
+
+    /// 用日干和日干时干转换表计算时干
+    final twoHourStem = dayStemToTwoHoursStemChart[dayStem]
+            ?[_getTwoHourPeriodsIndex(hour: hour)] ??
+        '';
+    res.add('$twoHourStem$twoHourBranch');
+  }
+  return res;
 }
 
 /// 根据阴历日计算月相
