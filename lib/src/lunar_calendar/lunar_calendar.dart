@@ -1,6 +1,8 @@
 import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 import 'package:equatable/equatable.dart';
 
+import '../constants/configs.dart';
+
 class LunarCalendar extends Equatable {
   /// UTC 时间
   final DateTime _utc;
@@ -81,6 +83,23 @@ extension LunarCalendarTwoHourPeriod on LunarCalendar {
   /// 本日吉时列表
   List<String> get twoHourPeriodLuckyList =>
       getTwoHourPeriodLuckyList(dateTime);
+
+  /// 本日时辰列表
+  List<String> get twoHourPeriodList {
+    List<String> res = [];
+
+    /// 计算日干
+    final dayStem = getDay8Char(dateTime: dateTime).substring(0, 1);
+    for (int hour = 0; hour < 24; hour += 2) {
+      /// 计算时支
+      final twoHourBranch = getTwoHourPeriods(hour: hour);
+      final twoHourStem = dayStemToTwoHoursStemChart[dayStem]
+              ?[getTwoHourPeriodsIndex(hour: hour)] ??
+          '';
+      res.add('$twoHourStem$twoHourBranch');
+    }
+    return res;
+  }
 }
 
 extension LunarCalendarX on LunarCalendar {
