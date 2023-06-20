@@ -30,3 +30,5 @@
 
 ## 0.0.9
 - Downgrade the dependency collection's version
+
+## 0.0.10
