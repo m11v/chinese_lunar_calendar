@@ -29,3 +29,4 @@
 - Calculate two-hour period list.
 
 ## 0.0.9
+- Downgrade the dependency collection's version
