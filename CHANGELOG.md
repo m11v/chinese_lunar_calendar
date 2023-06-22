@@ -33,3 +33,5 @@
 
 ## 0.0.10
 - Calculate ke of two-hour period
+
+## 0.0.11
