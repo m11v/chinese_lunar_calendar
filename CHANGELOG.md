@@ -32,3 +32,4 @@
 - Downgrade the dependency collection's version
 
 ## 0.0.10
+- Calculate ke of two-hour period
