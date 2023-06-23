@@ -12,19 +12,27 @@ void main() {
     test('Test lunarMonthCN', () {
       final lunarDate =
           LunarDate(year: 2023, month: 6, day: 24, isLeapMonth: false);
-      expect(lunarDate.lunarMonthCN, '六月小');
+      expect(
+          '${lunarDate.leapMonthPrefix}${lunarDate.lunarMonthCN}${lunarDate.monthLengthSuffix}',
+          '六月小');
 
       final lunarDate2 =
           LunarDate(year: 2023, month: 7, day: 15, isLeapMonth: false);
-      expect(lunarDate2.lunarMonthCN, '七月大');
+      expect(
+          '${lunarDate2.leapMonthPrefix}${lunarDate2.lunarMonthCN}${lunarDate2.monthLengthSuffix}',
+          '七月大');
 
       final lunarDate3 =
           LunarDate(year: 2023, month: 2, day: 26, isLeapMonth: true);
-      expect(lunarDate3.lunarMonthCN, '闰二月小');
+      expect(
+          '${lunarDate3.leapMonthPrefix}${lunarDate3.lunarMonthCN}${lunarDate3.monthLengthSuffix}',
+          '闰二月小');
 
       final lunarDate4 =
           LunarDate(year: 2023, month: 2, day: 10, isLeapMonth: false);
-      expect(lunarDate4.lunarMonthCN, '二月大');
+      expect(
+          '${lunarDate4.leapMonthPrefix}${lunarDate4.lunarMonthCN}${lunarDate4.monthLengthSuffix}',
+          '二月大');
     });
 
     test('Test lunarDayCN', () {
