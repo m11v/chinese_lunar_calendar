@@ -45,20 +45,14 @@ extension LunarDateCN on LunarDate {
   String get lunarYearCN =>
       year.digits.map((e) => upperCNNum[e]).toList().join();
 
-  /// 汉字阴历月
-  String get lunarMonthCN {
-    String monthCN = lunarMonthNameList[month - 1];
-    if (isLeapMonth) {
-      monthCN = '闰$monthCN';
-    }
+  /// 闰月前缀
+  String get leapMonthPrefix => isLeapMonth ? '闰' : '';
 
-    if (isLongMonth) {
-      monthCN = '$monthCN大';
-    } else {
-      monthCN = '$monthCN小';
-    }
-    return monthCN;
-  }
+  /// 大小月后缀
+  String get monthLengthSuffix => isLongMonth ? '大' : '小';
+
+  /// 汉字阴历月
+  String get lunarMonthCN => lunarMonthNameList[month - 1];
 
   /// 汉字阴历日
   String get lunarDayCN => lunarDayNameList[day - 1];
@@ -71,6 +65,6 @@ extension LunarDateCN on LunarDate {
 
   /// 汉字阴历日期
   String get fullCNString {
-    return '$lunarYearCN $year8Char[$zodiac]年 $lunarMonthCN$lunarDayCN';
+    return '$lunarYearCN $year8Char[$zodiac]年 $leapMonthPrefix$lunarMonthCN$monthLengthSuffix$lunarDayCN';
   }
 }
