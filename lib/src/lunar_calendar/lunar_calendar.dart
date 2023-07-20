@@ -14,8 +14,11 @@ class LunarCalendar extends Equatable {
   LunarCalendar({
     required DateTime utcDateTime,
     bool useCSTToCalculateLunarDate = false,
+    bool isSimplifiedCN = true,
   })  : useCSTToCalculate = useCSTToCalculateLunarDate,
-        _utc = utcDateTime;
+        _utc = utcDateTime {
+    Loc.create(isSimplifiedCN: isSimplifiedCN);
+  }
 
   @override
   List<Object?> get props => [_utc, useCSTToCalculate];
@@ -42,7 +45,7 @@ extension LunarCalendarChineseNewYear on LunarCalendar {
 
   /// 汉字春节日期
   String get chineseNewYearString {
-    return '${chineseNewYear.year} 年 ${chineseNewYear.month} 月 ${chineseNewYear.day} 日';
+    return '${chineseNewYear.year}${Loc.get().nian}${chineseNewYear.month}${Loc.get().yue}${chineseNewYear.day}${Loc.get().ri}';
   }
 }
 

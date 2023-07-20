@@ -4,6 +4,8 @@ import 'package:test/test.dart';
 
 void main() {
   group('Test calculations', () {
+    setUpAll(() => {Loc.create()});
+
     test('Test getChineseNewYear', () {
       final newYear2000 = DateTime(2000, 2, 5);
       expect(getChineseNewYear(2000), newYear2000);

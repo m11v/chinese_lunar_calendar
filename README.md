@@ -35,9 +35,11 @@ $ flutter pub add chinese_lunar_calendar
 import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 
 void main() {
-  // 创建LunarCalendar，输入查询日期
+  /// 创建LunarCalendar：
+  /// 输入查询日期，
+  /// 用isSimplifiedCN参数定义使用简体中文或繁体中文，默认为简体中文
   final lunarCalendar =
-  LunarCalendar(utcDateTime: DateTime(2023, 6, 5, 10, 30).toUtc());
+  LunarCalendar(utcDateTime: DateTime(2023, 6, 5, 10, 30).toUtc(), isSimplifiedCN: true);
 
   print('中国标准时间：${lunarCalendar.cst}');
   print('本地时间：${lunarCalendar.localTime}');

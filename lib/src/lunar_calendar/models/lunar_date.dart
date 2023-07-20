@@ -1,5 +1,4 @@
 import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
-import 'package:chinese_lunar_calendar/src/constants/configs.dart';
 import 'package:equatable/equatable.dart';
 
 /// 阴历日期
@@ -43,28 +42,28 @@ extension LunarDateIsLongMonth on LunarDate {
 extension LunarDateCN on LunarDate {
   /// 汉字阴历年
   String get lunarYearCN =>
-      year.digits.map((e) => upperCNNum[e]).toList().join();
+      year.digits.map((e) => Loc.get().upperCNNum[e]).toList().join();
 
   /// 闰月前缀
-  String get leapMonthPrefix => isLeapMonth ? '闰' : '';
+  String get leapMonthPrefix => isLeapMonth ? Loc.get().run : '';
 
   /// 大小月后缀
-  String get monthLengthSuffix => isLongMonth ? '大' : '小';
+  String get monthLengthSuffix => isLongMonth ? Loc.get().da : Loc.get().xiao;
 
   /// 汉字阴历月
-  String get lunarMonthCN => lunarMonthNameList[month - 1];
+  String get lunarMonthCN => Loc.get().lunarMonthNameList[month - 1];
 
   /// 汉字阴历日
-  String get lunarDayCN => lunarDayNameList[day - 1];
+  String get lunarDayCN => Loc.get().lunarDayNameList[day - 1];
 
   /// 干支纪年
   String get year8Char => getYear8Char(lunarYear: year);
 
   /// 生肖
-  String get zodiac => chineseZodiacNameList[(year - 4) % 12];
+  String get zodiac => Loc.get().chineseZodiacNameList[(year - 4) % 12];
 
   /// 汉字阴历日期
   String get fullCNString {
-    return '$lunarYearCN $year8Char[$zodiac]年 $leapMonthPrefix$lunarMonthCN$monthLengthSuffix$lunarDayCN';
+    return '$lunarYearCN $year8Char[$zodiac]${Loc.get().nian} $leapMonthPrefix$lunarMonthCN$monthLengthSuffix$lunarDayCN';
   }
 }

@@ -3,6 +3,8 @@ import 'package:test/test.dart';
 
 void main() {
   group('Test LunarDate', () {
+    setUpAll(() => {Loc.create()});
+
     test('Test lunarYearCN', () {
       final lunarDate =
           LunarDate(year: 2023, month: 6, day: 6, isLeapMonth: false);
