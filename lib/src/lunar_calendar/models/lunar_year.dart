@@ -2,8 +2,6 @@ import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../constants/configs.dart';
-
 /// 阴历年
 class LunarYear extends Equatable {
   /// 年份
@@ -42,7 +40,7 @@ extension LunarYearX on LunarYear {
   bool get hasLeapMonth => monthsCount == 13;
 
   /// 生肖
-  String get zodiac => chineseZodiacNameList[(year - 4) % 12];
+  String get zodiac => Loc.get().chineseZodiacNameList[(year - 4) % 12];
 }
 
 extension LunarYearXthDay on LunarYear {

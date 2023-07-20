@@ -3,6 +3,7 @@ import 'package:test/test.dart';
 
 void main() {
   group('Test LunarYear', () {
+    setUpAll(() => {Loc.create()});
     test('Test zodiac', () {
       final lunarYear = getLunarYear(2023);
       expect(lunarYear.zodiac, '兔');

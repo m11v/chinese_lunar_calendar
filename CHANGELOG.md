@@ -38,3 +38,4 @@
 - Refactor the lunar month name.
 
 ## 0.0.12
+- Add Traditional Chinese.

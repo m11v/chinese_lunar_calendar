@@ -5,7 +5,7 @@ import 'package:chinese_lunar_calendar/src/constants/configs.dart';
 import 'package:chinese_lunar_calendar/src/constants/solar_terms.dart';
 
 /// 计算汉字星期
-String getWeekDayCN(DateTime date) => weekDayCN[date.weekday - 1];
+String getWeekDayCN(DateTime date) => Loc.get().weekDayCN[date.weekday - 1];
 
 /// 计算春节日期
 DateTime getChineseNewYear(int year) {
@@ -70,6 +70,8 @@ List<SolarTerm> getSolarTerms(int year) {
 
 /// 计算六十天干地支
 List<String> heavenlyStemsEarthlyBranches() {
+  final the10HeavenlyStems = Loc.get().the10HeavenlyStems;
+  final the12EarthlyBranches = Loc.get().the12EarthlyBranches;
   final List<String> list = [];
   for (int i = 0; i < 60; i++) {
     list.add(the10HeavenlyStems[i % 10] + the12EarthlyBranches[i % 12]);
@@ -79,7 +81,7 @@ List<String> heavenlyStemsEarthlyBranches() {
 
 /// 根据阴历年份数字计算天干记年
 String getYear8Char({required int lunarYear}) {
-  return the10HeavenlyStemsAnd12EarthlyBranches[(lunarYear - 4) % 60];
+  return Loc.get().the10HeavenlyStemsAnd12EarthlyBranches[(lunarYear - 4) % 60];
 }
 
 /// 根据阳历日期计算天干记年
@@ -134,10 +136,10 @@ String getLunarMonth8Char(
   /// 从年干计算月干
   final yearStem = getYear8Char(lunarYear: adjustedLunarYear).substring(0, 1);
   final monthStem =
-      yearStemToMonthStemChart[yearStem]?[adjustedMonth - 1] ?? '';
+      Loc.get().yearStemToMonthStemChart[yearStem]?[adjustedMonth - 1] ?? '';
 
   /// 计算月支
-  final monthBranch = the12EarthlyBranches[(adjustedMonth + 1) % 12];
+  final monthBranch = Loc.get().the12EarthlyBranches[(adjustedMonth + 1) % 12];
 
   return '$monthStem$monthBranch';
 }
@@ -151,7 +153,7 @@ String getDay8Char({required DateTime dateTime}) {
   if (days < 0) {
     days = 60 - days;
   }
-  return the10HeavenlyStemsAnd12EarthlyBranches[days];
+  return Loc.get().the10HeavenlyStemsAnd12EarthlyBranches[days];
 }
 
 int _getTwoHourPeriodsIndex({required int hour}) {
@@ -164,7 +166,7 @@ int _getTwoHourPeriodsIndex({required int hour}) {
 
 /// 计算时辰
 String getTwoHourPeriods({required int hour}) {
-  return the12EarthlyBranches[_getTwoHourPeriodsIndex(hour: hour)];
+  return Loc.get().the12EarthlyBranches[_getTwoHourPeriodsIndex(hour: hour)];
 }
 
 /// 计算时干支
@@ -174,7 +176,7 @@ String getTwoHour8Char({required DateTime dateTime}) {
 
   /// 用日干和日干时干转换表计算时干
   final dayStem = getDay8Char(dateTime: dateTime).substring(0, 1);
-  final twoHourStem = dayStemToTwoHoursStemChart[dayStem]
+  final twoHourStem = Loc.get().dayStemToTwoHoursStemChart[dayStem]
           ?[_getTwoHourPeriodsIndex(hour: dateTime.hour)] ??
       '';
 
@@ -188,7 +190,8 @@ List<bool> getTwoHourPeriodLuckyList(DateTime dateTime) {
   final day8Char = getDay8Char(dateTime: dateTime);
 
   /// 计算日干支在天干地支表中的序号
-  final day8CharIndex = the10HeavenlyStemsAnd12EarthlyBranches
+  final day8CharIndex = Loc.get()
+      .the10HeavenlyStemsAnd12EarthlyBranches
       .indexWhere((element) => element == day8Char);
 
   /// 查询时辰吉凶时间表
@@ -229,6 +232,7 @@ List<TwoHourPeriod> getTwoHourPeriodList(DateTime dateTime) {
 
 /// 根据阴历日计算月相
 String getPhaseOfMoon({required int lunarDay}) {
+  final phaseOfMoon = Loc.get().phaseOfMoon;
   if (lunarDay == 1) {
     return phaseOfMoon[0];
   } else if (2 <= lunarDay && lunarDay <= 6) {
