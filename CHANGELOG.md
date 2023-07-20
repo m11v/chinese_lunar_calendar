@@ -39,3 +39,5 @@
 
 ## 0.0.12
 - Add Traditional Chinese.
+
+## 0.0.13
