@@ -41,3 +41,4 @@
 - Add Traditional Chinese.
 
 ## 0.0.13
+- Fix the bug when recreate Loc.
