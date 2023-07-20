@@ -8,11 +8,8 @@ class Loc {
   static Loc? _instance;
 
   factory Loc.create({bool isSimplifiedCN = true}) {
-    if (_instance != null) {
-      throw LocHasBeenCreatedError();
-    }
+    _instance ??= Loc._internal();
 
-    _instance = Loc._internal();
     _instance!._isSimplifiedCN = isSimplifiedCN;
     return _instance!;
   }
@@ -22,6 +19,10 @@ class Loc {
       throw NoLocError();
     }
     return _instance!;
+  }
+
+  static dispose() {
+    _instance = null;
   }
 }
 
@@ -103,12 +104,4 @@ class NoLocError extends Error {
   @override
   String toString() =>
       'NoLocError: The Loc is not created. Call Loc.create() to create one';
-}
-
-class LocHasBeenCreatedError extends Error {
-  LocHasBeenCreatedError();
-
-  @override
-  String toString() =>
-      'LocHasBeenCreatedError: A Loc is already created. Call Loc.get() to get its instance.';
 }
