@@ -18,6 +18,21 @@ class SolarTerm extends Equatable {
     return SolarTerm._internal(name: name, utc: utc);
   }
 
+  /// Create solar term from solar term data
+  factory SolarTerm.createFromSolarTermData(
+    String name,
+    List<int> solarTermData,
+  ) {
+    return SolarTerm.createFromCST(
+      name,
+      solarTermData[0],
+      solarTermData[1],
+      solarTermData[2],
+      solarTermData[3],
+      solarTermData[4],
+    );
+  }
+
   /// Local time
   DateTime get local => utc.toLocal();
 

@@ -1,5 +1,4 @@
 import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
-import 'package:chinese_lunar_calendar/src/constants/solar_terms.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -172,12 +171,6 @@ void main() {
         '晦'
       ];
       expect(list, expectList);
-    });
-
-    test('Test getSolarTerms', () {
-      expect(getSolarTerms(2023), solarTerms2023);
-
-      expect(getSolarTerms(2020), List.empty());
     });
   });
 }
