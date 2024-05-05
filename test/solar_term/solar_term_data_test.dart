@@ -1,4 +1,4 @@
-import 'package:chinese_lunar_calendar/src/constants/solar_term_data.dart';
+import 'package:chinese_lunar_calendar/src/solar_term/solar_term_data.dart';
 import 'package:test/test.dart';
 
 void main() {

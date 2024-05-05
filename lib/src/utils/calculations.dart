@@ -2,8 +2,6 @@ import 'dart:math';
 
 import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 import 'package:chinese_lunar_calendar/src/constants/configs.dart';
-import 'package:chinese_lunar_calendar/src/constants/solar_term_data.dart';
-import 'package:collection/collection.dart';
 
 /// 计算汉字星期
 String getWeekDayCN(DateTime date) => Loc.get().weekDayCN[date.weekday - 1];
@@ -62,16 +60,6 @@ LunarDate getLunarDate(DateTime date) {
     spanDays = lunarYear.days + spanDays;
   }
   return lunarYear.getXthDay(spanDays);
-}
-
-/// 获取当年节气
-List<SolarTerm> getSolarTerms(int year) {
-  return getSolarTermsDataByYear(year: year)
-      .mapIndexed(
-        (index, solarTermData) => SolarTerm.createFromSolarTermData(
-            Loc.get().solarTerms[index], solarTermData),
-      )
-      .toList();
 }
 
 /// 计算六十天干地支

@@ -8,6 +8,9 @@ class LunarCalendar extends Equatable {
   /// true: 使用中国标准时间计算; false: 使用本地时间计算
   final bool useCSTToCalculate;
 
+  /// true: 使用简体中文
+  final bool isSimplifiedChinese;
+
   /// 阴历日期
   LunarDate get lunarDate => getLunarDate(dateTime);
 
@@ -16,12 +19,17 @@ class LunarCalendar extends Equatable {
     bool useCSTToCalculateLunarDate = false,
     bool isSimplifiedCN = true,
   })  : useCSTToCalculate = useCSTToCalculateLunarDate,
-        _utc = utcDateTime {
+        _utc = utcDateTime,
+        isSimplifiedChinese = isSimplifiedCN {
     Loc.create(isSimplifiedCN: isSimplifiedCN);
   }
 
   @override
-  List<Object?> get props => [_utc, useCSTToCalculate];
+  List<Object?> get props => [
+        _utc,
+        useCSTToCalculate,
+        isSimplifiedChinese,
+      ];
 }
 
 extension LunarCalendarTime on LunarCalendar {

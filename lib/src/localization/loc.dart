@@ -39,10 +39,6 @@ extension LocX on Loc {
   String get ji => _isSimplifiedCN ? CNS.ji : CNT.ji;
   String get xiong => _isSimplifiedCN ? CNS.xiong : CNT.xiong;
 
-  /// 节气名
-  List<String> get solarTerms =>
-      _isSimplifiedCN ? CNS.solarTerms : CNT.solarTerms;
-
   /// 月相名
   List<String> get phaseOfMoon =>
       _isSimplifiedCN ? CNS.phaseOfMoon : CNT.phaseOfMoon;
