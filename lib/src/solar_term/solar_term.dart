@@ -3,8 +3,8 @@ import 'package:equatable/equatable.dart';
 
 import '../common/located.dart';
 import '../utils/tools.dart';
-import 'solar_term_name.dart';
 import 'solar_term_data.dart';
+import 'solar_term_name.dart';
 
 export 'solar_term_data.dart';
 export 'solar_term_name.dart';
@@ -74,7 +74,7 @@ class SolarTerm extends Equatable {
       'SolarTerm(name: $name, CST: $cst, UTC: $utc, Local: $local)';
 }
 
-/// 获取当年节气
+/// 获取当年节气列表
 List<SolarTerm> getSolarTerms(int year) {
   return getSolarTermsDataByYear(year: year)
       .mapIndexed(
@@ -84,4 +84,34 @@ List<SolarTerm> getSolarTerms(int year) {
         ),
       )
       .toList();
+}
+
+SolarTerm? get todaySolarTerm => DateTime.now().getSolarTerm();
+
+SolarTerm? get nextSolarTerm => DateTime.now().getNextSolarTerm();
+
+extension SolarTermDateTime on DateTime {
+  /// 返回指定日期的节气
+  SolarTerm? getSolarTerm() {
+    final thisUtcTime = toUtc();
+    return getSolarTerms(year).where((element) {
+      final solarTermTime = element.utc;
+
+      return solarTermTime.month == thisUtcTime.month &&
+          solarTermTime.day == thisUtcTime.day;
+    }).firstOrNull;
+  }
+
+  /// 返回指定日期的下一个节气
+  SolarTerm? getNextSolarTerm() {
+    final thisUtcTime = toUtc();
+    return getSolarTerms(year).where((element) {
+          final solarTermTime = element.utc;
+
+          return solarTermTime.month > thisUtcTime.month ||
+              (solarTermTime.month == thisUtcTime.month &&
+                  solarTermTime.day > thisUtcTime.day);
+        }).firstOrNull ??
+        getSolarTerms(year + 1).firstOrNull;
+  }
 }
