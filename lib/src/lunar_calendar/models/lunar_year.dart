@@ -55,10 +55,12 @@ extension LunarYearXthDay on LunarYear {
       final currentMonth = months[i];
       if (spanDays < currentMonth.days) {
         return LunarDate(
-            year: year,
-            month: currentMonth.index,
-            day: spanDays + 1,
-            isLeapMonth: currentMonth.isLeapMonth);
+          year: year,
+          month: currentMonth.index,
+          day: spanDays + 1,
+          isLeapMonth: currentMonth.isLeapMonth,
+          isLongMonth: currentMonth.isLongMonth,
+        );
       } else {
         spanDays = spanDays - currentMonth.days;
       }

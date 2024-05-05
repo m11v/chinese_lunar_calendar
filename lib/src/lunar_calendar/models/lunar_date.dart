@@ -15,28 +15,33 @@ class LunarDate extends Equatable {
   /// 是否闰月
   final bool isLeapMonth;
 
-  const LunarDate(
-      {required this.year,
-      required this.month,
-      required this.day,
-      required this.isLeapMonth});
+  /// 是否大月
+  final bool isLongMonth;
 
-  static const empty = LunarDate(year: 0, month: 0, day: 0, isLeapMonth: false);
+  const LunarDate({
+    required this.year,
+    required this.month,
+    required this.day,
+    required this.isLeapMonth,
+    required this.isLongMonth,
+  });
+
+  static const empty = LunarDate(
+    year: 0,
+    month: 0,
+    day: 0,
+    isLeapMonth: false,
+    isLongMonth: false,
+  );
 
   @override
-  List<Object?> get props => [year, month, day, isLeapMonth];
-
-  @override
-  bool get stringify => true;
-}
-
-extension LunarDateIsLongMonth on LunarDate {
-  /// LunarDate 所在月是否大月
-  bool get isLongMonth => getLunarYear(year)
-      .months
-      .firstWhere((element) =>
-          element.index == month && element.isLeapMonth == isLeapMonth)
-      .isLongMonth;
+  List<Object?> get props => [
+        year,
+        month,
+        day,
+        isLeapMonth,
+        isLongMonth,
+      ];
 }
 
 extension LunarDateCN on LunarDate {
