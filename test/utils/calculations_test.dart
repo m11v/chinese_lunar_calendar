@@ -39,34 +39,64 @@ void main() {
 
     test('Test getLunarDate', () {
       final date1 = DateTime(2023, 12, 30);
-      final expectLunarDate1 =
-          LunarDate(year: 2023, month: 11, day: 18, isLeapMonth: false);
+      final expectLunarDate1 = LunarDate(
+        year: 2023,
+        month: 11,
+        day: 18,
+        isLeapMonth: false,
+        isLongMonth: false,
+      );
       getLunarDate(date1);
       expect(getLunarDate(date1), expectLunarDate1);
 
       final date2 = DateTime(2023, 3, 13);
-      final expectLunarDate2 =
-          LunarDate(year: 2023, month: 2, day: 22, isLeapMonth: false);
+      final expectLunarDate2 = LunarDate(
+        year: 2023,
+        month: 2,
+        day: 22,
+        isLeapMonth: false,
+        isLongMonth: true,
+      );
       expect(getLunarDate(date2), expectLunarDate2);
 
       final date3 = DateTime(2023, 3, 26);
-      final expectLunarDate3 =
-          LunarDate(year: 2023, month: 2, day: 5, isLeapMonth: true);
+      final expectLunarDate3 = LunarDate(
+        year: 2023,
+        month: 2,
+        day: 5,
+        isLeapMonth: true,
+        isLongMonth: false,
+      );
       expect(getLunarDate(date3), expectLunarDate3);
 
       final date4 = DateTime(2023, 1, 1);
-      final expectLunarDate4 =
-          LunarDate(year: 2022, month: 12, day: 10, isLeapMonth: false);
+      final expectLunarDate4 = LunarDate(
+        year: 2022,
+        month: 12,
+        day: 10,
+        isLeapMonth: false,
+        isLongMonth: true,
+      );
       expect(getLunarDate(date4), expectLunarDate4);
 
       final date5 = DateTime(2023, 11, 5);
-      final expectLunarDate5 =
-          LunarDate(year: 2023, month: 9, day: 22, isLeapMonth: false);
+      final expectLunarDate5 = LunarDate(
+        year: 2023,
+        month: 9,
+        day: 22,
+        isLeapMonth: false,
+        isLongMonth: false,
+      );
       expect(getLunarDate(date5), expectLunarDate5);
 
       final date6 = DateTime(2023, 11, 6);
-      final expectLunarDate6 =
-          LunarDate(year: 2023, month: 9, day: 23, isLeapMonth: false);
+      final expectLunarDate6 = LunarDate(
+        year: 2023,
+        month: 9,
+        day: 23,
+        isLeapMonth: false,
+        isLongMonth: false,
+      );
       expect(getLunarDate(date6), expectLunarDate6);
     });
 
