@@ -57,17 +57,6 @@ extension LunarCalendarChineseNewYear on LunarCalendar {
   }
 }
 
-extension LunarCalendarSolarTerms on LunarCalendar {
-  Map<String, SolarTerm> get solarTerms => {
-        for (var solarTerm in getSolarTerms(dateTime.year))
-          (solarTerm
-              .getTime(useCSTToCalculate: useCSTToCalculate)
-              .solarTermsKey): solarTerm
-      };
-
-  SolarTerm? get todaySolarTerm => solarTerms[dateTime.solarTermsKey];
-}
-
 /// 八字相关扩展
 extension LunarCalendar8Char on LunarCalendar {
   /// 年干支
