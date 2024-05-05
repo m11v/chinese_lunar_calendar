@@ -91,26 +91,26 @@ SolarTerm? get todaySolarTerm => DateTime.now().getSolarTerm();
 SolarTerm? get nextSolarTerm => DateTime.now().getNextSolarTerm();
 
 extension SolarTermDateTime on DateTime {
-  /// 返回指定日期的节气
+  /// 使用本地时间，返回指定日期的节气
   SolarTerm? getSolarTerm() {
-    final thisUtcTime = toUtc();
+    final thisLocalTime = toLocal();
     return getSolarTerms(year).where((element) {
-      final solarTermTime = element.utc;
+      final solarTermTime = element.local;
 
-      return solarTermTime.month == thisUtcTime.month &&
-          solarTermTime.day == thisUtcTime.day;
+      return solarTermTime.month == thisLocalTime.month &&
+          solarTermTime.day == thisLocalTime.day;
     }).firstOrNull;
   }
 
-  /// 返回指定日期的下一个节气
+  /// 使用本地时间，返回指定日期的下一个节气
   SolarTerm? getNextSolarTerm() {
-    final thisUtcTime = toUtc();
+    final thisLocalTime = toLocal();
     return getSolarTerms(year).where((element) {
-          final solarTermTime = element.utc;
+          final solarTermTime = element.local;
 
-          return solarTermTime.month > thisUtcTime.month ||
-              (solarTermTime.month == thisUtcTime.month &&
-                  solarTermTime.day > thisUtcTime.day);
+          return solarTermTime.month > thisLocalTime.month ||
+              (solarTermTime.month == thisLocalTime.month &&
+                  solarTermTime.day > thisLocalTime.day);
         }).firstOrNull ??
         getSolarTerms(year + 1).firstOrNull;
   }
