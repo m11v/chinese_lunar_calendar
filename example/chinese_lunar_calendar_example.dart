@@ -14,9 +14,8 @@ void main() {
   print('八字: ${lunarCalendar.eightChar}');
   print('星期：${lunarCalendar.weekDayCN}');
   print('月相：${lunarCalendar.phaseOfMoon}');
-  print(
-      '本年节气: ${lunarCalendar.solarTerms.values.map((value) => '${value.name.getValue(!lunarCalendar.isSimplifiedChinese)}: ${value.getTime(useCSTToCalculate: lunarCalendar.useCSTToCalculate)}').toList()}');
-  print('本日节气：${lunarCalendar.todaySolarTerm}');
+  print('本年节气: ${getSolarTerms(lunarCalendar.dateTime.year)}');
+  print('本日节气：${lunarCalendar.dateTime.getSolarTerm()}');
   print(
       '当前时辰：${lunarCalendar.twoHourPeriod.steamName}${lunarCalendar.twoHourPeriod.name}${lunarCalendar.twoHourPeriod.ke.name}');
 
