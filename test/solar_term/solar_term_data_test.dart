@@ -2,8 +2,8 @@ import 'package:chinese_lunar_calendar/src/solar_term/solar_term_data.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('Test solar time data', () {
-    group('Test solar time data by year', () {
+  group('Test solar term data', () {
+    group('Test solar term data by year', () {
       final dataLists = supportedSolarTermsYear
           .map(
             (year) => getSolarTermsDataByYear(
@@ -12,14 +12,14 @@ void main() {
           )
           .toList();
 
-      test('There are 24 rows in each year', () {
+      test('There are 24 solar terms in each year', () {
         for (int i = 0; i < supportedSolarTermsYear.length; i++) {
           expect(dataLists[i].length, 24);
         }
       });
 
       test(
-          'Each solar time data array contains 5 items which indicate year, month, day, hour, and minute',
+          'Each solar term data array contains 5 items which indicate year, month, day, hour, and minute',
           () {
         for (int i = 0; i < supportedSolarTermsYear.length; i++) {
           final year = supportedSolarTermsYear[i];
