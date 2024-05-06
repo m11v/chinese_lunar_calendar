@@ -48,12 +48,11 @@ extension TwoHourPeriodX on TwoHourPeriod {
   String get steamName => nameInTheDay[0];
 
   /// 时辰汉代名
-  String get nameInHanDynasty =>
-      Loc.get().twoHourPeriodHanName[twoHourPeriodIndex];
+  Located get nameInHanDynasty => twoHourPeriodHanName[twoHourPeriodIndex];
 
   /// 吉凶时名
-  String get isLuckyName => isLucky ? ji : Loc.get().xiong;
+  Located get isLuckyName => isLucky ? ji : xiong;
 
   /// 时辰经络
-  String get meridian => Loc.get().meridiansName[twoHourPeriodIndex];
+  Located get meridian => meridiansName[twoHourPeriodIndex];
 }

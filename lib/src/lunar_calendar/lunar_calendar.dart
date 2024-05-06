@@ -10,27 +10,19 @@ class LunarCalendar extends Equatable {
   /// true: 使用中国标准时间计算; false: 使用本地时间计算
   final bool useCSTToCalculate;
 
-  /// true: 使用简体中文
-  final bool isSimplifiedChinese;
-
   /// 阴历日期
   LunarDate get lunarDate => getLunarDate(dateTime);
 
   LunarCalendar({
     required DateTime utcDateTime,
     bool useCSTToCalculateLunarDate = false,
-    bool isSimplifiedCN = true,
   })  : useCSTToCalculate = useCSTToCalculateLunarDate,
-        _utc = utcDateTime,
-        isSimplifiedChinese = isSimplifiedCN {
-    Loc.create(isSimplifiedCN: isSimplifiedCN);
-  }
+        _utc = utcDateTime;
 
   @override
   List<Object?> get props => [
         _utc,
         useCSTToCalculate,
-        isSimplifiedChinese,
       ];
 }
 
@@ -92,5 +84,5 @@ extension LunarCalendarX on LunarCalendar {
   String get weekDayCN => getWeekDayCN(dateTime);
 
   /// 月相
-  String get phaseOfMoon => getPhaseOfMoon(lunarDay: lunarDate.day);
+  Located get phaseOfMoon => getPhaseOfMoon(lunarDay: lunarDate.day);
 }

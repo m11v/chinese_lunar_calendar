@@ -215,8 +215,7 @@ List<TwoHourPeriod> getTwoHourPeriodList(DateTime dateTime) {
 }
 
 /// 根据阴历日计算月相
-String getPhaseOfMoon({required int lunarDay}) {
-  final phaseOfMoon = Loc.get().phaseOfMoon;
+Located getPhaseOfMoon({required int lunarDay}) {
   if (lunarDay == 1) {
     return phaseOfMoon[0];
   } else if (2 <= lunarDay && lunarDay <= 6) {

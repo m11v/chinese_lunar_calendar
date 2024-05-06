@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
 
 class Located extends Equatable {
@@ -8,6 +9,11 @@ class Located extends Equatable {
 
   final String tValue;
   final String? sValue;
+
+  static const empty = Located(
+    tValue: '',
+    sValue: '',
+  );
 
   String getValue([
     bool isHant = true,
@@ -21,3 +27,21 @@ class Located extends Equatable {
         sValue,
       ];
 }
+
+List<Located> getLocatedList({
+  required List<String> traditional,
+  required List<String> simplified,
+}) =>
+    IterableZip(
+      [
+        traditional,
+        simplified, // 简体
+      ],
+    )
+        .map(
+          (e) => Located(
+            tValue: e[0],
+            sValue: e[1],
+          ),
+        )
+        .toList();

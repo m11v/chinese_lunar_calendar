@@ -52,13 +52,13 @@ extension LunarDateCN on LunarDate {
       year.digits.map((e) => upperCNNum[e]).toList().join();
 
   /// 闰月前缀
-  String get leapMonthPrefix => isLeapMonth ? Loc.get().run : '';
+  Located get leapMonthPrefix => isLeapMonth ? run : Located.empty;
 
   /// 大小月后缀
   String get monthLengthSuffix => isLongMonth ? da : xiao;
 
   /// 汉字阴历月
-  String get lunarMonthCN => Loc.get().lunarMonthNameList[month - 1];
+  Located get lunarMonthCN => lunarMonthNameList[month - 1];
 
   /// 汉字阴历日
   String get lunarDayCN => lunarDayNameList[day - 1];
@@ -67,7 +67,7 @@ extension LunarDateCN on LunarDate {
   String get year8Char => getYear8Char(lunarYear: year);
 
   /// 生肖
-  String get zodiac => Loc.get().chineseZodiacNameList[(year - 4) % 12];
+  Located get zodiac => chineseZodiacNameList[(year - 4) % 12];
 
   /// 汉字阴历日期
   String get fullCNString {

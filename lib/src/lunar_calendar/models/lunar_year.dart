@@ -40,7 +40,7 @@ extension LunarYearX on LunarYear {
   bool get hasLeapMonth => monthsCount == 13;
 
   /// 生肖
-  String get zodiac => Loc.get().chineseZodiacNameList[(year - 4) % 12];
+  Located get zodiac => chineseZodiacNameList[(year - 4) % 12];
 }
 
 extension LunarYearXthDay on LunarYear {
