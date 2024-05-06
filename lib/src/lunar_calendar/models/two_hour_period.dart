@@ -1,6 +1,8 @@
 import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../constants/cn_text.dart';
+
 /// 时辰
 class TwoHourPeriod extends Equatable {
   /// 时辰八字名
@@ -50,7 +52,7 @@ extension TwoHourPeriodX on TwoHourPeriod {
       Loc.get().twoHourPeriodHanName[twoHourPeriodIndex];
 
   /// 吉凶时名
-  String get isLuckyName => isLucky ? Loc.get().ji : Loc.get().xiong;
+  String get isLuckyName => isLucky ? ji : Loc.get().xiong;
 
   /// 时辰经络
   String get meridian => Loc.get().meridiansName[twoHourPeriodIndex];

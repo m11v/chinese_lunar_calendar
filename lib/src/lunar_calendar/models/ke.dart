@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 
 import '../../constants/cn_text.dart';
-import '../../localization/loc.dart';
 
 /// 刻
 /// 采取清代的定义，即一个时辰八刻：上四刻和下四刻
@@ -34,11 +33,11 @@ class Ke extends Equatable {
 }
 
 extension KeX on Ke {
-  String get partName => isUpper ? Loc.get().chu : Loc.get().zheng;
+  String get partName => isUpper ? chu : zheng;
 
-  String get numberName => '${upperCNNum[number]}${Loc.get().ke}';
+  String get numberName => '${upperCNNum[number]}$ke';
 
-  String get unitName => Loc.get().ke;
+  String get unitName => ke;
 
   String get name => '$partName $numberName';
 }

@@ -27,25 +27,7 @@ class Loc {
 }
 
 extension LocX on Loc {
-  String get chu => _isSimplifiedCN ? CNS.chu : CNT.chu;
-
-  String get zheng => _isSimplifiedCN ? CNS.zheng : CNT.zheng;
-
-  String get ke => _isSimplifiedCN ? CNS.ke : CNT.ke;
-
-  String get nian => _isSimplifiedCN ? CNS.nian : CNT.nian;
-
-  String get yue => _isSimplifiedCN ? CNS.yue : CNT.yue;
-
-  String get ri => _isSimplifiedCN ? CNS.ri : CNT.ri;
-
   String get run => _isSimplifiedCN ? CNS.run : CNT.run;
-
-  String get da => _isSimplifiedCN ? CNS.da : CNT.da;
-
-  String get xiao => _isSimplifiedCN ? CNS.xiao : CNT.xiao;
-
-  String get ji => _isSimplifiedCN ? CNS.ji : CNT.ji;
 
   String get xiong => _isSimplifiedCN ? CNS.xiong : CNT.xiong;
 

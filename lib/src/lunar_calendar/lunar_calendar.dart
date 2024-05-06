@@ -1,6 +1,8 @@
 import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 import 'package:equatable/equatable.dart';
 
+import '../constants/cn_text.dart';
+
 class LunarCalendar extends Equatable {
   /// UTC 时间
   final DateTime _utc;
@@ -53,7 +55,7 @@ extension LunarCalendarChineseNewYear on LunarCalendar {
 
   /// 汉字春节日期
   String get chineseNewYearString {
-    return '${chineseNewYear.year}${Loc.get().nian}${chineseNewYear.month}${Loc.get().yue}${chineseNewYear.day}${Loc.get().ri}';
+    return '${chineseNewYear.year}$nian${chineseNewYear.month}$yue${chineseNewYear.day}$ri';
   }
 }
 
