@@ -1,6 +1,8 @@
 import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../constants/cn_text.dart';
+
 /// 阴历日期
 class LunarDate extends Equatable {
   /// 年
@@ -47,7 +49,7 @@ class LunarDate extends Equatable {
 extension LunarDateCN on LunarDate {
   /// 汉字阴历年
   String get lunarYearCN =>
-      year.digits.map((e) => Loc.get().upperCNNum[e]).toList().join();
+      year.digits.map((e) => upperCNNum[e]).toList().join();
 
   /// 闰月前缀
   String get leapMonthPrefix => isLeapMonth ? Loc.get().run : '';
@@ -59,7 +61,7 @@ extension LunarDateCN on LunarDate {
   String get lunarMonthCN => Loc.get().lunarMonthNameList[month - 1];
 
   /// 汉字阴历日
-  String get lunarDayCN => Loc.get().lunarDayNameList[day - 1];
+  String get lunarDayCN => lunarDayNameList[day - 1];
 
   /// 干支纪年
   String get year8Char => getYear8Char(lunarYear: year);

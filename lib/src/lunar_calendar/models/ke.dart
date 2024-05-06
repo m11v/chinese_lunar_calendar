@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+import '../../constants/cn_text.dart';
 import '../../localization/loc.dart';
 
 /// 刻
@@ -34,7 +35,10 @@ class Ke extends Equatable {
 
 extension KeX on Ke {
   String get partName => isUpper ? Loc.get().chu : Loc.get().zheng;
-  String get numberName => '${Loc.get().upperCNNum[number]}${Loc.get().ke}';
+
+  String get numberName => '${upperCNNum[number]}${Loc.get().ke}';
+
   String get unitName => Loc.get().ke;
+
   String get name => '$partName $numberName';
 }
