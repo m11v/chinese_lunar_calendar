@@ -60,3 +60,7 @@
 ## 0.1.0
 
 - Make SolarTerm independently.
+
+## 0.2.0
+
+- Refactor the way for localization.

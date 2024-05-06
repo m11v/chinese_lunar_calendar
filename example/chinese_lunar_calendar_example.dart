@@ -2,7 +2,7 @@ import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 
 void main() {
   final lunarCalendar = LunarCalendar(
-    utcDateTime: DateTime(2025, 1, 29, 10, 30).toUtc(),
+    utcDateTime: DateTime(2023, 6, 5, 10, 30).toUtc(),
   );
 
   print('中国标准时间：${lunarCalendar.cst}');
