@@ -3,8 +3,6 @@ import 'package:test/test.dart';
 
 void main() {
   group('Test LunarDate', () {
-    setUpAll(() => {Loc.create()});
-
     test('Test lunarYearCN', () {
       final lunarDate = LunarDate(
         year: 2023,
@@ -25,7 +23,7 @@ void main() {
         isLongMonth: false,
       );
       expect(
-          '${lunarDate.leapMonthPrefix}${lunarDate.lunarMonthCN}${lunarDate.monthLengthSuffix}',
+          '${lunarDate.leapMonthPrefix.sValue}${lunarDate.lunarMonthCN.sValue}${lunarDate.monthLengthSuffix}',
           '六月小');
 
       final lunarDate2 = LunarDate(
@@ -36,7 +34,7 @@ void main() {
         isLongMonth: true,
       );
       expect(
-          '${lunarDate2.leapMonthPrefix}${lunarDate2.lunarMonthCN}${lunarDate2.monthLengthSuffix}',
+          '${lunarDate2.leapMonthPrefix.sValue}${lunarDate2.lunarMonthCN.sValue}${lunarDate2.monthLengthSuffix}',
           '七月大');
 
       final lunarDate3 = LunarDate(
@@ -47,7 +45,7 @@ void main() {
         isLongMonth: false,
       );
       expect(
-          '${lunarDate3.leapMonthPrefix}${lunarDate3.lunarMonthCN}${lunarDate3.monthLengthSuffix}',
+          '${lunarDate3.leapMonthPrefix.sValue}${lunarDate3.lunarMonthCN.sValue}${lunarDate3.monthLengthSuffix}',
           '闰二月小');
 
       final lunarDate4 = LunarDate(
@@ -58,7 +56,7 @@ void main() {
         isLongMonth: true,
       );
       expect(
-          '${lunarDate4.leapMonthPrefix}${lunarDate4.lunarMonthCN}${lunarDate4.monthLengthSuffix}',
+          '${lunarDate4.leapMonthPrefix.sValue}${lunarDate4.lunarMonthCN.sValue}${lunarDate4.monthLengthSuffix}',
           '二月大');
     });
 

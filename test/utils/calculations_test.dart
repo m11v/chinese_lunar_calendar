@@ -3,8 +3,6 @@ import 'package:test/test.dart';
 
 void main() {
   group('Test calculations', () {
-    setUpAll(() => {Loc.create()});
-
     test('Test getChineseNewYear', () {
       final newYear2000 = DateTime(2000, 2, 5);
       expect(getChineseNewYear(2000), newYear2000);
@@ -165,7 +163,7 @@ void main() {
     test('Test getPhaseOfMoon', () {
       final List<String> list = [];
       for (var i = 1; i <= 30; i++) {
-        list.add(getPhaseOfMoon(lunarDay: i));
+        list.add(getPhaseOfMoon(lunarDay: i).getValue(false));
       }
 
       final List<String> expectList = [
