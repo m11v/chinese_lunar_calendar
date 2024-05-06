@@ -55,7 +55,7 @@ extension LunarDateCN on LunarDate {
   String get leapMonthPrefix => isLeapMonth ? Loc.get().run : '';
 
   /// 大小月后缀
-  String get monthLengthSuffix => isLongMonth ? Loc.get().da : Loc.get().xiao;
+  String get monthLengthSuffix => isLongMonth ? da : xiao;
 
   /// 汉字阴历月
   String get lunarMonthCN => Loc.get().lunarMonthNameList[month - 1];
@@ -71,6 +71,6 @@ extension LunarDateCN on LunarDate {
 
   /// 汉字阴历日期
   String get fullCNString {
-    return '$lunarYearCN $year8Char[$zodiac]${Loc.get().nian} $leapMonthPrefix$lunarMonthCN$monthLengthSuffix$lunarDayCN';
+    return '$lunarYearCN $year8Char[$zodiac]$nian $leapMonthPrefix$lunarMonthCN$monthLengthSuffix$lunarDayCN';
   }
 }

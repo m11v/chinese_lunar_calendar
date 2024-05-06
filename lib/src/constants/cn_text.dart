@@ -1,3 +1,13 @@
+const chu = '初';
+const zheng = '正';
+const ke = '刻';
+const nian = '年';
+const yue = '月';
+const ri = '日';
+const da = '大';
+const xiao = '小';
+const ji = '吉';
+
 /// 数字汉字
 const upperCNNum = [
   '零',

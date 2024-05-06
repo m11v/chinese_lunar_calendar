@@ -1,15 +1,6 @@
 /// 简体中文文字
 class CNS {
-  static const chu = '初';
-  static const zheng = '正';
-  static const ke = '刻';
-  static const nian = '年';
-  static const yue = '月';
-  static const ri = '日';
   static const run = '闰';
-  static const da = '大';
-  static const xiao = '小';
-  static const ji = '吉';
   static const xiong = '凶';
 
   /// 月相名
