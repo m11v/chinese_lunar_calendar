@@ -64,3 +64,7 @@
 ## 0.2.0
 
 - Refactor the way for localization.
+
+## 0.3.0
+
+- Add solar term data for 2026.
