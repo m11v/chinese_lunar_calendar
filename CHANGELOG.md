@@ -68,3 +68,7 @@
 ## 0.3.0
 
 - Add solar term data for 2026.
+
+## 0.3.1
+
+- Add `index` field in SolarTerm.
