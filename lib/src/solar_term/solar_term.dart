@@ -17,13 +17,18 @@ class SolarTerm extends Equatable {
   /// UTC time
   final DateTime utc;
 
+  /// Index of this solar term in the solar term list
+  final int index;
+
   SolarTerm._internal({
     required this.name,
     required this.utc,
+    required this.index,
   });
 
   /// Create solar term from China Standard Time(UTC+8)
   factory SolarTerm.createFromCST({
+    required int index,
     required Located name,
     required int year,
     required int month,
@@ -35,15 +40,18 @@ class SolarTerm extends Equatable {
     return SolarTerm._internal(
       name: name,
       utc: utc,
+      index: index,
     );
   }
 
   /// Create solar term from solar term data
   factory SolarTerm.createFromSolarTermData({
+    required int index,
     required Located name,
     required List<int> solarTermData,
   }) {
     return SolarTerm.createFromCST(
+      index: index,
       name: name,
       year: solarTermData[0],
       month: solarTermData[1],
@@ -71,7 +79,7 @@ class SolarTerm extends Equatable {
 
   @override
   String toString() =>
-      'SolarTerm(name: $name, CST: $cst, UTC: $utc, Local: $local)';
+      'SolarTerm(name: $name, index: $index, CST: $cst, UTC: $utc, Local: $local)';
 }
 
 /// 获取当年节气列表
@@ -79,6 +87,7 @@ List<SolarTerm> getSolarTerms(int year) {
   return getSolarTermsDataByYear(year: year)
       .mapIndexed(
         (index, solarTermData) => SolarTerm.createFromSolarTermData(
+          index: index,
           name: solarTermNames[index],
           solarTermData: solarTermData,
         ),
