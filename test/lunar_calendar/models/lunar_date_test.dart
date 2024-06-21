@@ -5,9 +5,9 @@ void main() {
   group('Test LunarDate', () {
     test('Test lunarYearCN', () {
       final lunarDate = LunarDate(
-        year: 2023,
-        month: 6,
-        day: 6,
+        lunaYear: 2023,
+        lunaMonth: 6,
+        lunaDay: 6,
         isLeapMonth: false,
         isLongMonth: false,
       );
@@ -16,9 +16,9 @@ void main() {
 
     test('Test lunarMonthCN', () {
       final lunarDate = LunarDate(
-        year: 2023,
-        month: 6,
-        day: 24,
+        lunaYear: 2023,
+        lunaMonth: 6,
+        lunaDay: 24,
         isLeapMonth: false,
         isLongMonth: false,
       );
@@ -27,9 +27,9 @@ void main() {
           '六月小');
 
       final lunarDate2 = LunarDate(
-        year: 2023,
-        month: 7,
-        day: 15,
+        lunaYear: 2023,
+        lunaMonth: 7,
+        lunaDay: 15,
         isLeapMonth: false,
         isLongMonth: true,
       );
@@ -38,9 +38,9 @@ void main() {
           '七月大');
 
       final lunarDate3 = LunarDate(
-        year: 2023,
-        month: 2,
-        day: 26,
+        lunaYear: 2023,
+        lunaMonth: 2,
+        lunaDay: 26,
         isLeapMonth: true,
         isLongMonth: false,
       );
@@ -49,9 +49,9 @@ void main() {
           '闰二月小');
 
       final lunarDate4 = LunarDate(
-        year: 2023,
-        month: 2,
-        day: 10,
+        lunaYear: 2023,
+        lunaMonth: 2,
+        lunaDay: 10,
         isLeapMonth: false,
         isLongMonth: true,
       );
@@ -62,9 +62,9 @@ void main() {
 
     test('Test lunarDayCN', () {
       final lunarDate = LunarDate(
-        year: 2023,
-        month: 2,
-        day: 10,
+        lunaYear: 2023,
+        lunaMonth: 2,
+        lunaDay: 10,
         isLeapMonth: false,
         isLongMonth: true,
       );

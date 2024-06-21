@@ -38,9 +38,9 @@ void main() {
     test('Test getLunarDate', () {
       final date1 = DateTime(2023, 12, 30);
       final expectLunarDate1 = LunarDate(
-        year: 2023,
-        month: 11,
-        day: 18,
+        lunaYear: 2023,
+        lunaMonth: 11,
+        lunaDay: 18,
         isLeapMonth: false,
         isLongMonth: false,
       );
@@ -49,9 +49,9 @@ void main() {
 
       final date2 = DateTime(2023, 3, 13);
       final expectLunarDate2 = LunarDate(
-        year: 2023,
-        month: 2,
-        day: 22,
+        lunaYear: 2023,
+        lunaMonth: 2,
+        lunaDay: 22,
         isLeapMonth: false,
         isLongMonth: true,
       );
@@ -59,9 +59,9 @@ void main() {
 
       final date3 = DateTime(2023, 3, 26);
       final expectLunarDate3 = LunarDate(
-        year: 2023,
-        month: 2,
-        day: 5,
+        lunaYear: 2023,
+        lunaMonth: 2,
+        lunaDay: 5,
         isLeapMonth: true,
         isLongMonth: false,
       );
@@ -69,9 +69,9 @@ void main() {
 
       final date4 = DateTime(2023, 1, 1);
       final expectLunarDate4 = LunarDate(
-        year: 2022,
-        month: 12,
-        day: 10,
+        lunaYear: 2022,
+        lunaMonth: 12,
+        lunaDay: 10,
         isLeapMonth: false,
         isLongMonth: true,
       );
@@ -79,9 +79,9 @@ void main() {
 
       final date5 = DateTime(2023, 11, 5);
       final expectLunarDate5 = LunarDate(
-        year: 2023,
-        month: 9,
-        day: 22,
+        lunaYear: 2023,
+        lunaMonth: 9,
+        lunaDay: 22,
         isLeapMonth: false,
         isLongMonth: false,
       );
@@ -89,9 +89,9 @@ void main() {
 
       final date6 = DateTime(2023, 11, 6);
       final expectLunarDate6 = LunarDate(
-        year: 2023,
-        month: 9,
-        day: 23,
+        lunaYear: 2023,
+        lunaMonth: 9,
+        lunaDay: 23,
         isLeapMonth: false,
         isLongMonth: false,
       );
