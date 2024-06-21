@@ -49,7 +49,7 @@ LunarYear getLunarYear(int year) {
     lunarMonthList.insert(leapMonth.number, leapMonth);
   }
 
-  return LunarYear(lunaYear: year, lunaMonths: lunarMonthList);
+  return LunarYear(number: year, lunarMonths: lunarMonthList);
 }
 
 /// 阳历日转换成阴历日
@@ -79,7 +79,7 @@ String getYear8Char({required int lunarYear}) {
 /// 根据阳历日期计算天干记年
 String getYear8CharFromDateTime({required DateTime dateTime}) {
   final lunarYear = getLunarYear(dateTime.year);
-  return getYear8Char(lunarYear: lunarYear.lunaYear);
+  return getYear8Char(lunarYear: lunarYear.number);
 }
 
 /// 获取当月的第一个节气
@@ -99,7 +99,7 @@ String getLunarMonth8Char(
   final primarySolarTermDay = solarTermDate.day;
 
   /// 阴历年
-  final lunarYear = getLunarYear(dateTime.year).lunaYear;
+  final lunarYear = getLunarYear(dateTime.year).number;
 
   int adjustedLunarYear = lunarYear;
 

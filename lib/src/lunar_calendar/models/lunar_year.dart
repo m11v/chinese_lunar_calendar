@@ -4,21 +4,21 @@ import 'package:equatable/equatable.dart';
 
 /// 阴历年
 class LunarYear extends Equatable {
-  /// 年份
-  final int lunaYear;
+  /// 阴历年份数字
+  final int number;
 
   /// 月列表：有闰月时每年13个月，无闰月时每年12个月
-  final List<LunarMonth> lunaMonths;
+  final List<LunarMonth> lunarMonths;
 
   const LunarYear({
-    required this.lunaYear,
-    required this.lunaMonths,
+    required this.number,
+    required this.lunarMonths,
   });
 
   @override
   List<Object?> get props => [
-        lunaYear,
-        lunaMonths,
+        number,
+        lunarMonths,
       ];
 
   @override
@@ -27,20 +27,20 @@ class LunarYear extends Equatable {
 
 extension LunarYearX on LunarYear {
   /// 天数
-  int get days => lunaMonths.map((e) => e.days).reduce((a, b) => a + b);
+  int get days => lunarMonths.map((e) => e.days).reduce((a, b) => a + b);
 
   /// 闰月
   LunarMonth? get leapMonth =>
-      lunaMonths.firstWhereOrNull((element) => element.isLeapMonth);
+      lunarMonths.firstWhereOrNull((element) => element.isLeapMonth);
 
   /// 月数量
-  int get monthsCount => lunaMonths.length;
+  int get monthsCount => lunarMonths.length;
 
   /// 是否有闰月
   bool get hasLeapMonth => monthsCount == 13;
 
   /// 生肖
-  Located get zodiac => chineseZodiacNameList[(lunaYear - 4) % 12];
+  Located get zodiac => chineseZodiacNameList[(number - 4) % 12];
 }
 
 extension LunarYearXthDay on LunarYear {
@@ -52,12 +52,12 @@ extension LunarYearXthDay on LunarYear {
 
     int spanDays = xthDay;
     for (var i = 0; i < monthsCount; i++) {
-      final currentMonth = lunaMonths[i];
+      final currentMonth = lunarMonths[i];
       if (spanDays < currentMonth.days) {
         return LunarDate(
-          lunaYear: lunaYear,
-          lunaMonth: currentMonth.number,
-          lunaDay: spanDays + 1,
+          lunarYear: number,
+          lunarMonth: currentMonth.number,
+          lunarDay: spanDays + 1,
           isLeapMonth: currentMonth.isLeapMonth,
           isLongMonth: currentMonth.isLongMonth,
         );
