@@ -38,6 +38,11 @@ extension LunarYearX on LunarYear {
   LunarMonth? get leapMonth =>
       lunarMonths.firstWhereOrNull((element) => element.isLeapMonth);
 
+  /// 非闰月阴历月
+  LunarMonth getNonLeapLunarMonthFromNumber(int number) {
+    return lunarMonths.where((it) => it.number == number).toList().first;
+  }
+
   /// 月数量
   int get monthsCount => lunarMonths.length;
 
@@ -61,10 +66,8 @@ extension LunarYearXthDay on LunarYear {
       if (spanDays < currentMonth.days) {
         return LunarDate(
           lunarYear: this,
-          lunarMonth: currentMonth.number,
+          lunarMonth: currentMonth,
           lunarDay: spanDays + 1,
-          isLeapMonth: currentMonth.isLeapMonth,
-          isLongMonth: currentMonth.isLongMonth,
         );
       } else {
         spanDays = spanDays - currentMonth.days;

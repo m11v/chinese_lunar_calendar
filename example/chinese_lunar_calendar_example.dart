@@ -10,7 +10,7 @@ void main() {
   print(lunarCalendar.useCSTToCalculate ? '使用中国标准时间计算：' : '使用本地时间计算');
   print('春节: ${lunarCalendar.chineseNewYearString}');
   print(
-      '阴历数字: ${lunarCalendar.lunarDate.lunarYear.number}, ${lunarCalendar.lunarDate.lunarMonth}, ${lunarCalendar.lunarDate.lunarDay}, 闰月：${lunarCalendar.lunarDate.isLeapMonth}');
+      '阴历数字: ${lunarCalendar.lunarDate.lunarYear.number}, ${lunarCalendar.lunarDate.lunarMonth.number}, ${lunarCalendar.lunarDate.lunarDay}, 闰月：${lunarCalendar.lunarDate.lunarMonth.isLeapMonth}');
   print('阴历汉字: ${lunarCalendar.lunarDate.fullCNString}');
   print('八字: ${lunarCalendar.eightChar}');
   print('星期：${lunarCalendar.weekDayCN}');
