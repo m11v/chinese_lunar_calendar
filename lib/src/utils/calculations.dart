@@ -24,9 +24,9 @@ LunarYear getLunarYear(int year) {
   final lunarMonthList =
       List<int>.generate(12, (index) => index + 1).map((month) {
     if ((tmp & (1 << (month - 1))) != 0) {
-      return LunarMonth(index: month, days: 30, isLeapMonth: false);
+      return LunarMonth(number: month, days: 30, isLeapMonth: false);
     } else {
-      return LunarMonth(index: month, days: 29, isLeapMonth: false);
+      return LunarMonth(number: month, days: 29, isLeapMonth: false);
     }
   }).toList();
 
@@ -38,8 +38,8 @@ LunarYear getLunarYear(int year) {
       leapDay = 30;
     }
     final leapMonth =
-        LunarMonth(index: leapMonthIndex, days: leapDay, isLeapMonth: true);
-    lunarMonthList.insert(leapMonth.index, leapMonth);
+        LunarMonth(number: leapMonthIndex, days: leapDay, isLeapMonth: true);
+    lunarMonthList.insert(leapMonth.number, leapMonth);
   }
 
   return LunarYear(year: year, months: lunarMonthList);

@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 /// 阴历月
 class LunarMonth extends Equatable {
   /// 月份数字
-  final int index;
+  final int number;
 
   /// 天数
   final int days;
@@ -12,13 +12,17 @@ class LunarMonth extends Equatable {
   final bool isLeapMonth;
 
   const LunarMonth({
-    required this.index,
+    required this.number,
     required this.days,
     required this.isLeapMonth,
   });
 
   @override
-  List<Object?> get props => [index, days, isLeapMonth];
+  List<Object?> get props => [
+        number,
+        days,
+        isLeapMonth,
+      ];
 
   @override
   bool get stringify => true;
