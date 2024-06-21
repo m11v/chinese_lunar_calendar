@@ -6,13 +6,13 @@ import '../../constants/cn_text.dart';
 /// 阴历日期
 class LunarDate extends Equatable {
   /// 阴历年
-  final int lunaYear;
+  final int lunarYear;
 
   /// 阴历月
-  final int lunaMonth;
+  final int lunarMonth;
 
   /// 阴历日
-  final int lunaDay;
+  final int lunarDay;
 
   /// 是否闰月
   final bool isLeapMonth;
@@ -21,26 +21,26 @@ class LunarDate extends Equatable {
   final bool isLongMonth;
 
   const LunarDate({
-    required this.lunaYear,
-    required this.lunaMonth,
-    required this.lunaDay,
+    required this.lunarYear,
+    required this.lunarMonth,
+    required this.lunarDay,
     required this.isLeapMonth,
     required this.isLongMonth,
   });
 
   static const empty = LunarDate(
-    lunaYear: 0,
-    lunaMonth: 0,
-    lunaDay: 0,
+    lunarYear: 0,
+    lunarMonth: 0,
+    lunarDay: 0,
     isLeapMonth: false,
     isLongMonth: false,
   );
 
   @override
   List<Object?> get props => [
-        lunaYear,
-        lunaMonth,
-        lunaDay,
+        lunarYear,
+        lunarMonth,
+        lunarDay,
         isLeapMonth,
         isLongMonth,
       ];
@@ -49,7 +49,7 @@ class LunarDate extends Equatable {
 extension LunarDateCN on LunarDate {
   /// 汉字阴历年
   String get lunarYearCN =>
-      lunaYear.digits.map((e) => upperCNNum[e]).toList().join();
+      lunarYear.digits.map((e) => upperCNNum[e]).toList().join();
 
   /// 闰月前缀
   Located get leapMonthPrefix => isLeapMonth ? run : Located.empty;
@@ -58,16 +58,16 @@ extension LunarDateCN on LunarDate {
   String get monthLengthSuffix => isLongMonth ? da : xiao;
 
   /// 汉字阴历月
-  Located get lunarMonthCN => lunarMonthNameList[lunaMonth - 1];
+  Located get lunarMonthCN => lunarMonthNameList[lunarMonth - 1];
 
   /// 汉字阴历日
-  String get lunarDayCN => lunarDayNameList[lunaDay - 1];
+  String get lunarDayCN => lunarDayNameList[lunarDay - 1];
 
   /// 干支纪年
-  String get year8Char => getYear8Char(lunarYear: lunaYear);
+  String get year8Char => getYear8Char(lunarYear: lunarYear);
 
   /// 生肖
-  Located get zodiac => chineseZodiacNameList[(lunaYear - 4) % 12];
+  Located get zodiac => chineseZodiacNameList[(lunarYear - 4) % 12];
 
   /// 汉字阴历日期
   String get fullCNString {

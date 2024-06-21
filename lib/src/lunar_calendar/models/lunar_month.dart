@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 
 /// 阴历月
 class LunarMonth extends Equatable {
-  /// 月份数字
+  /// 阴历月份数字 1～12
   final int number;
 
   /// 天数
