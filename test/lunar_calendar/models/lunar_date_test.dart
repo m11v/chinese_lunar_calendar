@@ -8,10 +8,8 @@ void main() {
     test('Test lunarYearCN', () {
       final lunarDate = LunarDate(
         lunarYear: lunarYear2023,
-        lunarMonth: 6,
+        lunarMonth: lunarYear2023.getNonLeapLunarMonthFromNumber(6),
         lunarDay: 6,
-        isLeapMonth: false,
-        isLongMonth: false,
       );
       expect(lunarDate.lunarYearCN, '二零二三');
     });
@@ -19,10 +17,8 @@ void main() {
     test('Test lunarMonthCN', () {
       final lunarDate = LunarDate(
         lunarYear: lunarYear2023,
-        lunarMonth: 6,
+        lunarMonth: lunarYear2023.getNonLeapLunarMonthFromNumber(6),
         lunarDay: 24,
-        isLeapMonth: false,
-        isLongMonth: false,
       );
       expect(
           '${lunarDate.leapMonthPrefix.sValue}${lunarDate.lunarMonthCN.sValue}${lunarDate.monthLengthSuffix}',
@@ -30,10 +26,8 @@ void main() {
 
       final lunarDate2 = LunarDate(
         lunarYear: lunarYear2023,
-        lunarMonth: 7,
+        lunarMonth: lunarYear2023.getNonLeapLunarMonthFromNumber(7),
         lunarDay: 15,
-        isLeapMonth: false,
-        isLongMonth: true,
       );
       expect(
           '${lunarDate2.leapMonthPrefix.sValue}${lunarDate2.lunarMonthCN.sValue}${lunarDate2.monthLengthSuffix}',
@@ -41,10 +35,8 @@ void main() {
 
       final lunarDate3 = LunarDate(
         lunarYear: lunarYear2023,
-        lunarMonth: 2,
+        lunarMonth: lunarYear2023.leapMonth!,
         lunarDay: 26,
-        isLeapMonth: true,
-        isLongMonth: false,
       );
       expect(
           '${lunarDate3.leapMonthPrefix.sValue}${lunarDate3.lunarMonthCN.sValue}${lunarDate3.monthLengthSuffix}',
@@ -52,10 +44,8 @@ void main() {
 
       final lunarDate4 = LunarDate(
         lunarYear: lunarYear2023,
-        lunarMonth: 2,
+        lunarMonth: lunarYear2023.getNonLeapLunarMonthFromNumber(2),
         lunarDay: 10,
-        isLeapMonth: false,
-        isLongMonth: true,
       );
       expect(
           '${lunarDate4.leapMonthPrefix.sValue}${lunarDate4.lunarMonthCN.sValue}${lunarDate4.monthLengthSuffix}',
@@ -65,10 +55,8 @@ void main() {
     test('Test lunarDayCN', () {
       final lunarDate = LunarDate(
         lunarYear: lunarYear2023,
-        lunarMonth: 2,
+        lunarMonth: lunarYear2023.getNonLeapLunarMonthFromNumber(2),
         lunarDay: 10,
-        isLeapMonth: false,
-        isLongMonth: true,
       );
       expect(lunarDate.lunarDayCN, '初十');
     });
