@@ -20,7 +20,7 @@ void main() {
       expect(lunarYear2023.days, 384);
       expect(lunarYear2023.hasLeapMonth, true);
       expect(lunarYear2023.leapMonth,
-          LunarMonth(index: 2, days: 29, isLeapMonth: true));
+          LunarMonth(number: 2, days: 29, isLeapMonth: true));
 
       final lunarYear2022 = getLunarYear(2022);
       expect(lunarYear2022.year, 2022);
