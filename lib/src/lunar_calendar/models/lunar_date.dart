@@ -54,11 +54,8 @@ extension LunarDateCN on LunarDate {
   /// 干支纪年
   String get year8Char => getYear8Char(lunarYear: lunarYear.number);
 
-  /// 生肖
-  Located get zodiac => chineseZodiacNameList[(lunarYear.number - 4) % 12];
-
   /// 汉字阴历日期
   String get fullCNString {
-    return '$lunarYearCN $year8Char[$zodiac]$nian $leapMonthPrefix$lunarMonthCN$monthLengthSuffix$lunarDayCN';
+    return '$lunarYearCN $year8Char[${lunarYear.zodiac}]$nian $leapMonthPrefix$lunarMonthCN$monthLengthSuffix$lunarDayCN';
   }
 }
