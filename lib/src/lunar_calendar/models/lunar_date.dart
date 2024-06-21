@@ -6,7 +6,7 @@ import '../../constants/cn_text.dart';
 /// 阴历日期
 class LunarDate extends Equatable {
   /// 阴历年
-  final int lunarYear;
+  final LunarYear lunarYear;
 
   /// 阴历月
   final int lunarMonth;
@@ -29,7 +29,7 @@ class LunarDate extends Equatable {
   });
 
   static const empty = LunarDate(
-    lunarYear: 0,
+    lunarYear: LunarYear.empty,
     lunarMonth: 0,
     lunarDay: 0,
     isLeapMonth: false,
@@ -49,7 +49,7 @@ class LunarDate extends Equatable {
 extension LunarDateCN on LunarDate {
   /// 汉字阴历年
   String get lunarYearCN =>
-      lunarYear.digits.map((e) => upperCNNum[e]).toList().join();
+      lunarYear.number.digits.map((e) => upperCNNum[e]).toList().join();
 
   /// 闰月前缀
   Located get leapMonthPrefix => isLeapMonth ? run : Located.empty;
@@ -64,10 +64,10 @@ extension LunarDateCN on LunarDate {
   String get lunarDayCN => lunarDayNameList[lunarDay - 1];
 
   /// 干支纪年
-  String get year8Char => getYear8Char(lunarYear: lunarYear);
+  String get year8Char => getYear8Char(lunarYear: lunarYear.number);
 
   /// 生肖
-  Located get zodiac => chineseZodiacNameList[(lunarYear - 4) % 12];
+  Located get zodiac => chineseZodiacNameList[(lunarYear.number - 4) % 12];
 
   /// 汉字阴历日期
   String get fullCNString {

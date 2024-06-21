@@ -15,6 +15,11 @@ class LunarYear extends Equatable {
     required this.lunarMonths,
   });
 
+  static const empty = LunarYear(
+    number: 0,
+    lunarMonths: [],
+  );
+
   @override
   List<Object?> get props => [
         number,
@@ -55,7 +60,7 @@ extension LunarYearXthDay on LunarYear {
       final currentMonth = lunarMonths[i];
       if (spanDays < currentMonth.days) {
         return LunarDate(
-          lunarYear: number,
+          lunarYear: this,
           lunarMonth: currentMonth.number,
           lunarDay: spanDays + 1,
           isLeapMonth: currentMonth.isLeapMonth,

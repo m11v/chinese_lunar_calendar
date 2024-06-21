@@ -3,9 +3,11 @@ import 'package:test/test.dart';
 
 void main() {
   group('Test LunarDate', () {
+    final lunarYear2023 = getLunarYear(2023);
+
     test('Test lunarYearCN', () {
       final lunarDate = LunarDate(
-        lunarYear: 2023,
+        lunarYear: lunarYear2023,
         lunarMonth: 6,
         lunarDay: 6,
         isLeapMonth: false,
@@ -16,7 +18,7 @@ void main() {
 
     test('Test lunarMonthCN', () {
       final lunarDate = LunarDate(
-        lunarYear: 2023,
+        lunarYear: lunarYear2023,
         lunarMonth: 6,
         lunarDay: 24,
         isLeapMonth: false,
@@ -27,7 +29,7 @@ void main() {
           '六月小');
 
       final lunarDate2 = LunarDate(
-        lunarYear: 2023,
+        lunarYear: lunarYear2023,
         lunarMonth: 7,
         lunarDay: 15,
         isLeapMonth: false,
@@ -38,7 +40,7 @@ void main() {
           '七月大');
 
       final lunarDate3 = LunarDate(
-        lunarYear: 2023,
+        lunarYear: lunarYear2023,
         lunarMonth: 2,
         lunarDay: 26,
         isLeapMonth: true,
@@ -49,7 +51,7 @@ void main() {
           '闰二月小');
 
       final lunarDate4 = LunarDate(
-        lunarYear: 2023,
+        lunarYear: lunarYear2023,
         lunarMonth: 2,
         lunarDay: 10,
         isLeapMonth: false,
@@ -62,7 +64,7 @@ void main() {
 
     test('Test lunarDayCN', () {
       final lunarDate = LunarDate(
-        lunarYear: 2023,
+        lunarYear: lunarYear2023,
         lunarMonth: 2,
         lunarDay: 10,
         isLeapMonth: false,
