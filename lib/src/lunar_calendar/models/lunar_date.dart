@@ -5,14 +5,14 @@ import '../../constants/cn_text.dart';
 
 /// 阴历日期
 class LunarDate extends Equatable {
-  /// 年
-  final int year;
+  /// 阴历年
+  final int lunaYear;
 
-  /// 月
-  final int month;
+  /// 阴历月
+  final int lunaMonth;
 
-  /// 日
-  final int day;
+  /// 阴历日
+  final int lunaDay;
 
   /// 是否闰月
   final bool isLeapMonth;
@@ -21,26 +21,26 @@ class LunarDate extends Equatable {
   final bool isLongMonth;
 
   const LunarDate({
-    required this.year,
-    required this.month,
-    required this.day,
+    required this.lunaYear,
+    required this.lunaMonth,
+    required this.lunaDay,
     required this.isLeapMonth,
     required this.isLongMonth,
   });
 
   static const empty = LunarDate(
-    year: 0,
-    month: 0,
-    day: 0,
+    lunaYear: 0,
+    lunaMonth: 0,
+    lunaDay: 0,
     isLeapMonth: false,
     isLongMonth: false,
   );
 
   @override
   List<Object?> get props => [
-        year,
-        month,
-        day,
+        lunaYear,
+        lunaMonth,
+        lunaDay,
         isLeapMonth,
         isLongMonth,
       ];
@@ -49,7 +49,7 @@ class LunarDate extends Equatable {
 extension LunarDateCN on LunarDate {
   /// 汉字阴历年
   String get lunarYearCN =>
-      year.digits.map((e) => upperCNNum[e]).toList().join();
+      lunaYear.digits.map((e) => upperCNNum[e]).toList().join();
 
   /// 闰月前缀
   Located get leapMonthPrefix => isLeapMonth ? run : Located.empty;
@@ -58,16 +58,16 @@ extension LunarDateCN on LunarDate {
   String get monthLengthSuffix => isLongMonth ? da : xiao;
 
   /// 汉字阴历月
-  Located get lunarMonthCN => lunarMonthNameList[month - 1];
+  Located get lunarMonthCN => lunarMonthNameList[lunaMonth - 1];
 
   /// 汉字阴历日
-  String get lunarDayCN => lunarDayNameList[day - 1];
+  String get lunarDayCN => lunarDayNameList[lunaDay - 1];
 
   /// 干支纪年
-  String get year8Char => getYear8Char(lunarYear: year);
+  String get year8Char => getYear8Char(lunarYear: lunaYear);
 
   /// 生肖
-  Located get zodiac => chineseZodiacNameList[(year - 4) % 12];
+  Located get zodiac => chineseZodiacNameList[(lunaYear - 4) % 12];
 
   /// 汉字阴历日期
   String get fullCNString {

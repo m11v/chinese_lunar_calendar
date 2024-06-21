@@ -55,9 +55,9 @@ extension LunarYearXthDay on LunarYear {
       final currentMonth = months[i];
       if (spanDays < currentMonth.days) {
         return LunarDate(
-          year: year,
-          month: currentMonth.index,
-          day: spanDays + 1,
+          lunaYear: year,
+          lunaMonth: currentMonth.index,
+          lunaDay: spanDays + 1,
           isLeapMonth: currentMonth.isLeapMonth,
           isLongMonth: currentMonth.isLongMonth,
         );

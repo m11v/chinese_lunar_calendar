@@ -84,5 +84,5 @@ extension LunarCalendarX on LunarCalendar {
   String get weekDayCN => getWeekDayCN(dateTime);
 
   /// 月相
-  Located get phaseOfMoon => getPhaseOfMoon(lunarDay: lunarDate.day);
+  Located get phaseOfMoon => getPhaseOfMoon(lunarDay: lunarDate.lunaDay);
 }
