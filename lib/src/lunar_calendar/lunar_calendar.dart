@@ -10,12 +10,16 @@ class LunarCalendar extends Equatable {
   /// true: 使用中国标准时间计算; false: 使用本地时间计算
   final bool useCSTToCalculate;
 
+  /// true: 生肖从立春开始; false: 生肖从农历初一开始
+  final bool startZodiacFromLiChun;
+
   /// 阴历日期
   LunarDate get lunarDate => getLunarDate(dateTime);
 
   LunarCalendar({
     required DateTime utcDateTime,
     bool useCSTToCalculateLunarDate = false,
+    this.startZodiacFromLiChun = false,
   })  : useCSTToCalculate = useCSTToCalculateLunarDate,
         _utc = utcDateTime;
 
@@ -23,6 +27,7 @@ class LunarCalendar extends Equatable {
   List<Object?> get props => [
         _utc,
         useCSTToCalculate,
+        startZodiacFromLiChun,
       ];
 }
 
@@ -39,6 +44,37 @@ extension LunarCalendarTime on LunarCalendar {
 
   /// 计算用时间
   DateTime get dateTime => useCSTToCalculate ? cst : localTime;
+}
+
+extension LunarCalendarZodiac on LunarCalendar {
+  Zodiac get zodiac {
+    var yearNumber = lunarDate.lunarYear.number;
+
+    if (startZodiacFromLiChun) {
+      final lichun = getSolarTerms(cst.year)[2].local;
+
+      /// 如果立春在初一之前
+      if (lichun.millisecondsSinceEpoch <
+          chineseNewYear.millisecondsSinceEpoch) {
+        /// 如果当前日期已过立春还未到初一，则需要把计算生肖的年份加一。
+        if (localTime.millisecondsSinceEpoch >= lichun.millisecondsSinceEpoch &&
+            localTime.millisecondsSinceEpoch <
+                chineseNewYear.millisecondsSinceEpoch) {
+          yearNumber += 1;
+        }
+      } else {
+        /// 如果立春在初一之后
+        /// 如果当前日期已过初一，还未到立春，则需要把计算生肖的年份减一。
+        if (localTime.millisecondsSinceEpoch >=
+                chineseNewYear.millisecondsSinceEpoch &&
+            localTime.millisecondsSinceEpoch < lichun.millisecondsSinceEpoch) {
+          yearNumber -= 1;
+        }
+      }
+    }
+
+    return zodiacList[(yearNumber - 4) % 12];
+  }
 }
 
 extension LunarCalendarChineseNewYear on LunarCalendar {

@@ -48,9 +48,6 @@ extension LunarYearX on LunarYear {
 
   /// 是否有闰月
   bool get hasLeapMonth => monthsCount == 13;
-
-  /// 生肖
-  Located get zodiac => chineseZodiacNameList[(number - 4) % 12];
 }
 
 extension LunarYearXthDay on LunarYear {

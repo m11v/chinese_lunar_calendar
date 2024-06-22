@@ -78,38 +78,6 @@ final lunarMonthNameList = getLocatedList(
   ],
 );
 
-/// 生肖
-final chineseZodiacNameList = getLocatedList(
-  traditional: [
-    '鼠',
-    '牛',
-    '虎',
-    '兔',
-    '龍',
-    '蛇',
-    '馬',
-    '羊',
-    '猴',
-    '雞',
-    '狗',
-    '豬',
-  ],
-  simplified: [
-    '鼠',
-    '牛',
-    '虎',
-    '兔',
-    '龙',
-    '蛇',
-    '马',
-    '羊',
-    '猴',
-    '鸡',
-    '狗',
-    '猪',
-  ],
-);
-
 /// 十二时辰汉代命名
 final twoHourPeriodHanName = getLocatedList(
   traditional: [

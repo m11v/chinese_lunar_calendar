@@ -53,6 +53,6 @@ extension LunarDateCN on LunarDate {
 
   /// 汉字阴历日期
   String get fullCNString {
-    return '$lunarYearCN[${lunarYear.zodiac}]$nian $leapMonthPrefix$lunarMonthCN$monthLengthSuffix$lunarDayCN';
+    return '$lunarYearCN$nian $leapMonthPrefix$lunarMonthCN$monthLengthSuffix$lunarDayCN';
   }
 }
