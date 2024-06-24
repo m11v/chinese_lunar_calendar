@@ -78,7 +78,7 @@ String getYear8Char({required int lunarYear}) {
 
 /// 根据阳历日期计算天干记年
 String getYear8CharFromDateTime({required DateTime dateTime}) {
-  final lunarYear = getLunarYear(dateTime.year);
+  final lunarYear = getLunarDate(dateTime).lunarYear;
   return getYear8Char(lunarYear: lunarYear.number);
 }
 
