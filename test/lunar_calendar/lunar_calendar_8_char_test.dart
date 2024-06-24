@@ -52,7 +52,6 @@ void main() {
         test('2023年2月6日（大年初一之后，立春之后）的年月日八字是癸卯甲寅乙未', () {
           final lunarCalendar =
               LunarCalendar(utcDateTime: DateTime(2023, 2, 6).toUtc());
-          final zodiac = lunarCalendar.zodiac;
           expect(lunarCalendar.year8Char, '癸卯');
           expect(lunarCalendar.month8Char, '甲寅');
           expect(lunarCalendar.day8Char, '乙未');
