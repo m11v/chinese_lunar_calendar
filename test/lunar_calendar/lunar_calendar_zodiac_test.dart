@@ -7,7 +7,7 @@ void main() {
       group('生肖以农历初一起始时', () {
         test('2024年2月2日(立春之前，大年初一之前）的生肖是兔', () {
           final lunarCalendar =
-              LunarCalendar(utcDateTime: DateTime(2024, 2, 3).toUtc());
+              LunarCalendar(utcDateTime: DateTime(2024, 2, 2).toUtc());
           final zodiac = lunarCalendar.zodiac;
           expect(zodiac.name.sValue, '兔');
         });
@@ -48,7 +48,7 @@ void main() {
 
         test('2024年2月11日（立春之后，大年初一之后）的生肖是龙', () {
           final lunarCalendar = LunarCalendar(
-            utcDateTime: DateTime(2024, 2, 10).toUtc(),
+            utcDateTime: DateTime(2024, 2, 11).toUtc(),
             startZodiacFromLiChun: true,
           );
           final zodiac = lunarCalendar.zodiac;
