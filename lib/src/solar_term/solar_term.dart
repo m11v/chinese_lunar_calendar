@@ -103,7 +103,7 @@ extension SolarTermDateTime on DateTime {
   /// 使用本地时间，返回指定日期的节气
   SolarTerm? getSolarTerm() {
     final thisLocalTime = toLocal();
-    return getSolarTerms(year).where((element) {
+    return getSolarTerms(thisLocalTime.year).where((element) {
       final solarTermTime = element.local;
 
       return solarTermTime.month == thisLocalTime.month &&
@@ -114,13 +114,13 @@ extension SolarTermDateTime on DateTime {
   /// 使用本地时间，返回指定日期的下一个节气
   SolarTerm? getNextSolarTerm() {
     final thisLocalTime = toLocal();
-    return getSolarTerms(year).where((element) {
+    return getSolarTerms(thisLocalTime.year).where((element) {
           final solarTermTime = element.local;
 
           return solarTermTime.month > thisLocalTime.month ||
               (solarTermTime.month == thisLocalTime.month &&
                   solarTermTime.day > thisLocalTime.day);
         }).firstOrNull ??
-        getSolarTerms(year + 1).firstOrNull;
+        getSolarTerms(thisLocalTime.year + 1).firstOrNull;
   }
 }

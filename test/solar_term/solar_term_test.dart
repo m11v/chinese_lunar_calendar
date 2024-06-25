@@ -19,12 +19,26 @@ void main() {
       });
 
       test('Test getNextSolarTerm', () {
-        /// PST时间2023年12月30日下一个节气是小寒
+        /// PST时间2023年1月1日下一个节气是2023年小寒
+        var solarTerm =
+            DateTime.parse('2023-01-01 07:00:20-07').getNextSolarTerm();
         expect(
-          DateTime.parse('2023-12-30 17:18:20-07')
-              .getNextSolarTerm()
-              ?.name
-              .sValue,
+          solarTerm?.utc.year,
+          2023,
+        );
+        expect(
+          solarTerm?.name.sValue,
+          '小寒',
+        );
+
+        /// PST时间2023年12月30日下一个节气是2024年小寒
+        solarTerm = DateTime.parse('2023-12-30 17:18:20-07').getNextSolarTerm();
+        expect(
+          solarTerm?.utc.year,
+          2024,
+        );
+        expect(
+          solarTerm?.name.sValue,
           '小寒',
         );
 
