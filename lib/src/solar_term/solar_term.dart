@@ -1,10 +1,6 @@
+import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart';
-
-import '../common/located.dart';
-import '../utils/tools.dart';
-import 'solar_term_data.dart';
-import 'solar_term_name.dart';
 
 export 'solar_term_data.dart';
 export 'solar_term_name.dart';
@@ -130,5 +126,13 @@ extension SolarTermDateTime on DateTime {
   SolarTerm get lichun {
     final thisLocalTime = toLocal();
     return getLichun(thisLocalTime.year);
+  }
+
+  /// 使用本地时间，返回当年当月节气
+  List<SolarTerm> get solarTermsInThisMonth {
+    final thisLocalTime = toLocal();
+    final year = thisLocalTime.year;
+    final month = thisLocalTime.month;
+    return getSolarTerms(year).where((e) => e.local.month == month).toList();
   }
 }
