@@ -82,51 +82,33 @@ String getYear8CharFromDateTime({required DateTime dateTime}) {
   return getYear8Char(lunarYear: lunarYear.number);
 }
 
-/// 获取当月的第一个节气
-SolarTerm getTheFirstSolarTerm({required int year, required int month}) {
-  return getSolarTerms(year)[(month - 1) * 2];
-}
-
 /// 计算月干支
-String getLunarMonth8Char(
-    {required DateTime dateTime, required bool useCSTToCalculate}) {
-  /// 当月节气日期
-  final solarTermDate =
-      getTheFirstSolarTerm(year: dateTime.year, month: dateTime.month)
-          .getTime(useCSTToCalculate: useCSTToCalculate);
+String getMonth8Char({
+  required LunarCalendar lunarCalendar,
+}) {
+  /// 当前日期
+  final localTime = lunarCalendar.localTime;
 
-  /// 当月节气的日子
-  final primarySolarTermDay = solarTermDate.day;
+  /// 以立春为一年之始调整后的阴历年份，得到年干
+  final yearStem =
+      getYear8Char(lunarYear: lunarCalendar.adjustedLunarYearByLichun)
+          .substring(0, 1);
 
-  /// 阴历年
-  final lunarYear = getLunarYear(dateTime.year).number;
-
-  int adjustedLunarYear = lunarYear;
-
-  /// 从立春开始算阴历年，立春之前算上一年
-  final lichunDay = getTheFirstSolarTerm(year: dateTime.year, month: 2)
-      .getTime(useCSTToCalculate: useCSTToCalculate)
-      .day;
-  if ((dateTime.month < 2) ||
-      (dateTime.month == 2 && dateTime.day < lichunDay)) {
-    adjustedLunarYear = adjustedLunarYear - 1;
-  }
-
+  /// 计算 adjustedMonth:
+  /// 从立春开始算1月，因此小寒是12月，惊蛰是2月，清明是3月，等等，即节气所在月-1
+  /// 如果这个月的节气之前的日子不算在这个月，而是算在上一个月，即节气所在月-2
   int adjustedMonth;
-
-  /// 从立春开始算1月，因此小寒是12月，惊蛰是2月，清明是3月，等等，即节气月-1
-  /// 如果这个月的节之前的日子不算在这个月，而是算在上一个月，即节气月-2
-  if (dateTime.day >= primarySolarTermDay) {
-    adjustedMonth = solarTermDate.month - 1;
-  } else {
-    adjustedMonth = solarTermDate.month - 2;
+  final primarySolarTermDay = localTime.solarTermsInThisMonth[0].local;
+  adjustedMonth = primarySolarTermDay.month - 1;
+  if (localTime.millisecondsSinceEpoch <
+      primarySolarTermDay.millisecondsSinceEpoch) {
+    adjustedMonth -= 1;
   }
   if (adjustedMonth <= 0) {
     adjustedMonth = 12 + adjustedMonth;
   }
 
-  /// 从年干计算月干
-  final yearStem = getYear8Char(lunarYear: adjustedLunarYear).substring(0, 1);
+  /// 从年干查询表格计算月干
   final monthStem =
       yearStemToMonthStemChart[yearStem]?[adjustedMonth - 1] ?? '';
 

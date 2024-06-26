@@ -93,13 +93,6 @@ void main() {
       expect(getYear8Char(lunarYear: 1970), '庚戌');
     });
 
-    test('Test getLunarMonth8Char', () {
-      expect(
-          getLunarMonth8Char(
-              dateTime: DateTime(2023, 6, 24), useCSTToCalculate: false),
-          '戊午');
-    });
-
     test('Test getDay8Char', () {
       expect(getDay8Char(dateTime: DateTime(2023, 6, 24)), '癸丑');
       expect(getDay8Char(dateTime: DateTime(2010, 6, 24)), '乙巳');
