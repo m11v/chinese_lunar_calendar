@@ -99,6 +99,8 @@ SolarTerm? get todaySolarTerm => DateTime.now().getSolarTerm();
 
 SolarTerm? get nextSolarTerm => DateTime.now().getNextSolarTerm();
 
+SolarTerm getLichun(int year) => getSolarTerms(year)[2];
+
 extension SolarTermDateTime on DateTime {
   /// 使用本地时间，返回指定日期的节气
   SolarTerm? getSolarTerm() {
@@ -122,5 +124,11 @@ extension SolarTermDateTime on DateTime {
                   solarTermTime.day > thisLocalTime.day);
         }).firstOrNull ??
         getSolarTerms(thisLocalTime.year + 1).firstOrNull;
+  }
+
+  /// 使用本地时间，返回当年立春
+  SolarTerm get lichun {
+    final thisLocalTime = toLocal();
+    return getLichun(thisLocalTime.year);
   }
 }

@@ -69,6 +69,15 @@ void main() {
           '小满',
         );
       });
+
+      test('测试立春', () {
+        final time1 = DateTime(2023, 5, 6).lichun;
+        expect(time1.cst.year, 2023);
+        expect(time1.cst.month, 2);
+        expect(time1.cst.day, 4);
+        expect(time1.cst.hour, 10);
+        expect(time1.cst.minute, 43);
+      });
     });
   });
 }
