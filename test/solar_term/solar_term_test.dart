@@ -78,6 +78,22 @@ void main() {
         expect(time1.cst.hour, 10);
         expect(time1.cst.minute, 43);
       });
+
+      test('测试当月节气', () {
+        final solarTerms = DateTime(2023, 5, 6).solarTermsInThisMonth;
+        expect(solarTerms.length, 2);
+        expect(solarTerms[0].cst.year, solarTermsData2023[8][0]);
+        expect(solarTerms[0].cst.month, solarTermsData2023[8][1]);
+        expect(solarTerms[0].cst.day, solarTermsData2023[8][2]);
+        expect(solarTerms[0].cst.hour, solarTermsData2023[8][3]);
+        expect(solarTerms[0].cst.minute, solarTermsData2023[8][4]);
+
+        expect(solarTerms[1].cst.year, solarTermsData2023[9][0]);
+        expect(solarTerms[1].cst.month, solarTermsData2023[9][1]);
+        expect(solarTerms[1].cst.day, solarTermsData2023[9][2]);
+        expect(solarTerms[1].cst.hour, solarTermsData2023[9][3]);
+        expect(solarTerms[1].cst.minute, solarTermsData2023[9][4]);
+      });
     });
   });
 }
