@@ -46,31 +46,39 @@ extension LunarCalendarTime on LunarCalendar {
   DateTime get dateTime => useCSTToCalculate ? cst : localTime;
 }
 
+extension LunarCalendarAdjusted on LunarCalendar {
+  /// 以立春为一年之始时，调整后的阴历年份
+  int get adjustedLunarYearByLichun {
+    final local = localTime.millisecondsSinceEpoch;
+    final localLichun = localTime.lichun.local.millisecondsSinceEpoch;
+    final localChuyi = chineseNewYear.toLocal().millisecondsSinceEpoch;
+
+    int adjustedYear = lunarDate.lunarYear.number;
+
+    /// 立春在初一之前
+    if (localLichun < localChuyi) {
+      /// 日期在立春之后，在初一之前，需要+1
+      if (local < localChuyi && local > localLichun) {
+        adjustedYear += 1;
+      }
+    } else {
+      /// 立春在初一之后
+      /// 日期在初一之后，立春之前，需要 -1
+      if (local > localChuyi && local < localLichun) {
+        adjustedYear -= 1;
+      }
+    }
+
+    return adjustedYear;
+  }
+}
+
 extension LunarCalendarZodiac on LunarCalendar {
   Zodiac get zodiac {
     var yearNumber = lunarDate.lunarYear.number;
 
     if (startZodiacFromLiChun) {
-      final lichun = dateTime.lichun.local;
-
-      /// 如果立春在初一之前
-      if (lichun.millisecondsSinceEpoch <
-          chineseNewYear.millisecondsSinceEpoch) {
-        /// 如果当前日期已过立春还未到初一，则需要把计算生肖的年份加一。
-        if (localTime.millisecondsSinceEpoch >= lichun.millisecondsSinceEpoch &&
-            localTime.millisecondsSinceEpoch <
-                chineseNewYear.millisecondsSinceEpoch) {
-          yearNumber += 1;
-        }
-      } else {
-        /// 如果立春在初一之后
-        /// 如果当前日期已过初一，还未到立春，则需要把计算生肖的年份减一。
-        if (localTime.millisecondsSinceEpoch >=
-                chineseNewYear.millisecondsSinceEpoch &&
-            localTime.millisecondsSinceEpoch < lichun.millisecondsSinceEpoch) {
-          yearNumber -= 1;
-        }
-      }
+      yearNumber = adjustedLunarYearByLichun;
     }
 
     return zodiacList[(yearNumber - 4) % 12];
@@ -78,8 +86,8 @@ extension LunarCalendarZodiac on LunarCalendar {
 }
 
 extension LunarCalendarChineseNewYear on LunarCalendar {
-  /// DateTime春节日期
-  DateTime get chineseNewYear => getChineseNewYear(dateTime.year);
+  /// 本地大年初一（春节）日期
+  DateTime get chineseNewYear => getChineseNewYear(localTime.year);
 
   /// 汉字春节日期
   String get chineseNewYearString {
