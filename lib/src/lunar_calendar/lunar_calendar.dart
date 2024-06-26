@@ -98,11 +98,10 @@ extension LunarCalendarChineseNewYear on LunarCalendar {
 /// 八字相关扩展
 extension LunarCalendar8Char on LunarCalendar {
   /// 年干支
-  String get year8Char => getYear8CharFromDateTime(dateTime: dateTime);
+  String get year8Char => getYear8Char(lunarYear: lunarDate.lunarYear.number);
 
   /// 月干支
-  String get month8Char => getLunarMonth8Char(
-      dateTime: dateTime, useCSTToCalculate: useCSTToCalculate);
+  String get month8Char => getMonth8Char(lunarCalendar: this);
 
   /// 日干支
   String get day8Char => getDay8Char(dateTime: dateTime);
