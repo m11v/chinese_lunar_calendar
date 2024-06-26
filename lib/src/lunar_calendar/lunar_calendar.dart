@@ -51,7 +51,7 @@ extension LunarCalendarZodiac on LunarCalendar {
     var yearNumber = lunarDate.lunarYear.number;
 
     if (startZodiacFromLiChun) {
-      final lichun = getSolarTerms(cst.year)[2].local;
+      final lichun = dateTime.lichun.local;
 
       /// 如果立春在初一之前
       if (lichun.millisecondsSinceEpoch <
