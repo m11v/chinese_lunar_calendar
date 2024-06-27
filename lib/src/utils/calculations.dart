@@ -159,17 +159,26 @@ String getTwoHourPeriods({required int hour}) {
 }
 
 /// 计算时干支
-String getTwoHour8Char({required DateTime dateTime}) {
+String getTwoHour8Char({
+  required LunarCalendar lunaCalendar,
+}) {
   // 计算时支
-  final twoHourBranch = getTwoHourPeriods(hour: dateTime.hour);
+  final twoHourBranch = getTwoHourPeriods(hour: lunaCalendar.localTime.hour);
 
   /// 用日干和日干时干转换表计算时干
-  final dayStem = getDay8CharFromDateTime(dateTime: dateTime).substring(0, 1);
+  final dayStem = lunaCalendar.day8Char[0];
   final twoHourStem = dayStemToTwoHoursStemChart[dayStem]
-          ?[_getTwoHourPeriodsIndex(hour: dateTime.hour)] ??
+          ?[_getTwoHourPeriodsIndex(hour: lunaCalendar.localTime.hour)] ??
       '';
 
   return '$twoHourStem$twoHourBranch';
+}
+
+/// 计算时干支
+String getTwoHour8CharFromDateTime({
+  required DateTime dateTime,
+}) {
+  return LunarCalendar(utcDateTime: dateTime.toUtc()).twoHour8Char;
 }
 
 /// 计算当日吉时
