@@ -7,26 +7,20 @@ class LunarCalendar extends Equatable {
   /// UTC 时间
   final DateTime _utc;
 
-  /// true: 使用中国标准时间计算; false: 使用本地时间计算
-  final bool useCSTToCalculate;
-
   /// true: 生肖从立春开始; false: 生肖从农历初一开始
   final bool startZodiacFromLiChun;
 
   /// 阴历日期
-  LunarDate get lunarDate => getLunarDate(dateTime);
+  LunarDate get lunarDate => getLunarDate(localTime);
 
   LunarCalendar({
     required DateTime utcDateTime,
-    bool useCSTToCalculateLunarDate = false,
     this.startZodiacFromLiChun = false,
-  })  : useCSTToCalculate = useCSTToCalculateLunarDate,
-        _utc = utcDateTime;
+  }) : _utc = utcDateTime;
 
   @override
   List<Object?> get props => [
         _utc,
-        useCSTToCalculate,
         startZodiacFromLiChun,
       ];
 }
@@ -41,9 +35,6 @@ extension LunarCalendarTime on LunarCalendar {
   DateTime get cst {
     return utcToCST(utc: _utc);
   }
-
-  /// 计算用时间
-  DateTime get dateTime => useCSTToCalculate ? cst : localTime;
 }
 
 extension LunarCalendarAdjusted on LunarCalendar {
@@ -116,15 +107,15 @@ extension LunarCalendar8Char on LunarCalendar {
 /// 时辰相关扩展
 extension LunarCalendarTwoHourPeriod on LunarCalendar {
   /// 时辰
-  TwoHourPeriod get twoHourPeriod => TwoHourPeriod.from(dateTime: dateTime);
+  TwoHourPeriod get twoHourPeriod => TwoHourPeriod.from(dateTime: localTime);
 
   /// 本日时辰列表
-  List<TwoHourPeriod> get twoHourPeriodList => getTwoHourPeriodList(dateTime);
+  List<TwoHourPeriod> get twoHourPeriodList => getTwoHourPeriodList(localTime);
 }
 
 extension LunarCalendarX on LunarCalendar {
   /// 汉字星期
-  String get weekDayCN => getWeekDayCN(dateTime);
+  String get weekDayCN => getWeekDayCN(localTime);
 
   /// 月相
   Located get phaseOfMoon => getPhaseOfMoon(lunarDay: lunarDate.lunarDay);
