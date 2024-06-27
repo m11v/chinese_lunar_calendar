@@ -119,15 +119,24 @@ String getMonth8Char({
 }
 
 /// 计算日干支
-String getDay8Char({required DateTime dateTime}) {
+String getDay8Char({
+  required LunarCalendar lunarCalendar,
+}) {
   /// 2023年5月6日的日干支是“甲子”
   DateTime start = DateTime(2023, 5, 6);
-  int days = dateTime.daysBetween(fromDate: start);
+  int days = lunarCalendar.localTime.daysBetween(fromDate: start);
   days = days % 60;
   if (days < 0) {
     days = 60 - days;
   }
   return the10HeavenlyStemsAnd12EarthlyBranches[days];
+}
+
+String getDay8CharFromDateTime({
+  required DateTime dateTime,
+}) {
+  return getDay8Char(
+      lunarCalendar: LunarCalendar(utcDateTime: dateTime.toUtc()));
 }
 
 int _getTwoHourPeriodsIndex({required int hour}) {
@@ -149,7 +158,7 @@ String getTwoHour8Char({required DateTime dateTime}) {
   final twoHourBranch = getTwoHourPeriods(hour: dateTime.hour);
 
   /// 用日干和日干时干转换表计算时干
-  final dayStem = getDay8Char(dateTime: dateTime).substring(0, 1);
+  final dayStem = getDay8CharFromDateTime(dateTime: dateTime).substring(0, 1);
   final twoHourStem = dayStemToTwoHoursStemChart[dayStem]
           ?[_getTwoHourPeriodsIndex(hour: dateTime.hour)] ??
       '';
@@ -161,7 +170,7 @@ String getTwoHour8Char({required DateTime dateTime}) {
 /// true 为吉，false 为凶
 List<bool> getTwoHourPeriodLuckyList(DateTime dateTime) {
   /// 计算日干支
-  final day8Char = getDay8Char(dateTime: dateTime);
+  final day8Char = getDay8CharFromDateTime(dateTime: dateTime);
 
   /// 计算日干支在天干地支表中的序号
   final day8CharIndex = the10HeavenlyStemsAnd12EarthlyBranches

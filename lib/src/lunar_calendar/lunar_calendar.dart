@@ -104,7 +104,7 @@ extension LunarCalendar8Char on LunarCalendar {
   String get month8Char => getMonth8Char(lunarCalendar: this);
 
   /// 日干支
-  String get day8Char => getDay8Char(dateTime: dateTime);
+  String get day8Char => getDay8Char(lunarCalendar: this);
 
   /// 时干支
   String get twoHour8Char => getTwoHour8Char(dateTime: dateTime);
