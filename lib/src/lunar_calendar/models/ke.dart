@@ -20,24 +20,42 @@ class Ke extends Equatable {
   /// true：为上四刻；false 为下四刻
   final bool isUpper;
 
-  const Ke({required this.number, required this.isUpper});
+  const Ke({
+    required this.number,
+    required this.isUpper,
+  });
 
-  factory Ke.from({required DateTime dateTime}) {
-    final isUpper = dateTime.hour % 2 == 1;
-    final number = (dateTime.minute / 15).floor() + 1;
+  factory Ke.fromDateTime({
+    required DateTime dateTime,
+  }) {
+    return Ke.fromHour(
+      hour: dateTime.hour,
+      minute: dateTime.minute,
+    );
+  }
+
+  factory Ke.fromHour({
+    required int hour,
+    required int minute,
+  }) {
+    final isUpper = hour % 2 == 1;
+    final number = (minute / 15).floor() + 1;
     return Ke(number: number, isUpper: isUpper);
   }
 
   @override
-  List<Object?> get props => [number, isUpper];
+  List<Object?> get props => [
+        number,
+        isUpper,
+      ];
 }
 
 extension KeX on Ke {
   String get partName => isUpper ? chu : zheng;
 
-  String get numberName => '${upperCNNum[number]}$ke';
+  String get upperNumberName => upperCNNum[number];
 
   String get unitName => ke;
 
-  String get name => '$partName $numberName';
+  String get fullName => '$partName$upperNumberName';
 }

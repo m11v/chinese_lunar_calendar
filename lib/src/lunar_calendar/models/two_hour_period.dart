@@ -30,12 +30,17 @@ class TwoHourPeriod extends Equatable {
       nameInTheDay: nameInTheDay,
       twoHourPeriodIndex: twoHourPeriodIndex,
       isLucky: isLucky,
-      ke: Ke.from(dateTime: dateTime),
+      ke: Ke.fromDateTime(dateTime: dateTime),
     );
   }
 
   @override
-  List<Object?> get props => [nameInTheDay, twoHourPeriodIndex, isLucky, ke];
+  List<Object?> get props => [
+        nameInTheDay,
+        twoHourPeriodIndex,
+        isLucky,
+        ke,
+      ];
 }
 
 extension TwoHourPeriodX on TwoHourPeriod {
