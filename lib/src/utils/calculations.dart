@@ -125,10 +125,16 @@ String getDay8Char({
   /// 2023年5月6日的日干支是“甲子”
   DateTime start = DateTime(2023, 5, 6);
   int days = lunarCalendar.localTime.daysBetween(fromDate: start);
+
+  /// 超过23点算第二天
+  if (lunarCalendar.localTime.hour >= 23) {
+    days += 1;
+  }
   days = days % 60;
   if (days < 0) {
     days = 60 - days;
   }
+
   return the10HeavenlyStemsAnd12EarthlyBranches[days];
 }
 
