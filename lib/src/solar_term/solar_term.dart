@@ -63,10 +63,6 @@ class SolarTerm extends Equatable {
   /// China Standard Time
   DateTime get cst => utc.add(Duration(hours: 8));
 
-  /// Get China Standard Time or local time
-  DateTime getTime({required bool useCSTToCalculate}) =>
-      useCSTToCalculate ? cst : local;
-
   @override
   List<Object?> get props => [
         name,

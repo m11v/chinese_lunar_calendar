@@ -7,7 +7,7 @@ void main() {
 
   print('中国标准时间：${lunarCalendar.cst}');
   print('本地时间：${lunarCalendar.localTime}');
-  print(lunarCalendar.useCSTToCalculate ? '使用中国标准时间计算：' : '使用本地时间计算');
+  print('使用本地时间计算');
   print('春节: ${lunarCalendar.chineseNewYearString}');
   print('生肖: ${lunarCalendar.zodiac}');
   print(
@@ -16,8 +16,8 @@ void main() {
   print('八字: ${lunarCalendar.eightChar}');
   print('星期：${lunarCalendar.weekDayCN}');
   print('月相：${lunarCalendar.phaseOfMoon}');
-  print('本年节气: ${getSolarTerms(lunarCalendar.dateTime.year)}');
-  print('本日节气：${lunarCalendar.dateTime.getSolarTerm()}');
+  print('本年节气: ${getSolarTerms(lunarCalendar.localTime.year)}');
+  print('本日节气：${lunarCalendar.localTime.getSolarTerm()}');
   print(
       '当前时辰：${lunarCalendar.twoHourPeriod.steamName}${lunarCalendar.twoHourPeriod.name}${lunarCalendar.twoHourPeriod.ke.name}');
 
