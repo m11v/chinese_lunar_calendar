@@ -7,21 +7,21 @@ void main() {
       group('生肖以农历初一起始时', () {
         test('2024年2月2日(立春之前，大年初一之前）的生肖是兔', () {
           final lunarCalendar =
-              LunarCalendar(utcDateTime: DateTime(2024, 2, 2).toUtc());
+              LunarCalendar.from(utcDateTime: DateTime(2024, 2, 2).toUtc());
           final zodiac = lunarCalendar.zodiac;
           expect(zodiac.name.sValue, '兔');
         });
 
         test('2024年2月6日（立春之后，大年初一之前）的生肖是兔', () {
           final lunarCalendar =
-              LunarCalendar(utcDateTime: DateTime(2024, 2, 6).toUtc());
+              LunarCalendar.from(utcDateTime: DateTime(2024, 2, 6).toUtc());
           final zodiac = lunarCalendar.zodiac;
           expect(zodiac.name.sValue, '兔');
         });
 
         test('2024年2月11日（立春之后，大年初一之后）的生肖是龙', () {
           final lunarCalendar =
-              LunarCalendar(utcDateTime: DateTime(2024, 2, 11).toUtc());
+              LunarCalendar.from(utcDateTime: DateTime(2024, 2, 11).toUtc());
           final zodiac = lunarCalendar.zodiac;
           expect(zodiac.name.sValue, '龙');
         });
@@ -29,7 +29,7 @@ void main() {
 
       group('生肖以立春起始时', () {
         test('2024年2月2日（立春之前，大年初一之前）的生肖是兔', () {
-          final lunarCalendar = LunarCalendar(
+          final lunarCalendar = LunarCalendar.from(
             utcDateTime: DateTime(2024, 2, 2).toUtc(),
             startZodiacFromLiChun: true,
           );
@@ -38,7 +38,7 @@ void main() {
         });
 
         test('2024年2月6日（立春之后，大年初一之前）的生肖是龙', () {
-          final lunarCalendar = LunarCalendar(
+          final lunarCalendar = LunarCalendar.from(
             utcDateTime: DateTime(2024, 2, 6).toUtc(),
             startZodiacFromLiChun: true,
           );
@@ -47,7 +47,7 @@ void main() {
         });
 
         test('2024年2月11日（立春之后，大年初一之后）的生肖是龙', () {
-          final lunarCalendar = LunarCalendar(
+          final lunarCalendar = LunarCalendar.from(
             utcDateTime: DateTime(2024, 2, 11).toUtc(),
             startZodiacFromLiChun: true,
           );
@@ -61,21 +61,21 @@ void main() {
       group('生肖以农历初一起始时', () {
         test('2023年1月20日（大年初一之前，立春之前）的生肖是虎', () {
           final lunarCalendar =
-              LunarCalendar(utcDateTime: DateTime(2023, 1, 20).toUtc());
+              LunarCalendar.from(utcDateTime: DateTime(2023, 1, 20).toUtc());
           final zodiac = lunarCalendar.zodiac;
           expect(zodiac.name.sValue, '虎');
         });
 
         test('2023年1月23日（大年初一之后，立春之前）的生肖是兔', () {
           final lunarCalendar =
-              LunarCalendar(utcDateTime: DateTime(2023, 1, 23).toUtc());
+              LunarCalendar.from(utcDateTime: DateTime(2023, 1, 23).toUtc());
           final zodiac = lunarCalendar.zodiac;
           expect(zodiac.name.sValue, '兔');
         });
 
         test('2023年2月6日（大年初一之后，立春之后）的生肖是兔', () {
           final lunarCalendar =
-              LunarCalendar(utcDateTime: DateTime(2023, 2, 6).toUtc());
+              LunarCalendar.from(utcDateTime: DateTime(2023, 2, 6).toUtc());
           final zodiac = lunarCalendar.zodiac;
           expect(zodiac.name.sValue, '兔');
         });
@@ -83,7 +83,7 @@ void main() {
 
       group('生肖以立春起始时', () {
         test('2023年1月20日（大年初一之前，立春之前）的生肖是虎', () {
-          final lunarCalendar = LunarCalendar(
+          final lunarCalendar = LunarCalendar.from(
             utcDateTime: DateTime(2023, 1, 20).toUtc(),
             startZodiacFromLiChun: true,
           );
@@ -92,7 +92,7 @@ void main() {
         });
 
         test('2023年1月23日（大年初一之后，立春之前）的生肖是虎', () {
-          final lunarCalendar = LunarCalendar(
+          final lunarCalendar = LunarCalendar.from(
             utcDateTime: DateTime(2023, 1, 23).toUtc(),
             startZodiacFromLiChun: true,
           );
@@ -101,7 +101,7 @@ void main() {
         });
 
         test('2023年2月5日（大年初一之后，立春之后）的生肖是兔', () {
-          final lunarCalendar = LunarCalendar(
+          final lunarCalendar = LunarCalendar.from(
             utcDateTime: DateTime(2023, 2, 5).toUtc(),
             startZodiacFromLiChun: true,
           );

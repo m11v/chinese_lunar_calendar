@@ -109,7 +109,7 @@ void main() {
 
     test('测试年八字', () {
       for (int i = 0; i < 100; i++) {
-        final lc = LunarCalendar(
+        final lc = LunarCalendar.from(
           utcDateTime: DateTime(2000 + i, 2, 2, 10, 30).toUtc(),
         );
         expect(lc.year8Char, years[i]);
