@@ -377,7 +377,7 @@ void main() {
       for (int i = 1; i < 13; i++) {
         final days = _getDaysInMonth(i);
         for (int j = 1; j < days + 1; j++) {
-          final lc = LunarCalendar(
+          final lc = LunarCalendar.from(
             utcDateTime: DateTime(2023, i, j, 10, 30).toUtc(),
           );
           expect(lc.day8Char, year2023[index++]);
@@ -759,7 +759,7 @@ void main() {
       for (int i = 1; i < 13; i++) {
         final days = _getDaysInMonth(i);
         for (int j = 1; j < days + 1; j++) {
-          final lc = LunarCalendar(
+          final lc = LunarCalendar.from(
             utcDateTime: DateTime(2023, i, j, 23, 30).toUtc(),
           );
           expect(lc.day8Char, year2023night[index++]);
@@ -1141,7 +1141,7 @@ void main() {
       for (int i = 1; i < 13; i++) {
         final days = _getDaysInMonth(i);
         for (int j = 1; j < days + 1; j++) {
-          final lc = LunarCalendar(
+          final lc = LunarCalendar.from(
             utcDateTime: DateTime(2023, i, j, 0, 30).toUtc(),
           );
           expect(lc.day8Char, year2023morning[index++]);
@@ -1523,7 +1523,7 @@ void main() {
       for (int i = 1; i < 13; i++) {
         final days = _getDaysInMonth(i);
         for (int j = 1; j < days + 1; j++) {
-          final lc = LunarCalendar(
+          final lc = LunarCalendar.from(
             utcDateTime: DateTime(2024, i, j, 10, 30).toUtc(),
           );
           expect(lc.day8Char, year2024[index++]);
@@ -1905,7 +1905,7 @@ void main() {
       for (int i = 1; i < 13; i++) {
         final days = _getDaysInMonth(i);
         for (int j = 1; j < days + 1; j++) {
-          final lc = LunarCalendar(
+          final lc = LunarCalendar.from(
             utcDateTime: DateTime(2025, i, j, 10, 30).toUtc(),
           );
           expect(lc.day8Char, year2025[index++]);

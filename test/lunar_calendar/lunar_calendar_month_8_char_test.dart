@@ -21,7 +21,7 @@ void main() {
 
     test('测试2023年月八字', () {
       for (int i = 1; i < 13; i++) {
-        final lc = LunarCalendar(
+        final lc = LunarCalendar.from(
           utcDateTime: DateTime(2023, i, 2, 10, 30).toUtc(),
         );
         expect(lc.month8Char, year2023[i - 1]);
@@ -46,7 +46,7 @@ void main() {
 
     test('测试2024年月八字', () {
       for (int i = 1; i < 13; i++) {
-        final lc = LunarCalendar(
+        final lc = LunarCalendar.from(
           utcDateTime: DateTime(2024, i, 2, 10, 30).toUtc(),
         );
         expect(lc.month8Char, year2024[i - 1]);
@@ -71,7 +71,7 @@ void main() {
 
     test('测试2025年月八字', () {
       for (int i = 1; i < 13; i++) {
-        final lc = LunarCalendar(
+        final lc = LunarCalendar.from(
           utcDateTime: DateTime(2025, i, 2, 10, 30).toUtc(),
         );
         expect(lc.month8Char, year2025[i - 1]);
@@ -96,7 +96,7 @@ void main() {
 
     test('测试2026年月八字', () {
       for (int i = 1; i < 13; i++) {
-        final lc = LunarCalendar(
+        final lc = LunarCalendar.from(
           utcDateTime: DateTime(2026, i, 2, 10, 30).toUtc(),
         );
         expect(lc.month8Char, year2026[i - 1]);

@@ -755,7 +755,7 @@ void main() {
       var index = 0;
       for (int j = 1; j < 32; j++) {
         for (int k = 0; k < 24; k++) {
-          final lc = LunarCalendar(
+          final lc = LunarCalendar.from(
             utcDateTime: DateTime(2023, 1, j, k, 30).toUtc(),
           );
           expect(lc.twoHour8Char, year2023Jan[index++]);
@@ -1490,7 +1490,7 @@ void main() {
       var index = 0;
       for (int j = 1; j < 31; j++) {
         for (int k = 0; k < 24; k++) {
-          final lc = LunarCalendar(
+          final lc = LunarCalendar.from(
             utcDateTime: DateTime(2024, 6, j, k, 30).toUtc(),
           );
           expect(lc.twoHour8Char, year2023Jun[index++]);

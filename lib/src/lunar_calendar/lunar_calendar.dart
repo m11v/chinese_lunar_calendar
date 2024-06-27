@@ -5,7 +5,7 @@ import '../constants/cn_text.dart';
 
 class LunarCalendar extends Equatable {
   /// UTC 时间
-  final DateTime _utc;
+  final DateTime utc;
 
   /// true: 生肖从立春开始; false: 生肖从农历初一开始
   final bool startZodiacFromLiChun;
@@ -13,14 +13,24 @@ class LunarCalendar extends Equatable {
   /// 阴历日期
   LunarDate get lunarDate => getLunarDate(localTime);
 
-  LunarCalendar({
+  LunarCalendar._internal({
+    required this.utc,
+    required this.startZodiacFromLiChun,
+  });
+
+  factory LunarCalendar.from({
     required DateTime utcDateTime,
-    this.startZodiacFromLiChun = false,
-  }) : _utc = utcDateTime;
+    startZodiacFromLiChun = false,
+  }) {
+    return LunarCalendar._internal(
+      utc: utcDateTime,
+      startZodiacFromLiChun: startZodiacFromLiChun,
+    );
+  }
 
   @override
   List<Object?> get props => [
-        _utc,
+        utc,
         startZodiacFromLiChun,
       ];
 }
@@ -28,12 +38,12 @@ class LunarCalendar extends Equatable {
 extension LunarCalendarTime on LunarCalendar {
   /// 本地时间
   DateTime get localTime {
-    return _utc.toLocal();
+    return utc.toLocal();
   }
 
   /// 中国标准时间
   DateTime get cst {
-    return utcToCST(utc: _utc);
+    return utcToCST(utc: utc);
   }
 }
 

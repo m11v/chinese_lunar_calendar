@@ -8,7 +8,7 @@ void main() {
           '2024年2月2日(立春之前，大年初一之前）的lunarYear是2023，adjustedLunarYearByLichun是2023',
           () {
         final lunarCalendar =
-            LunarCalendar(utcDateTime: DateTime(2024, 2, 2).toUtc());
+            LunarCalendar.from(utcDateTime: DateTime(2024, 2, 2).toUtc());
         expect(lunarCalendar.lunarDate.lunarYear.number, 2023);
         expect(lunarCalendar.adjustedLunarYearByLichun, 2023);
       });
@@ -17,7 +17,7 @@ void main() {
           '2024年2月6日（立春之后，大年初一之前）的lunarYear是2023，adjustedLunarYearByLichun是2024',
           () {
         final lunarCalendar =
-            LunarCalendar(utcDateTime: DateTime(2024, 2, 6).toUtc());
+            LunarCalendar.from(utcDateTime: DateTime(2024, 2, 6).toUtc());
         expect(lunarCalendar.lunarDate.lunarYear.number, 2023);
         expect(lunarCalendar.adjustedLunarYearByLichun, 2024);
       });
@@ -26,7 +26,7 @@ void main() {
           '2024年2月11日（立春之后，大年初一之后）的lunarYear是2024，adjustedLunarYearByLichun是2024',
           () {
         final lunarCalendar =
-            LunarCalendar(utcDateTime: DateTime(2024, 2, 11).toUtc());
+            LunarCalendar.from(utcDateTime: DateTime(2024, 2, 11).toUtc());
         expect(lunarCalendar.lunarDate.lunarYear.number, 2024);
         expect(lunarCalendar.adjustedLunarYearByLichun, 2024);
       });
@@ -37,7 +37,7 @@ void main() {
           '2023年1月20日（大年初一之前，立春之前）的lunarYear是2022，adjustedLunarYearByLichun是2022',
           () {
         final lunarCalendar =
-            LunarCalendar(utcDateTime: DateTime(2023, 1, 20).toUtc());
+            LunarCalendar.from(utcDateTime: DateTime(2023, 1, 20).toUtc());
         expect(lunarCalendar.lunarDate.lunarYear.number, 2022);
         expect(lunarCalendar.adjustedLunarYearByLichun, 2022);
       });
@@ -46,7 +46,7 @@ void main() {
           '2023年1月23日（大年初一之后，立春之前）的lunarYear是2023，adjustedLunarYearByLichun是2022',
           () {
         final lunarCalendar =
-            LunarCalendar(utcDateTime: DateTime(2023, 1, 23).toUtc());
+            LunarCalendar.from(utcDateTime: DateTime(2023, 1, 23).toUtc());
         expect(lunarCalendar.lunarDate.lunarYear.number, 2023);
         expect(lunarCalendar.adjustedLunarYearByLichun, 2022);
       });
@@ -55,7 +55,7 @@ void main() {
           '2023年2月6日（大年初一之后，立春之后）的lunarYear是2023，adjustedLunarYearByLichun是2023',
           () {
         final lunarCalendar =
-            LunarCalendar(utcDateTime: DateTime(2023, 2, 6).toUtc());
+            LunarCalendar.from(utcDateTime: DateTime(2023, 2, 6).toUtc());
         expect(lunarCalendar.lunarDate.lunarYear.number, 2023);
         expect(lunarCalendar.adjustedLunarYearByLichun, 2023);
       });

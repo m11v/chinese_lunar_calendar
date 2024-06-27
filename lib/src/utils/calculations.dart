@@ -142,7 +142,7 @@ String getDay8CharFromDateTime({
   required DateTime dateTime,
 }) {
   return getDay8Char(
-      lunarCalendar: LunarCalendar(utcDateTime: dateTime.toUtc()));
+      lunarCalendar: LunarCalendar.from(utcDateTime: dateTime.toUtc()));
 }
 
 int _getTwoHourPeriodsIndex({required int hour}) {
@@ -178,7 +178,7 @@ String getTwoHour8Char({
 String getTwoHour8CharFromDateTime({
   required DateTime dateTime,
 }) {
-  return LunarCalendar(utcDateTime: dateTime.toUtc()).twoHour8Char;
+  return LunarCalendar.from(utcDateTime: dateTime.toUtc()).twoHour8Char;
 }
 
 /// 计算当日吉时
