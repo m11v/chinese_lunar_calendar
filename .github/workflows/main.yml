@@ -7,17 +7,21 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build_chinese_lunar_calendar:
+    defaults:
+      run:
+        working-directory: ./
+
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
-      
+
       - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
 
       - name: Install dependencies
         run: dart pub get
-        
+
       - name: Verify formatting
         run: dart format --output=none --set-exit-if-changed .
 
@@ -26,3 +30,29 @@ jobs:
 
       - name: Run tests
         run: dart test
+
+  run_examples:
+    defaults:
+      run:
+        working-directory: ./example
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
+
+      - name: Install dependencies
+        run: dart pub get
+
+      - name: Verify formatting
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Analyze project source
+        run: dart analyze --fatal-infos
+
+      - name: Run examples
+        run: |
+          dart run solar_term_example.dart
+          dart run chinese_lunar_calendar_example.dart
