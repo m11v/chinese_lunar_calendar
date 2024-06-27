@@ -94,8 +94,8 @@ void main() {
     });
 
     test('Test getDay8Char', () {
-      expect(getDay8Char(dateTime: DateTime(2023, 6, 24)), '癸丑');
-      expect(getDay8Char(dateTime: DateTime(2010, 6, 24)), '乙巳');
+      expect(getDay8CharFromDateTime(dateTime: DateTime(2023, 6, 24)), '癸丑');
+      expect(getDay8CharFromDateTime(dateTime: DateTime(2010, 6, 24)), '乙巳');
     });
 
     test('Test getTwoHourPeriods', () {
