@@ -124,6 +124,10 @@ extension LunarCalendarTwoHourPeriod on LunarCalendar {
 
   /// 本日时辰列表
   List<TwoHourPeriod> get twoHourPeriodList => getTwoHourPeriodList(localTime);
+
+  /// 时辰吉凶列表
+  List<bool> get twoHourPeriodLuckyList =>
+      getTwoHourPeriodLuckyList(day8Char: day8Char);
 }
 
 extension LunarCalendarX on LunarCalendar {
