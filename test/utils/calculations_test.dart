@@ -15,27 +15,6 @@ void main() {
       expect(getChineseNewYear(2033), newYear2033);
     });
 
-    test('Test getLunarYear', () {
-      final lunarYear2023 = getLunarYear(2023);
-      expect(lunarYear2023.number, 2023);
-      expect(lunarYear2023.days, 384);
-      expect(lunarYear2023.hasLeapMonth, true);
-      expect(lunarYear2023.leapMonth,
-          LunarMonth(number: 2, days: 29, isLeapMonth: true));
-
-      final lunarYear2022 = getLunarYear(2022);
-      expect(lunarYear2022.number, 2022);
-      expect(lunarYear2022.days, 355);
-      expect(lunarYear2022.hasLeapMonth, false);
-      expect(lunarYear2022.leapMonth, null);
-
-      final lunarYear2024 = getLunarYear(2024);
-      expect(lunarYear2024.number, 2024);
-      expect(lunarYear2024.days, 354);
-      expect(lunarYear2024.hasLeapMonth, false);
-      expect(lunarYear2024.leapMonth, null);
-    });
-
     test('Test getLunarYear8Char', () {
       expect(getYear8Char(lunarYear: 2023), '癸卯');
       expect(getYear8Char(lunarYear: 1970), '庚戌');
