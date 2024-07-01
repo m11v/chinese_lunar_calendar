@@ -9,7 +9,8 @@ import 'calculation_8_char.dart';
 /// 计算汉字星期
 String getWeekDayCN(DateTime date) => weekDayCN[date.weekday - 1];
 
-/// 计算春节日期
+/// 根据阳历年份查表计算春节日期
+/// 返回的是当地时间
 DateTime getChineseNewYear(int year) {
   final codeYear = lunarNewYearList[year - startYear];
 
@@ -54,18 +55,20 @@ LunarYear getLunarYear(int year) {
 }
 
 /// 阳历日转换成阴历日
-LunarDate getLunarDate(DateTime date) {
+LunarDate getLunarDate({
+  required DateTime localTime,
+}) {
   /// 获取当前日期与当年春节的差日
-  final newYear = getChineseNewYear(date.year).toUtc();
-  int spanDays = date.daysBetween(fromDate: newYear);
+  final newYear = getChineseNewYear(localTime.year).toLocal();
+  int spanDays = localTime.daysBetween(fromDate: newYear);
   LunarYear lunarYear;
   if (spanDays >= 0) {
     /// 如果春节已过, 那么阴历年和阳历年是同一年
-    final year = date.year;
+    final year = localTime.year;
     lunarYear = getLunarYear(year);
   } else {
     /// 如果春节未过，那么阴历年是阳历年的前一年
-    final year = date.year - 1;
+    final year = localTime.year - 1;
     lunarYear = getLunarYear(year);
     spanDays = lunarYear.days + spanDays;
   }

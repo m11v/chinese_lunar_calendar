@@ -45,8 +45,7 @@ void main() {
         lunarMonth: lunarYear2023.getNonLeapLunarMonthFromNumber(11),
         lunarDay: 18,
       );
-      getLunarDate(date1);
-      expect(getLunarDate(date1), expectLunarDate1);
+      expect(getLunarDate(localTime: date1), expectLunarDate1);
 
       final date2 = DateTime(2023, 3, 13);
       final expectLunarDate2 = LunarDate(
@@ -54,7 +53,7 @@ void main() {
         lunarMonth: lunarYear2023.getNonLeapLunarMonthFromNumber(2),
         lunarDay: 22,
       );
-      expect(getLunarDate(date2), expectLunarDate2);
+      expect(getLunarDate(localTime: date2), expectLunarDate2);
 
       final date3 = DateTime(2023, 3, 26);
       final expectLunarDate3 = LunarDate(
@@ -62,7 +61,7 @@ void main() {
         lunarMonth: lunarYear2023.leapMonth!,
         lunarDay: 5,
       );
-      expect(getLunarDate(date3), expectLunarDate3);
+      expect(getLunarDate(localTime: date3), expectLunarDate3);
 
       final date4 = DateTime(2023, 1, 1);
       final expectLunarDate4 = LunarDate(
@@ -70,7 +69,7 @@ void main() {
         lunarMonth: lunarYear2023.getNonLeapLunarMonthFromNumber(12),
         lunarDay: 10,
       );
-      expect(getLunarDate(date4), expectLunarDate4);
+      expect(getLunarDate(localTime: date4), expectLunarDate4);
 
       final date5 = DateTime(2023, 11, 5);
       final expectLunarDate5 = LunarDate(
@@ -78,7 +77,7 @@ void main() {
         lunarMonth: lunarYear2023.getNonLeapLunarMonthFromNumber(9),
         lunarDay: 22,
       );
-      expect(getLunarDate(date5), expectLunarDate5);
+      expect(getLunarDate(localTime: date5), expectLunarDate5);
 
       final date6 = DateTime(2023, 11, 6);
       final expectLunarDate6 = LunarDate(
@@ -86,7 +85,7 @@ void main() {
         lunarMonth: lunarYear2023.getNonLeapLunarMonthFromNumber(9),
         lunarDay: 23,
       );
-      expect(getLunarDate(date6), expectLunarDate6);
+      expect(getLunarDate(localTime: date6), expectLunarDate6);
     });
 
     test('Test getLunarYear8Char', () {
