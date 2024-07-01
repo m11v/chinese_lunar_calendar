@@ -145,6 +145,45 @@ String getDay8CharFromDateTime({
       lunarCalendar: LunarCalendar.from(utcDateTime: dateTime.toUtc()));
 }
 
+/// 计算时干支
+String getTwoHour8Char({
+  required int hour,
+  required int minute,
+  required String day8Char,
+}) {
+  /// 计算时支
+  final twoHourBranch = getTwoHourPeriods(hour: hour);
+
+  /// 用日干和日干时干转换表计算时干
+  final dayStem = day8Char[0];
+  final twoHourStem = dayStemToTwoHoursStemChart[dayStem]
+          ?[_getTwoHourPeriodsIndex(hour: hour)] ??
+      '';
+
+  return '$twoHourStem$twoHourBranch';
+}
+
+/// 计算时干支
+String getTwoHour8CharFromLunarCalendar({
+  required LunarCalendar lunaCalendar,
+}) {
+  final localTime = lunaCalendar.localTime;
+  return getTwoHour8Char(
+    hour: localTime.hour,
+    minute: localTime.minute,
+    day8Char: lunaCalendar.day8Char,
+  );
+}
+
+/// 计算时干支
+String getTwoHour8CharFromDateTime({
+  required DateTime dateTime,
+}) {
+  final LunarCalendar lunarCalendar =
+      LunarCalendar.from(utcDateTime: dateTime.toUtc());
+  return getTwoHour8CharFromLunarCalendar(lunaCalendar: lunarCalendar);
+}
+
 int _getTwoHourPeriodsIndex({required int hour}) {
   int index = ((hour + 1) / 2).floor();
   if (index == 12) {
@@ -156,29 +195,6 @@ int _getTwoHourPeriodsIndex({required int hour}) {
 /// 计算时辰
 String getTwoHourPeriods({required int hour}) {
   return the12EarthlyBranches[_getTwoHourPeriodsIndex(hour: hour)];
-}
-
-/// 计算时干支
-String getTwoHour8Char({
-  required LunarCalendar lunaCalendar,
-}) {
-  // 计算时支
-  final twoHourBranch = getTwoHourPeriods(hour: lunaCalendar.localTime.hour);
-
-  /// 用日干和日干时干转换表计算时干
-  final dayStem = lunaCalendar.day8Char[0];
-  final twoHourStem = dayStemToTwoHoursStemChart[dayStem]
-          ?[_getTwoHourPeriodsIndex(hour: lunaCalendar.localTime.hour)] ??
-      '';
-
-  return '$twoHourStem$twoHourBranch';
-}
-
-/// 计算时干支
-String getTwoHour8CharFromDateTime({
-  required DateTime dateTime,
-}) {
-  return LunarCalendar.from(utcDateTime: dateTime.toUtc()).twoHour8Char;
 }
 
 /// 计算当日吉时
