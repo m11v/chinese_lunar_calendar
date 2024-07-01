@@ -13,20 +13,25 @@ class LunarCalendar extends Equatable {
   final bool startZodiacFromLiChun;
 
   /// 阴历日期
-  LunarDate get lunarDate => LunarDate.fromDateTime(localTime: localTime);
+  final LunarDate lunarDate;
 
   LunarCalendar._internal({
     required this.utc,
     required this.startZodiacFromLiChun,
+    required this.lunarDate,
   });
 
   factory LunarCalendar.from({
     required DateTime utcDateTime,
     startZodiacFromLiChun = false,
   }) {
+    final localTime = utcDateTime.toLocal();
+    final lunarDate = LunarDate.fromDateTime(localTime: localTime);
+
     return LunarCalendar._internal(
       utc: utcDateTime,
       startZodiacFromLiChun: startZodiacFromLiChun,
+      lunarDate: lunarDate,
     );
   }
 
@@ -34,6 +39,7 @@ class LunarCalendar extends Equatable {
   List<Object?> get props => [
         utc,
         startZodiacFromLiChun,
+        lunarDate,
       ];
 }
 
