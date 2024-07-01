@@ -3,7 +3,8 @@ import 'package:test/test.dart';
 
 void main() {
   group('Test LunarDate', () {
-    final lunarYear2023 = getLunarYear(2023);
+    final lunarYear2023 = LunarYear.fromYear(2023);
+    final lunarYear2022 = LunarYear.fromYear(2022);
 
     test('Test LunarDate.fromDateTime', () {
       final date1 = DateTime(2023, 12, 30);
@@ -32,8 +33,8 @@ void main() {
 
       final date4 = DateTime(2023, 1, 1);
       final expectLunarDate4 = LunarDate(
-        lunarYear: getLunarYear(2022),
-        lunarMonth: lunarYear2023.getNonLeapLunarMonthFromNumber(12),
+        lunarYear: lunarYear2022,
+        lunarMonth: lunarYear2022.getNonLeapLunarMonthFromNumber(12),
         lunarDay: 10,
       );
       expect(LunarDate.fromDateTime(localTime: date4), expectLunarDate4);
