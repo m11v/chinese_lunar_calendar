@@ -4,8 +4,6 @@ import 'package:test/test.dart';
 
 void main() {
   group('Test calculations', () {
-    final lunarYear2023 = getLunarYear(2023);
-
     test('Test getChineseNewYear', () {
       final newYear2000 = DateTime(2000, 2, 5);
       expect(getChineseNewYear(2000), newYear2000);
