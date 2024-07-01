@@ -1,6 +1,8 @@
 import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../utils/calculation_8_char.dart';
+
 /// 时辰
 class TwoHourPeriod extends Equatable {
   /// 时辰八字名

@@ -2,6 +2,7 @@ import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 import 'package:equatable/equatable.dart';
 
 import '../constants/cn_text.dart';
+import '../utils/calculation_8_char.dart';
 
 class LunarCalendar extends Equatable {
   /// UTC 时间
@@ -99,13 +100,13 @@ extension LunarCalendarChineseNewYear on LunarCalendar {
 /// 八字相关扩展
 extension LunarCalendar8Char on LunarCalendar {
   /// 年干支
-  String get year8Char => getYear8Char(lunarYear: lunarDate.lunarYear.number);
+  String get year8Char => getYear8CharFromLunarCalendar(lunarCalendar: this);
 
   /// 月干支
-  String get month8Char => getMonth8Char(lunarCalendar: this);
+  String get month8Char => getMonth8CharFromLunarCalendar(lunarCalendar: this);
 
   /// 日干支
-  String get day8Char => getDay8Char(lunarCalendar: this);
+  String get day8Char => getDay8CharFromLunarCalendar(lunarCalendar: this);
 
   /// 时干支
   String get twoHour8Char =>

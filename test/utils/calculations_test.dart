@@ -1,4 +1,5 @@
 import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
+import 'package:chinese_lunar_calendar/src/utils/calculation_8_char.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -94,8 +95,8 @@ void main() {
     });
 
     test('Test getDay8Char', () {
-      expect(getDay8CharFromDateTime(dateTime: DateTime(2023, 6, 24)), '癸丑');
-      expect(getDay8CharFromDateTime(dateTime: DateTime(2010, 6, 24)), '乙巳');
+      expect(getDay8Char(localTime: DateTime(2023, 6, 24)), '癸丑');
+      expect(getDay8Char(localTime: DateTime(2010, 6, 24)), '乙巳');
     });
 
     test('Test getTwoHourPeriods', () {
@@ -127,7 +128,7 @@ void main() {
         '子'
       ];
       for (int i = 0; i < 24; i++) {
-        list.add(getTwoHourPeriods(hour: i));
+        list.add(getTwoHourPeriodBranch(hour: i));
       }
       expect(list, expectList);
     });
