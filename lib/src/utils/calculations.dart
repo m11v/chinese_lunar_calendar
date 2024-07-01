@@ -4,6 +4,7 @@ import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 import 'package:chinese_lunar_calendar/src/constants/configs.dart';
 
 import '../constants/cn_text.dart';
+import 'calculation_8_char.dart';
 
 /// 计算汉字星期
 String getWeekDayCN(DateTime date) => weekDayCN[date.weekday - 1];
@@ -71,137 +72,11 @@ LunarDate getLunarDate(DateTime date) {
   return lunarYear.getXthDay(spanDays);
 }
 
-/// 根据阴历年份数字计算天干记年
-String getYear8Char({required int lunarYear}) {
-  return the10HeavenlyStemsAnd12EarthlyBranches[(lunarYear - 4) % 60];
-}
-
-/// 根据阳历日期计算天干记年
-String getYear8CharFromDateTime({required DateTime dateTime}) {
-  final lunarYear = getLunarDate(dateTime).lunarYear;
-  return getYear8Char(lunarYear: lunarYear.number);
-}
-
-/// 计算月干支
-String getMonth8Char({
-  required LunarCalendar lunarCalendar,
-}) {
-  /// 当前日期
-  final localTime = lunarCalendar.localTime;
-
-  /// 以立春为一年之始调整后的阴历年份，得到年干
-  final yearStem =
-      getYear8Char(lunarYear: lunarCalendar.adjustedLunarYearByLichun)
-          .substring(0, 1);
-
-  /// 计算 adjustedMonth:
-  /// 从立春开始算1月，因此小寒是12月，惊蛰是2月，清明是3月，等等，即节气所在月-1
-  /// 如果这个月的节气之前的日子不算在这个月，而是算在上一个月，即节气所在月-2
-  int adjustedMonth;
-  final primarySolarTermDay = localTime.solarTermsInThisMonth[0].local;
-  adjustedMonth = primarySolarTermDay.month - 1;
-  if (localTime.millisecondsSinceEpoch <
-      primarySolarTermDay.millisecondsSinceEpoch) {
-    adjustedMonth -= 1;
-  }
-  if (adjustedMonth <= 0) {
-    adjustedMonth = 12 + adjustedMonth;
-  }
-
-  /// 从年干查询表格计算月干
-  final monthStem =
-      yearStemToMonthStemChart[yearStem]?[adjustedMonth - 1] ?? '';
-
-  /// 计算月支
-  final monthBranch = the12EarthlyBranches[(adjustedMonth + 1) % 12];
-
-  return '$monthStem$monthBranch';
-}
-
-/// 计算日干支
-String getDay8Char({
-  required LunarCalendar lunarCalendar,
-}) {
-  /// 2023年5月6日的日干支是“甲子”
-  DateTime start = DateTime(2023, 5, 6);
-  int days = lunarCalendar.localTime.daysBetween(fromDate: start);
-
-  /// 超过23点算第二天
-  if (lunarCalendar.localTime.hour >= 23) {
-    days += 1;
-  }
-  days = days % 60;
-  if (days < 0) {
-    days = 60 - days;
-  }
-
-  return the10HeavenlyStemsAnd12EarthlyBranches[days];
-}
-
-String getDay8CharFromDateTime({
-  required DateTime dateTime,
-}) {
-  return getDay8Char(
-      lunarCalendar: LunarCalendar.from(utcDateTime: dateTime.toUtc()));
-}
-
-/// 计算时干支
-String getTwoHour8Char({
-  required int hour,
-  required int minute,
-  required String day8Char,
-}) {
-  /// 计算时支
-  final twoHourBranch = getTwoHourPeriods(hour: hour);
-
-  /// 用日干和日干时干转换表计算时干
-  final dayStem = day8Char[0];
-  final twoHourStem = dayStemToTwoHoursStemChart[dayStem]
-          ?[_getTwoHourPeriodsIndex(hour: hour)] ??
-      '';
-
-  return '$twoHourStem$twoHourBranch';
-}
-
-/// 计算时干支
-String getTwoHour8CharFromLunarCalendar({
-  required LunarCalendar lunaCalendar,
-}) {
-  final localTime = lunaCalendar.localTime;
-  return getTwoHour8Char(
-    hour: localTime.hour,
-    minute: localTime.minute,
-    day8Char: lunaCalendar.day8Char,
-  );
-}
-
-/// 计算时干支
-String getTwoHour8CharFromDateTime({
-  required DateTime dateTime,
-}) {
-  final LunarCalendar lunarCalendar =
-      LunarCalendar.from(utcDateTime: dateTime.toUtc());
-  return getTwoHour8CharFromLunarCalendar(lunaCalendar: lunarCalendar);
-}
-
-int _getTwoHourPeriodsIndex({required int hour}) {
-  int index = ((hour + 1) / 2).floor();
-  if (index == 12) {
-    index = 0;
-  }
-  return index;
-}
-
-/// 计算时辰
-String getTwoHourPeriods({required int hour}) {
-  return the12EarthlyBranches[_getTwoHourPeriodsIndex(hour: hour)];
-}
-
 /// 计算当日吉时
 /// true 为吉，false 为凶
 List<bool> getTwoHourPeriodLuckyList(DateTime dateTime) {
   /// 计算日干支
-  final day8Char = getDay8CharFromDateTime(dateTime: dateTime);
+  final day8Char = getDay8Char(localTime: dateTime.toLocal());
 
   /// 计算日干支在天干地支表中的序号
   final day8CharIndex = the10HeavenlyStemsAnd12EarthlyBranches
