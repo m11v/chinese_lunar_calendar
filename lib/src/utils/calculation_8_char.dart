@@ -113,7 +113,8 @@ String getDay8CharFromLunarCalendar({
   );
 }
 
-int _getTwoHourPeriodIndex({
+/// 计算时辰序号
+int getTwoHourPeriodIndex({
   required int hour,
 }) {
   int index = ((hour + 1) / 2).floor();
@@ -126,7 +127,7 @@ int _getTwoHourPeriodIndex({
 String getTwoHourPeriodBranch({
   required int hour,
 }) {
-  return the12EarthlyBranches[_getTwoHourPeriodIndex(hour: hour)];
+  return the12EarthlyBranches[getTwoHourPeriodIndex(hour: hour)];
 }
 
 /// 根据小时、分钟和日干支计算时干支
@@ -141,7 +142,7 @@ String getTwoHour8Char({
   /// 用日干和日干时干转换表计算时干
   final dayStem = day8Char[0];
   final twoHourStem = dayStemToTwoHoursStemChart[dayStem]
-          ?[_getTwoHourPeriodIndex(hour: hour)] ??
+          ?[getTwoHourPeriodIndex(hour: hour)] ??
       '';
 
   return '$twoHourStem$twoHourBranch';

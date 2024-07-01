@@ -100,11 +100,6 @@ List<bool> getTwoHourPeriodLuckyList(DateTime dateTime) {
   return list;
 }
 
-/// 计算时辰序号
-int getTwoHourPeriodIndex(int hour) {
-  return (hour / 2).floor();
-}
-
 /// 计算当日时辰列表
 List<TwoHourPeriod> getTwoHourPeriodList(DateTime dateTime) {
   List<TwoHourPeriod> res = [];
