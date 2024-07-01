@@ -98,40 +98,6 @@ void main() {
       expect(getDay8Char(localTime: DateTime(2010, 6, 24)), '乙巳');
     });
 
-    test('Test getTwoHourPeriods', () {
-      final List<String> list = [];
-      final expectList = [
-        '子',
-        '丑',
-        '丑',
-        '寅',
-        '寅',
-        '卯',
-        '卯',
-        '辰',
-        '辰',
-        '巳',
-        '巳',
-        '午',
-        '午',
-        '未',
-        '未',
-        '申',
-        '申',
-        '酉',
-        '酉',
-        '戌',
-        '戌',
-        '亥',
-        '亥',
-        '子'
-      ];
-      for (int i = 0; i < 24; i++) {
-        list.add(getTwoHourPeriodBranch(hour: i));
-      }
-      expect(list, expectList);
-    });
-
     test('Test getWeekDayCN', () {
       expect(getWeekDayCN(DateTime(2023, 6, 4)), '星期日');
 
