@@ -49,27 +49,3 @@ extension LunarYearX on LunarYear {
   /// 是否有闰月
   bool get hasLeapMonth => monthsCount == 13;
 }
-
-extension LunarYearXthDay on LunarYear {
-  /// 计算阴历年的第X天
-  LunarDate getXthDay(int xthDay) {
-    if (xthDay > days) {
-      return LunarDate.empty;
-    }
-
-    int spanDays = xthDay;
-    for (var i = 0; i < monthsCount; i++) {
-      final currentMonth = lunarMonths[i];
-      if (spanDays < currentMonth.days) {
-        return LunarDate(
-          lunarYear: this,
-          lunarMonth: currentMonth,
-          lunarDay: spanDays + 1,
-        );
-      } else {
-        spanDays = spanDays - currentMonth.days;
-      }
-    }
-    return LunarDate.empty;
-  }
-}
