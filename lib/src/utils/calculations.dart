@@ -1,10 +1,7 @@
-import 'dart:math';
-
 import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 import 'package:chinese_lunar_calendar/src/constants/configs.dart';
 
 import '../constants/cn_text.dart';
-import 'calculation_8_char.dart';
 
 /// 计算汉字星期
 String getWeekDayCN(DateTime date) => weekDayCN[date.weekday - 1];
@@ -73,47 +70,6 @@ LunarDate getLunarDate({
     spanDays = lunarYear.days + spanDays;
   }
   return lunarYear.getXthDay(spanDays);
-}
-
-/// 计算当日吉时
-/// true 为吉，false 为凶
-List<bool> getTwoHourPeriodLuckyList(DateTime dateTime) {
-  /// 计算日干支
-  final day8Char = getDay8Char(localTime: dateTime.toLocal());
-
-  /// 计算日干支在天干地支表中的序号
-  final day8CharIndex = the10HeavenlyStemsAnd12EarthlyBranches
-      .indexWhere((element) => element == day8Char);
-
-  /// 查询时辰吉凶时间表
-  final seed = twoHourPeriodLuckyTimeList[day8CharIndex];
-
-  /// 根据查询到的时辰吉凶时间计算
-  final List<bool> list = [];
-  for (int i = 1; i < 13; i++) {
-    var s = true;
-    if ((seed & pow(2, (12 - i)).toInt()) > 0) {
-      s = false;
-    }
-    list.add(s);
-  }
-  return list;
-}
-
-/// 计算当日时辰列表
-List<TwoHourPeriod> getTwoHourPeriodList(DateTime dateTime) {
-  List<TwoHourPeriod> res = [];
-
-  for (int hour = 0; hour < 24; hour += 2) {
-    res.add(TwoHourPeriod.from(
-        dateTime: DateTime(
-      dateTime.year,
-      dateTime.month,
-      dateTime.day,
-      hour,
-    )));
-  }
-  return res;
 }
 
 /// 根据阴历日计算月相
