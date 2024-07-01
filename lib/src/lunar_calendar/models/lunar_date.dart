@@ -26,6 +26,56 @@ class LunarDate extends Equatable {
     lunarDay: 0,
   );
 
+  /// 阳历日转换成阴历日
+  /// 根据春节日期计算当前日期与大年初一的差值x，所求日期即LunarYear的第x天
+  factory LunarDate.fromDateTime({
+    required DateTime localTime,
+  }) {
+    /// 获取当前日期与当年春节的差日
+    final newYear = getChineseNewYear(localTime.year).toLocal();
+    int spanDays = localTime.daysBetween(fromDate: newYear);
+    LunarYear lunarYear;
+    if (spanDays >= 0) {
+      /// 如果春节已过, 那么阴历年和阳历年是同一年
+      final year = localTime.year;
+      lunarYear = getLunarYear(year);
+    } else {
+      /// 如果春节未过，那么阴历年是阳历年的前一年
+      final year = localTime.year - 1;
+      lunarYear = getLunarYear(year);
+      spanDays = lunarYear.days + spanDays;
+    }
+    return LunarDate.fromLunarYear(
+      lunarYear: lunarYear,
+      xthDay: spanDays,
+    );
+  }
+
+  /// 阴历年的第X天LunarDate
+  factory LunarDate.fromLunarYear({
+    required LunarYear lunarYear,
+    required int xthDay,
+  }) {
+    if (xthDay > lunarYear.days) {
+      return LunarDate.empty;
+    }
+
+    int spanDays = xthDay;
+    for (var i = 0; i < lunarYear.monthsCount; i++) {
+      final currentMonth = lunarYear.lunarMonths[i];
+      if (spanDays < currentMonth.days) {
+        return LunarDate(
+          lunarYear: lunarYear,
+          lunarMonth: currentMonth,
+          lunarDay: spanDays + 1,
+        );
+      } else {
+        spanDays = spanDays - currentMonth.days;
+      }
+    }
+    return LunarDate.empty;
+  }
+
   @override
   List<Object?> get props => [
         lunarYear,

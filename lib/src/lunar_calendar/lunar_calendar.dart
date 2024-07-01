@@ -13,7 +13,7 @@ class LunarCalendar extends Equatable {
   final bool startZodiacFromLiChun;
 
   /// 阴历日期
-  LunarDate get lunarDate => getLunarDate(localTime: localTime);
+  LunarDate get lunarDate => LunarDate.fromDateTime(localTime: localTime);
 
   LunarCalendar._internal({
     required this.utc,

@@ -51,27 +51,6 @@ LunarYear getLunarYear(int year) {
   return LunarYear(number: year, lunarMonths: lunarMonthList);
 }
 
-/// 阳历日转换成阴历日
-LunarDate getLunarDate({
-  required DateTime localTime,
-}) {
-  /// 获取当前日期与当年春节的差日
-  final newYear = getChineseNewYear(localTime.year).toLocal();
-  int spanDays = localTime.daysBetween(fromDate: newYear);
-  LunarYear lunarYear;
-  if (spanDays >= 0) {
-    /// 如果春节已过, 那么阴历年和阳历年是同一年
-    final year = localTime.year;
-    lunarYear = getLunarYear(year);
-  } else {
-    /// 如果春节未过，那么阴历年是阳历年的前一年
-    final year = localTime.year - 1;
-    lunarYear = getLunarYear(year);
-    spanDays = lunarYear.days + spanDays;
-  }
-  return lunarYear.getXthDay(spanDays);
-}
-
 /// 根据阴历日计算月相
 Located getPhaseOfMoon({required int lunarDay}) {
   if (lunarDay == 1) {
