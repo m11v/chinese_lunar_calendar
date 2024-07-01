@@ -25,7 +25,7 @@ class TwoHourPeriod extends Equatable {
   });
 
   factory TwoHourPeriod.from({required DateTime dateTime}) {
-    final twoHourPeriodIndex = getTwoHourPeriodIndex(dateTime.hour);
+    final twoHourPeriodIndex = getTwoHourPeriodIndex(hour: dateTime.hour);
     final nameInTheDay = getTwoHour8CharFromDateTime(dateTime: dateTime);
     final isLucky = getTwoHourPeriodLuckyList(dateTime)[twoHourPeriodIndex];
     return TwoHourPeriod(
