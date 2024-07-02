@@ -21,6 +21,9 @@ class LunarCalendar extends Equatable {
   /// 以立春为一年之始时，调整后的阴历年份
   late final int adjustedLunarYearByLichun;
 
+  /// 生肖
+  late final Zodiac zodiac;
+
   LunarCalendar._internal({
     required this.utc,
     required this.startZodiacFromLiChun,
@@ -33,6 +36,15 @@ class LunarCalendar extends Equatable {
     final localTime = utcDateTime.toLocal();
     final chineseNewYear = getChineseNewYear(localTime.year);
     final lunarDate = LunarDate.fromDateTime(localTime: localTime);
+    final adjustedLunarYearByLichun = _getAdjustedLunarYearNumberByLiChun(
+        localTime: localTime,
+        chineseNewYear: chineseNewYear,
+        lunarYearNumber: lunarDate.lunarYear.number);
+
+    final zodiacYearNumber = startZodiacFromLiChun
+        ? adjustedLunarYearByLichun
+        : lunarDate.lunarYear.number;
+    final zodiac = zodiacList[(zodiacYearNumber - 4) % 12];
 
     return LunarCalendar._internal(
       utc: utcDateTime,
@@ -40,10 +52,8 @@ class LunarCalendar extends Equatable {
     )
       ..lunarDate = lunarDate
       ..chineseNewYear = chineseNewYear
-      ..adjustedLunarYearByLichun = _getAdjustedLunarYearNumberByLiChun(
-          localTime: localTime,
-          chineseNewYear: chineseNewYear,
-          lunarYearNumber: lunarDate.lunarYear.number);
+      ..adjustedLunarYearByLichun = adjustedLunarYearByLichun
+      ..zodiac = zodiac;
   }
 
   @override
@@ -95,18 +105,6 @@ extension LunarCalendarTime on LunarCalendar {
   /// 中国标准时间
   DateTime get cst {
     return utcToCST(utc: utc);
-  }
-}
-
-extension LunarCalendarZodiac on LunarCalendar {
-  Zodiac get zodiac {
-    var yearNumber = lunarDate.lunarYear.number;
-
-    if (startZodiacFromLiChun) {
-      yearNumber = adjustedLunarYearByLichun;
-    }
-
-    return zodiacList[(yearNumber - 4) % 12];
   }
 }
 
