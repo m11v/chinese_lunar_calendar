@@ -12,7 +12,7 @@ class LunarCalendar extends Equatable {
   /// 阴历日期
   late final LunarDate lunarDate;
 
-  /// 刻
+  /// 刻：1时辰分8刻，包括上四刻和下四刻
   late final Ke ke;
 
   /// 本地大年初一（春节）日期
