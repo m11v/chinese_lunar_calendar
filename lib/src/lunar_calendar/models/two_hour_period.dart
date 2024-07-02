@@ -15,14 +15,10 @@ class TwoHourPeriod extends Equatable {
   /// 是否吉时
   final bool isLucky;
 
-  /// 刻：1时辰分8刻，包括上四刻和下四刻
-  final Ke ke;
-
   const TwoHourPeriod({
     required this.nameInTheDay,
     required this.twoHourPeriodIndex,
     required this.isLucky,
-    required this.ke,
   });
 
   factory TwoHourPeriod.from({required DateTime dateTime}) {
@@ -36,7 +32,6 @@ class TwoHourPeriod extends Equatable {
       nameInTheDay: nameInTheDay,
       twoHourPeriodIndex: twoHourPeriodIndex,
       isLucky: isLucky,
-      ke: Ke.fromDateTime(dateTime: dateTime),
     );
   }
 
@@ -45,7 +40,6 @@ class TwoHourPeriod extends Equatable {
         nameInTheDay,
         twoHourPeriodIndex,
         isLucky,
-        ke,
       ];
 }
 
