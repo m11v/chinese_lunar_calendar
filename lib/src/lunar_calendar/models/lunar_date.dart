@@ -20,12 +20,6 @@ class LunarDate extends Equatable {
     required this.lunarDay,
   });
 
-  static const empty = LunarDate(
-    lunarYear: LunarYear.empty,
-    lunarMonth: LunarMonth.empty,
-    lunarDay: 0,
-  );
-
   /// 阳历日转换成阴历日
   /// 根据春节日期计算当前日期与大年初一的差值x，所求日期即LunarYear的第x天
   factory LunarDate.fromDateTime({
@@ -57,7 +51,8 @@ class LunarDate extends Equatable {
     required int xthDay,
   }) {
     if (xthDay > lunarYear.days) {
-      return LunarDate.empty;
+      throw InvalidLunarDateException.fromXthDayInLunarYear(
+          xthDay: xthDay, lunarYear: lunarYear);
     }
 
     int spanDays = xthDay;
@@ -73,7 +68,9 @@ class LunarDate extends Equatable {
         spanDays = spanDays - currentMonth.days;
       }
     }
-    return LunarDate.empty;
+
+    throw InvalidLunarDateException.fromXthDayInLunarYear(
+        xthDay: xthDay, lunarYear: lunarYear);
   }
 
   @override
@@ -104,5 +101,19 @@ extension LunarDateCN on LunarDate {
   /// 汉字阴历日期
   String get fullCNString {
     return '$lunarYearCN$nian $leapMonthPrefix$lunarMonthCN$monthLengthSuffix$lunarDayCN';
+  }
+}
+
+class InvalidLunarDateException implements Exception {
+  final String reason;
+
+  const InvalidLunarDateException({required this.reason});
+
+  factory InvalidLunarDateException.fromXthDayInLunarYear({
+    required int xthDay,
+    required LunarYear lunarYear,
+  }) {
+    return InvalidLunarDateException(
+        reason: 'Try to create LunarDate from the $xthDay day in $lunarYear.');
   }
 }

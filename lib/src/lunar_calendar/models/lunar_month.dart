@@ -17,12 +17,6 @@ class LunarMonth extends Equatable {
     required this.isLeapMonth,
   });
 
-  static const empty = LunarMonth(
-    number: 0,
-    days: 0,
-    isLeapMonth: false,
-  );
-
   @override
   List<Object?> get props => [
         number,
