@@ -12,6 +12,9 @@ class LunarCalendar extends Equatable {
   /// 阴历日期
   late final LunarDate lunarDate;
 
+  /// 刻
+  late final Ke ke;
+
   /// 本地大年初一（春节）日期
   late final DateTime chineseNewYear;
 
@@ -59,6 +62,8 @@ class LunarCalendar extends Equatable {
       day8Char: day8Char,
     );
 
+    final ke = Ke.fromHour(hour: localTime.hour, minute: localTime.minute);
+
     return LunarCalendar._internal(
       utc: utcDateTime,
     )
@@ -69,7 +74,8 @@ class LunarCalendar extends Equatable {
       ..year8Char = year8Char
       ..month8Char = month8Char
       ..day8Char = day8Char
-      ..twoHour8Char = twoHour8Char;
+      ..twoHour8Char = twoHour8Char
+      ..ke = ke;
   }
 
   @override
