@@ -3,8 +3,8 @@ import 'package:test/test.dart';
 
 void main() {
   group('Test LunarDate', () {
-    final lunarYear2023 = LunarYear.fromYear(2023);
-    final lunarYear2022 = LunarYear.fromYear(2022);
+    final lunarYear2023 = LunarYear.fromYear(lunarYearNumber: 2023);
+    final lunarYear2022 = LunarYear.fromYear(lunarYearNumber: 2022);
 
     test('Test LunarDate.fromDateTime', () {
       final date1 = DateTime(2023, 12, 30);

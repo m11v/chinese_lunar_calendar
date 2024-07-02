@@ -17,10 +17,12 @@ class LunarYear extends Equatable {
     required this.lunarMonths,
   });
 
-  /// 阳历年转换成阴历年
-  factory LunarYear.fromYear(int year) {
+  /// 生成阴历年
+  factory LunarYear.fromYear({
+    required int lunarYearNumber,
+  }) {
     /// 读取阴历月信息
-    final lunarMonthInfo = lunarMonthData[year - startYear];
+    final lunarMonthInfo = lunarMonthData[lunarYearNumber - startYear];
 
     /// 生成普通月
     final lunarMonthList =
@@ -49,7 +51,7 @@ class LunarYear extends Equatable {
       lunarMonthList.insert(leapMonth.number, leapMonth);
     }
 
-    return LunarYear(number: year, lunarMonths: lunarMonthList);
+    return LunarYear(number: lunarYearNumber, lunarMonths: lunarMonthList);
   }
 
   @override
