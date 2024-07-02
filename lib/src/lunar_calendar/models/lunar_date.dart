@@ -32,11 +32,11 @@ class LunarDate extends Equatable {
     if (spanDays >= 0) {
       /// 如果春节已过, 那么阴历年和阳历年是同一年
       final year = localTime.year;
-      lunarYear = LunarYear.fromYear(year);
+      lunarYear = LunarYear.fromYear(lunarYearNumber: year);
     } else {
       /// 如果春节未过，那么阴历年是阳历年的前一年
       final year = localTime.year - 1;
-      lunarYear = LunarYear.fromYear(year);
+      lunarYear = LunarYear.fromYear(lunarYearNumber: year);
       spanDays = lunarYear.days + spanDays;
     }
     return LunarDate.fromLunarYear(
