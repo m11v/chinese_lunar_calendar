@@ -1,5 +1,10 @@
-/// Data from https://www.hko.gov.hk/sc/gts/astronomy/Solar_Term.htm
-/// Data uses China Standard Time(UTC+8)
+import 'package:chinese_lunar_calendar/src/constants/configs.dart';
+import 'package:chinese_lunar_calendar/src/solar_term/rough_solar_term_data.dart';
+import 'package:collection/collection.dart';
+
+/// 数据源 https://www.hko.gov.hk/sc/gts/astronomy/Solar_Term.htm
+/// 数据使用中国标准时间
+/// 数据精确到年月日时分
 
 /// 2023 solar terms [year, month, day, hour, minute]
 final solarTermsData2023 = [
@@ -323,6 +328,15 @@ List<List<int>> getSolarTermsDataByYear({
     case 2026:
       return solarTermsData2026;
     default:
-      return [];
+      return getSolarTermsDataByYearFromRoughData(year: year);
   }
+}
+
+List<List<int>> getSolarTermsDataByYearFromRoughData({
+  required int year,
+}) {
+  final roughData = roughSolarTermData[year - startYear];
+  return roughData
+      .mapIndexed((index, day) => [year, (index / 2).floor() + 1, day, 0, 0])
+      .toList();
 }
