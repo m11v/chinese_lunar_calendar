@@ -17,11 +17,6 @@ class LunarYear extends Equatable {
     required this.lunarMonths,
   });
 
-  static const empty = LunarYear(
-    number: 0,
-    lunarMonths: [],
-  );
-
   /// 阳历年转换成阴历年
   factory LunarYear.fromYear(int year) {
     /// 读取阴历月信息
