@@ -13,12 +13,14 @@ class LunarCalendar extends Equatable {
   final bool startZodiacFromLiChun;
 
   /// 阴历日期
-  final LunarDate lunarDate;
+  late final LunarDate lunarDate;
+
+  /// 本地大年初一（春节）日期
+  late final DateTime chineseNewYear;
 
   LunarCalendar._internal({
     required this.utc,
     required this.startZodiacFromLiChun,
-    required this.lunarDate,
   });
 
   factory LunarCalendar.from({
@@ -26,13 +28,15 @@ class LunarCalendar extends Equatable {
     startZodiacFromLiChun = false,
   }) {
     final localTime = utcDateTime.toLocal();
+    final chineseNewYear = getChineseNewYear(localTime.year);
     final lunarDate = LunarDate.fromDateTime(localTime: localTime);
 
     return LunarCalendar._internal(
       utc: utcDateTime,
       startZodiacFromLiChun: startZodiacFromLiChun,
-      lunarDate: lunarDate,
-    );
+    )
+      ..lunarDate = lunarDate
+      ..chineseNewYear = chineseNewYear;
   }
 
   @override
@@ -40,6 +44,7 @@ class LunarCalendar extends Equatable {
         utc,
         startZodiacFromLiChun,
         lunarDate,
+        chineseNewYear,
       ];
 }
 
@@ -95,9 +100,6 @@ extension LunarCalendarZodiac on LunarCalendar {
 }
 
 extension LunarCalendarChineseNewYear on LunarCalendar {
-  /// 本地大年初一（春节）日期
-  DateTime get chineseNewYear => getChineseNewYear(localTime.year);
-
   /// 汉字春节日期
   String get chineseNewYearString {
     return '${chineseNewYear.year}$nian${chineseNewYear.month}$yue${chineseNewYear.day}$ri';
