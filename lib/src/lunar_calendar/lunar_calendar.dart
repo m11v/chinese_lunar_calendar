@@ -58,7 +58,7 @@ class LunarCalendar extends Equatable {
     );
     final day8Char = getDay8Char(localTime: localTime);
     final twoHour8Char = getTwoHour8Char(
-      hour: localTime.hour,
+      twoHourPeriodIndex: getTwoHourPeriodIndex(hour: localTime.hour),
       day8Char: day8Char,
     );
 

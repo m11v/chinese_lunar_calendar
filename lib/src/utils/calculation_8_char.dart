@@ -3,7 +3,6 @@ import 'package:chinese_lunar_calendar/src/utils/extensions.dart';
 
 import '../constants/cn_text.dart';
 import '../lunar_calendar/lunar_calendar.dart';
-import 'calculation_2_hour_period.dart';
 
 /// 根据阴历年份数字计算年干支
 String getYear8Char({
@@ -82,24 +81,24 @@ String getDay8Char({
 }
 
 String _getTwoHourPeriodBranch({
-  required int hour,
+  required int twoHourPeriodIndex,
 }) {
-  return the12EarthlyBranches[getTwoHourPeriodIndex(hour: hour)];
+  return the12EarthlyBranches[twoHourPeriodIndex];
 }
 
 /// 根据小时、分钟和日干支计算时干支
 String getTwoHour8Char({
-  required int hour,
+  required int twoHourPeriodIndex,
   required String day8Char,
 }) {
   /// 计算时支
-  final twoHourBranch = _getTwoHourPeriodBranch(hour: hour);
+  final twoHourBranch =
+      _getTwoHourPeriodBranch(twoHourPeriodIndex: twoHourPeriodIndex);
 
   /// 用日干和日干时干转换表计算时干
   final dayStem = day8Char[0];
-  final twoHourStem = dayStemToTwoHoursStemChart[dayStem]
-          ?[getTwoHourPeriodIndex(hour: hour)] ??
-      '';
+  final twoHourStem =
+      dayStemToTwoHoursStemChart[dayStem]?[twoHourPeriodIndex] ?? '';
 
   return '$twoHourStem$twoHourBranch';
 }
