@@ -21,6 +21,12 @@ class LunarCalendar extends Equatable {
   /// 生肖
   late final Zodiac zodiac;
 
+  /// 八字
+  late final String year8Char;
+  late final String month8Char;
+  late final String day8Char;
+  late final String twoHour8Char;
+
   LunarCalendar._internal({
     required this.utc,
   });
@@ -42,13 +48,28 @@ class LunarCalendar extends Equatable {
         : lunarDate.lunarYear.number;
     final zodiac = zodiacList[(zodiacYearNumber - 4) % 12];
 
+    final year8Char = getYear8Char(lunarYear: lunarDate.lunarYear.number);
+    final month8Char = getMonth8Char(
+      adjustedLunarYearByLichun: adjustedLunarYearByLichun,
+      localTime: localTime,
+    );
+    final day8Char = getDay8Char(localTime: localTime);
+    final twoHour8Char = getTwoHour8Char(
+      hour: localTime.hour,
+      day8Char: day8Char,
+    );
+
     return LunarCalendar._internal(
       utc: utcDateTime,
     )
       ..lunarDate = lunarDate
       ..chineseNewYear = chineseNewYear
       ..adjustedLunarYearByLichun = adjustedLunarYearByLichun
-      ..zodiac = zodiac;
+      ..zodiac = zodiac
+      ..year8Char = year8Char
+      ..month8Char = month8Char
+      ..day8Char = day8Char
+      ..twoHour8Char = twoHour8Char;
   }
 
   @override
@@ -111,19 +132,6 @@ extension LunarCalendarChineseNewYear on LunarCalendar {
 
 /// 八字相关扩展
 extension LunarCalendar8Char on LunarCalendar {
-  /// 年干支
-  String get year8Char => getYear8CharFromLunarCalendar(lunarCalendar: this);
-
-  /// 月干支
-  String get month8Char => getMonth8CharFromLunarCalendar(lunarCalendar: this);
-
-  /// 日干支
-  String get day8Char => getDay8CharFromLunarCalendar(lunarCalendar: this);
-
-  /// 时干支
-  String get twoHour8Char =>
-      getTwoHour8CharFromLunarCalendar(lunaCalendar: this);
-
   /// 八字
   String get eightChar => '$year8Char $month8Char $day8Char $twoHour8Char';
 }

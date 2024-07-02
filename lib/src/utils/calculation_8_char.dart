@@ -12,23 +12,11 @@ String getYear8Char({
   return the10HeavenlyStemsAnd12EarthlyBranches[(lunarYear - 4) % 60];
 }
 
-/// 根据LunarCalendar计算年干支
-String getYear8CharFromLunarCalendar({
-  required LunarCalendar lunarCalendar,
-}) {
-  return getYear8Char(
-    lunarYear: lunarCalendar.lunarDate.lunarYear.number,
-  );
-}
-
 /// 根据阳历日期计算年干支
 String getYear8CharFromDateTime({
   required DateTime dateTime,
 }) {
-  return getYear8CharFromLunarCalendar(
-      lunarCalendar: LunarCalendar.from(
-    utcDateTime: dateTime.toUtc(),
-  ));
+  return LunarCalendar.from(utcDateTime: dateTime.toUtc()).year8Char;
 }
 
 /// 根据以立春为一年之始时，调整后的阴历年份的年干支和节气计算月干支
@@ -64,25 +52,13 @@ String getMonth8Char({
   return '$monthStem$monthBranch';
 }
 
-/// 根据LunarCalendar计算月干支
-String getMonth8CharFromLunarCalendar({
-  required LunarCalendar lunarCalendar,
-}) {
-  return getMonth8Char(
-    adjustedLunarYearByLichun: lunarCalendar.adjustedLunarYearByLichun,
-    localTime: lunarCalendar.localTime,
-  );
-}
-
 /// 根据DateTime计算月干支
 String getMonth8CharFromDateTime({
   required DateTime dateTime,
 }) {
-  return getMonth8CharFromLunarCalendar(
-    lunarCalendar: LunarCalendar.from(
-      utcDateTime: dateTime.toUtc(),
-    ),
-  );
+  return LunarCalendar.from(
+    utcDateTime: dateTime.toUtc(),
+  ).month8Char;
 }
 
 /// 根据当前时间与已知时间的差值，查表计算日干支
@@ -105,15 +81,6 @@ String getDay8Char({
   return the10HeavenlyStemsAnd12EarthlyBranches[days];
 }
 
-/// 根据LunarCalendar计算日干支
-String getDay8CharFromLunarCalendar({
-  required LunarCalendar lunarCalendar,
-}) {
-  return getDay8Char(
-    localTime: lunarCalendar.localTime,
-  );
-}
-
 String _getTwoHourPeriodBranch({
   required int hour,
 }) {
@@ -123,7 +90,6 @@ String _getTwoHourPeriodBranch({
 /// 根据小时、分钟和日干支计算时干支
 String getTwoHour8Char({
   required int hour,
-  required int minute,
   required String day8Char,
 }) {
   /// 计算时支
@@ -138,23 +104,9 @@ String getTwoHour8Char({
   return '$twoHourStem$twoHourBranch';
 }
 
-/// 根据LunarCalendar计算时干支
-String getTwoHour8CharFromLunarCalendar({
-  required LunarCalendar lunaCalendar,
-}) {
-  final localTime = lunaCalendar.localTime;
-  return getTwoHour8Char(
-    hour: localTime.hour,
-    minute: localTime.minute,
-    day8Char: lunaCalendar.day8Char,
-  );
-}
-
 /// 根据DateTime计算时干支
 String getTwoHour8CharFromDateTime({
   required DateTime dateTime,
 }) {
-  final LunarCalendar lunarCalendar =
-      LunarCalendar.from(utcDateTime: dateTime.toUtc());
-  return getTwoHour8CharFromLunarCalendar(lunaCalendar: lunarCalendar);
+  return LunarCalendar.from(utcDateTime: dateTime.toUtc()).twoHour8Char;
 }
