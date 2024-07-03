@@ -2,7 +2,7 @@ import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 
 void main() {
   final lunarCalendar = LunarCalendar.from(
-    utcDateTime: DateTime(2024, 2, 6, 10, 30).toUtc(),
+    utcDateTime: DateTime(2024, 2, 6, 22, 30).toUtc(),
   );
 
   print('中国标准时间：${lunarCalendar.cst}');
@@ -19,7 +19,7 @@ void main() {
   print('本年节气: ${getSolarTerms(lunarCalendar.localTime.year)}');
   print('本日节气：${lunarCalendar.localTime.getSolarTerm()}');
   print(
-      '当前时辰：${lunarCalendar.twoHourPeriod.steamName}${lunarCalendar.twoHourPeriod.branchName}${lunarCalendar.ke.fullName}');
+      '当前时辰：${lunarCalendar.twoHourPeriod.name}(${lunarCalendar.twoHourPeriod.jing?.cnName}${lunarCalendar.twoHourPeriod.jing?.unit})${lunarCalendar.ke.fullName}${lunarCalendar.ke.unitName}');
 
   final twoHourPeriodsString = lunarCalendar.twoHourPeriodList
       .map((e) =>

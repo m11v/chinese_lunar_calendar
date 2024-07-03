@@ -72,3 +72,8 @@
 ## 0.3.1
 
 - Add `index` field in SolarTerm.
+
+## 1.0.0
+
+- Refactor `LunarCalendar`.
+- Fix bugs.

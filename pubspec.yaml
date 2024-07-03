@@ -1,6 +1,6 @@
 name: chinese_lunar_calendar
 description: A Dart Package for creating Chinese Lunar Calendar. It runs locally and doesn't depend on any remote API.
-version: 0.3.1
+version: 1.0.0
 homepage: https://github.com/m11v/chinese_lunar_calendar
 repository: https://github.com/m11v/chinese_lunar_calendar
 
@@ -8,9 +8,9 @@ environment:
   sdk: ^3.0.0
 
 dependencies:
-  collection: ^1.15.0
+  collection: ^1.19.0
   equatable: ^2.0.5
 
 dev_dependencies:
-  lints: ^2.0.0
-  test: ^1.21.0
+  lints: ^4.0.0
+  test: ^1.25.7
