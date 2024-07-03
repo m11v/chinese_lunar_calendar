@@ -1,3 +1,4 @@
+export 'jing.dart';
 export 'ke.dart';
 export 'lunar_date.dart';
 export 'lunar_month.dart';

@@ -5,9 +5,9 @@ import '../../utils/calculation_2_hour_period.dart';
 import '../../utils/calculation_8_char.dart';
 
 /// 时辰
-/// 0: 子时：23点到1点；
-/// 1: 丑时：1点到3点；
-/// 2: 寅时：3点到5点；
+/// 0: 子时：23点到1点，三更；
+/// 1: 丑时：1点到3点，四更；
+/// 2: 寅时：3点到5点，五更；
 /// 3: 卯时：5点到7点；
 /// 4: 辰时：7点到9点；
 /// 5: 巳时：9点到11点；
@@ -15,8 +15,8 @@ import '../../utils/calculation_8_char.dart';
 /// 7: 未时：13点到15点；
 /// 8: 申时：15点到17点；
 /// 9: 酉时：17点到19点；
-/// 10: 戌时：19点到21点；
-/// 11: 亥时：21点到23点。
+/// 10: 戌时：19点到21点，一更；
+/// 11: 亥时：21点到23点，二更。
 class TwoHourPeriod extends Equatable {
   /// 时辰八字名
   final String name;
@@ -53,6 +53,26 @@ class TwoHourPeriod extends Equatable {
         twoHourPeriodIndex,
         isLucky,
       ];
+}
+
+extension TwoHourPeriodJing on TwoHourPeriod {
+  Jing? get jing {
+    switch (twoHourPeriodIndex) {
+      case 0:
+      case 1:
+      case 2:
+        return Jing(
+          number: twoHourPeriodIndex + 3,
+        );
+      case 10:
+      case 11:
+        return Jing(
+          number: twoHourPeriodIndex - 9,
+        );
+      default:
+        return null;
+    }
+  }
 }
 
 extension TwoHourPeriodX on TwoHourPeriod {
