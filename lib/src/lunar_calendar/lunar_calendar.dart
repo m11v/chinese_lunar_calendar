@@ -34,6 +34,9 @@ class LunarCalendar extends Equatable {
   late final String day8Char;
   late final String twoHour8Char;
 
+  /// 星期
+  late final Weekday weekday;
+
   LunarCalendar._internal({
     required this.utc,
   });
@@ -74,6 +77,11 @@ class LunarCalendar extends Equatable {
         getTwoHourPeriodListFromDay8Char(day8Char: day8Char);
     final twoHourPeriod = twoHourPeriodList[currentTwoHourPeriodIndex];
 
+    final weekDay = Weekday(
+      number: localTime.weekday,
+      name: getWeekDayCN(localTime),
+    );
+
     return LunarCalendar._internal(
       utc: utcDateTime,
     )
@@ -87,7 +95,8 @@ class LunarCalendar extends Equatable {
       ..twoHour8Char = twoHour8Char
       ..ke = ke
       ..twoHourPeriodList = twoHourPeriodList
-      ..twoHourPeriod = twoHourPeriod;
+      ..twoHourPeriod = twoHourPeriod
+      ..weekday = weekDay;
   }
 
   @override
@@ -155,9 +164,6 @@ extension LunarCalendar8Char on LunarCalendar {
 }
 
 extension LunarCalendarX on LunarCalendar {
-  /// 汉字星期
-  String get weekDayCN => getWeekDayCN(localTime);
-
   /// 月相
   Located get phaseOfMoon => getPhaseOfMoon(lunarDay: lunarDate.lunarDay);
 }

@@ -14,7 +14,7 @@ void main() {
       '阴历数字: ${lunarCalendar.lunarDate.lunarYear.number}, ${lunarCalendar.lunarDate.lunarMonth.number}, ${lunarCalendar.lunarDate.lunarDay}, 闰月：${lunarCalendar.lunarDate.lunarMonth.isLeapMonth}');
   print('阴历汉字: ${lunarCalendar.lunarDate.fullCNString}');
   print('八字: ${lunarCalendar.eightChar}');
-  print('星期：${lunarCalendar.weekDayCN}');
+  print('星期：${lunarCalendar.weekday.name}');
   print('月相：${lunarCalendar.phaseOfMoon}');
   print('本年节气: ${getSolarTerms(lunarCalendar.localTime.year)}');
   print('本日节气：${lunarCalendar.localTime.getSolarTerm()}');
