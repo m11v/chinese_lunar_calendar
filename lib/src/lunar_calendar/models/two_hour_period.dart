@@ -5,9 +5,21 @@ import '../../utils/calculation_2_hour_period.dart';
 import '../../utils/calculation_8_char.dart';
 
 /// 时辰
+/// 0: 子时：23点到1点；
+/// 1: 丑时：1点到3点；
+/// 2: 寅时：3点到5点；
+/// 3: 卯时：5点到7点；
+/// 4: 辰时：7点到9点；
+/// 5: 巳时：9点到11点；
+/// 6: 午时：11点到13点；
+/// 7: 未时：13点到15点；
+/// 8: 申时：15点到17点；
+/// 9: 酉时：17点到19点；
+/// 10: 戌时：19点到21点；
+/// 11: 亥时：21点到23点。
 class TwoHourPeriod extends Equatable {
   /// 时辰八字名
-  final String nameInTheDay;
+  final String name;
 
   /// 时辰列表序号
   final int twoHourPeriodIndex;
@@ -16,7 +28,7 @@ class TwoHourPeriod extends Equatable {
   final bool isLucky;
 
   const TwoHourPeriod({
-    required this.nameInTheDay,
+    required this.name,
     required this.twoHourPeriodIndex,
     required this.isLucky,
   });
@@ -29,7 +41,7 @@ class TwoHourPeriod extends Equatable {
       localTime: dateTime.toLocal(),
     ))[twoHourPeriodIndex];
     return TwoHourPeriod(
-      nameInTheDay: nameInTheDay,
+      name: nameInTheDay,
       twoHourPeriodIndex: twoHourPeriodIndex,
       isLucky: isLucky,
     );
@@ -37,7 +49,7 @@ class TwoHourPeriod extends Equatable {
 
   @override
   List<Object?> get props => [
-        nameInTheDay,
+        name,
         twoHourPeriodIndex,
         isLucky,
       ];
@@ -45,10 +57,10 @@ class TwoHourPeriod extends Equatable {
 
 extension TwoHourPeriodX on TwoHourPeriod {
   /// 地支名
-  String get name => nameInTheDay[1];
+  String get branchName => name[1];
 
   /// 天干名
-  String get steamName => nameInTheDay[0];
+  String get steamName => name[0];
 
   /// 时辰汉代名
   Located get nameInHanDynasty => twoHourPeriodHanName[twoHourPeriodIndex];
