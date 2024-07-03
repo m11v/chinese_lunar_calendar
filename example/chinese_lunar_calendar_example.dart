@@ -15,7 +15,7 @@ void main() {
   print('阴历汉字: ${lunarCalendar.lunarDate.fullCNString}');
   print('八字: ${lunarCalendar.eightChar}');
   print('星期：${lunarCalendar.weekday.name}');
-  print('月相：${lunarCalendar.phaseOfMoon}');
+  print('月相：${lunarCalendar.moonPhase}');
   print('本年节气: ${getSolarTerms(lunarCalendar.localTime.year)}');
   print('本日节气：${lunarCalendar.localTime.getSolarTerm()}');
   print(
