@@ -77,3 +77,7 @@
 
 - Refactor `LunarCalendar`.
 - Fix bugs.
+
+## 1.0.1
+
+- Downgrade `collection` to 1.18.0.
