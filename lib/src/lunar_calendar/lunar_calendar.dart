@@ -15,6 +15,10 @@ class LunarCalendar extends Equatable {
   /// 刻：1时辰分8刻，包括上四刻和下四刻
   late final Ke ke;
 
+  /// LunarDate的时辰列表
+  late final List<TwoHourPeriod> twoHourPeriodList;
+  late final TwoHourPeriod twoHourPeriod;
+
   /// 本地大年初一（春节）日期
   late final DateTime chineseNewYear;
 
@@ -64,6 +68,12 @@ class LunarCalendar extends Equatable {
 
     final ke = Ke.fromHour(hour: localTime.hour, minute: localTime.minute);
 
+    final currentTwoHourPeriodIndex =
+        getTwoHourPeriodIndex(hour: localTime.hour);
+    final twoHourPeriodList =
+        getTwoHourPeriodListFromDay8Char(day8Char: day8Char);
+    final twoHourPeriod = twoHourPeriodList[currentTwoHourPeriodIndex];
+
     return LunarCalendar._internal(
       utc: utcDateTime,
     )
@@ -75,7 +85,9 @@ class LunarCalendar extends Equatable {
       ..month8Char = month8Char
       ..day8Char = day8Char
       ..twoHour8Char = twoHour8Char
-      ..ke = ke;
+      ..ke = ke
+      ..twoHourPeriodList = twoHourPeriodList
+      ..twoHourPeriod = twoHourPeriod;
   }
 
   @override
@@ -140,19 +152,6 @@ extension LunarCalendarChineseNewYear on LunarCalendar {
 extension LunarCalendar8Char on LunarCalendar {
   /// 八字
   String get eightChar => '$year8Char $month8Char $day8Char $twoHour8Char';
-}
-
-/// 时辰相关扩展
-extension LunarCalendarTwoHourPeriod on LunarCalendar {
-  /// 时辰
-  TwoHourPeriod get twoHourPeriod => TwoHourPeriod.from(dateTime: localTime);
-
-  /// 本日时辰列表
-  List<TwoHourPeriod> get twoHourPeriodList => getTwoHourPeriodList(localTime);
-
-  /// 时辰吉凶列表
-  List<bool> get twoHourPeriodLuckyList =>
-      getTwoHourPeriodLuckyList(day8Char: day8Char);
 }
 
 extension LunarCalendarX on LunarCalendar {
