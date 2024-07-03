@@ -1,5 +1,8 @@
 import 'dart:math';
 
+import 'package:chinese_lunar_calendar/src/utils/calculation_8_char.dart';
+import 'package:collection/collection.dart';
+
 import '../constants/cn_text.dart';
 import '../constants/configs.dart';
 import '../lunar_calendar/models/two_hour_period.dart';
@@ -53,4 +56,19 @@ List<TwoHourPeriod> getTwoHourPeriodList(DateTime dateTime) {
     )));
   }
   return res;
+}
+
+/// 计算当日时辰列表
+List<TwoHourPeriod> getTwoHourPeriodListFromDay8Char({
+  required String day8Char,
+}) {
+  return getTwoHourPeriodLuckyList(day8Char: day8Char)
+      .mapIndexed(
+        (index, isLucky) => TwoHourPeriod(
+            nameInTheDay:
+                getTwoHour8Char(twoHourPeriodIndex: index, day8Char: day8Char),
+            twoHourPeriodIndex: index,
+            isLucky: isLucky),
+      )
+      .toList();
 }

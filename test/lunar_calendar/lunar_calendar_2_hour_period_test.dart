@@ -3,6 +3,26 @@ import 'package:test/test.dart';
 
 void main() {
   group('测试时辰', () {
+    test('测试时辰', () {
+      final lunarCalendar = LunarCalendar.from(
+        utcDateTime: DateTime(
+          2024,
+          2,
+          6,
+          10,
+          22,
+        ),
+      );
+
+      final expectTwoHourPeriod = TwoHourPeriod(
+        nameInTheDay: '辛巳',
+        twoHourPeriodIndex: 5,
+        isLucky: false,
+      );
+
+      expect(lunarCalendar.twoHourPeriod, expectTwoHourPeriod);
+    });
+
     group('测试时辰吉凶列表', () {
       test('测试2024年3月时辰吉凶列表', () {
         final year2024Mar = [
@@ -758,7 +778,7 @@ void main() {
             final lc = LunarCalendar.from(
               utcDateTime: DateTime(2024, 3, j, k, 30).toUtc(),
             );
-            expect(lc.twoHourPeriodLuckyList.map((e) => e ? '吉' : '凶'),
+            expect(lc.twoHourPeriodList.map((e) => e.isLucky ? '吉' : '凶'),
                 year2024Mar[index++],
                 reason: 'j = $j');
           }
