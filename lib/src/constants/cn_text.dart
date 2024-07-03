@@ -6,6 +6,7 @@ const yue = '月';
 const ri = '日';
 const da = '大';
 const xiao = '小';
+const jing = '更';
 
 /// 数字汉字
 const upperCNNum = [
