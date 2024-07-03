@@ -19,11 +19,11 @@ void main() {
   print('本年节气: ${getSolarTerms(lunarCalendar.localTime.year)}');
   print('本日节气：${lunarCalendar.localTime.getSolarTerm()}');
   print(
-      '当前时辰：${lunarCalendar.twoHourPeriod.steamName}${lunarCalendar.twoHourPeriod.name}${lunarCalendar.ke.fullName}');
+      '当前时辰：${lunarCalendar.twoHourPeriod.steamName}${lunarCalendar.twoHourPeriod.branchName}${lunarCalendar.ke.fullName}');
 
   final twoHourPeriodsString = lunarCalendar.twoHourPeriodList
       .map((e) =>
-          '${e.twoHourPeriodIndex}: ${e.nameInTheDay} (${e.nameInHanDynasty}) ${e.meridian} ${e.isLuckyName}')
+          '${e.twoHourPeriodIndex}: ${e.name} (${e.nameInHanDynasty}) ${e.meridian} ${e.isLuckyName}')
       .toList();
   print('本日时辰：$twoHourPeriodsString');
 }

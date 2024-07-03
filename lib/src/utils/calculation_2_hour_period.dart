@@ -65,7 +65,7 @@ List<TwoHourPeriod> getTwoHourPeriodListFromDay8Char({
   return getTwoHourPeriodLuckyList(day8Char: day8Char)
       .mapIndexed(
         (index, isLucky) => TwoHourPeriod(
-            nameInTheDay:
+            name:
                 getTwoHour8Char(twoHourPeriodIndex: index, day8Char: day8Char),
             twoHourPeriodIndex: index,
             isLucky: isLucky),

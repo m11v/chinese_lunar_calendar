@@ -15,7 +15,7 @@ void main() {
       );
 
       final expectTwoHourPeriod = TwoHourPeriod(
-        nameInTheDay: '辛巳',
+        name: '辛巳',
         twoHourPeriodIndex: 5,
         isLucky: false,
       );
