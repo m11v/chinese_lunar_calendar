@@ -109,7 +109,18 @@ class LunarCalendar extends Equatable {
   List<Object?> get props => [
         utc,
         lunarDate,
+        ke,
+        twoHourPeriodList,
+        twoHourPeriod,
         chineseNewYear,
+        adjustedLunarYearByLichun,
+        zodiac,
+        year8Char,
+        month8Char,
+        day8Char,
+        twoHour8Char,
+        weekday,
+        moonPhase,
       ];
 }
 
