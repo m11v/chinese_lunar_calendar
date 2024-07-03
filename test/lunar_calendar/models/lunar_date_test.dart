@@ -111,5 +111,51 @@ void main() {
       );
       expect(lunarDate.lunarDayCN, '初十');
     });
+
+    test('Test MoonPhase', () {
+      final List<String> list = [];
+      for (var i = 1; i <= 30; i++) {
+        list.add(LunarDate(
+              lunarYear: lunarYear2023,
+              lunarMonth: lunarYear2023.getNonLeapLunarMonthFromNumber(2),
+              lunarDay: i,
+            ).moonPhase.name.sValue ??
+            '');
+      }
+
+      final List<String> expectList = [
+        '朔',
+        '上蛾眉月',
+        '上蛾眉月',
+        '上蛾眉月',
+        '上蛾眉月',
+        '上蛾眉月',
+        '上弦月',
+        '上弦月',
+        '渐盈凸月',
+        '渐盈凸月',
+        '渐盈凸月',
+        '渐盈凸月',
+        '渐盈凸月',
+        '渐盈凸月',
+        '望',
+        '渐亏凸月',
+        '渐亏凸月',
+        '渐亏凸月',
+        '渐亏凸月',
+        '渐亏凸月',
+        '渐亏凸月',
+        '下弦月',
+        '下弦月',
+        '下蛾眉月',
+        '下蛾眉月',
+        '下蛾眉月',
+        '下蛾眉月',
+        '下蛾眉月',
+        '下蛾眉月',
+        '晦'
+      ];
+      expect(list, expectList);
+    });
   });
 }

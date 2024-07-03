@@ -81,6 +81,37 @@ class LunarDate extends Equatable {
       ];
 }
 
+extension LunarDateMoonPhase on LunarDate {
+  /// 根据阴历日计算月相
+  MoonPhase get moonPhase {
+    int index;
+    if (lunarDay == 1) {
+      index = 0;
+    } else if (2 <= lunarDay && lunarDay <= 6) {
+      index = 1;
+    } else if (7 <= lunarDay && lunarDay <= 8) {
+      index = 2;
+    } else if (9 <= lunarDay && lunarDay <= 14) {
+      index = 3;
+    } else if (lunarDay == 15) {
+      index = 4;
+    } else if (16 <= lunarDay && lunarDay <= 21) {
+      index = 5;
+    } else if (22 <= lunarDay && lunarDay <= 23) {
+      index = 6;
+    } else if (24 <= lunarDay && lunarDay <= 29) {
+      index = 7;
+    } else {
+      index = 8;
+    }
+    return MoonPhase(
+      lunarDay: lunarDay,
+      index: index,
+      name: phaseOfMoon[index],
+    );
+  }
+}
+
 extension LunarDateCN on LunarDate {
   /// 汉字阴历年
   String get lunarYearCN =>
