@@ -1,7 +1,6 @@
 import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 import 'package:equatable/equatable.dart';
 
-import '../constants/cn_text.dart';
 import '../utils/calculation_2_hour_period.dart';
 import '../utils/calculation_8_char.dart';
 
