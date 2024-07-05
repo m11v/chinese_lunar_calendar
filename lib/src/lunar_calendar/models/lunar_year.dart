@@ -80,4 +80,8 @@ extension LunarYearX on LunarYear {
 
   /// 是否有闰月
   bool get hasLeapMonth => monthsCount == 13;
+
+  /// 汉字阴历年
+  String get lunarYearCN =>
+      number.digits.map((e) => upperCNNum[e]).toList().join();
 }

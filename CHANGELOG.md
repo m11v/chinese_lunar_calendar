@@ -85,3 +85,7 @@
 ## 1.0.2
 
 - Export 'src/constants/constants.dart'.
+
+## 1.0.3
+
+- Refactor extensions in 'LunarDate'.
