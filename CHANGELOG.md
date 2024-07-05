@@ -81,3 +81,7 @@
 ## 1.0.1
 
 - Downgrade `collection` to 1.18.0.
+
+## 1.0.2
+
+- Export 'src/constants/constants.dart'.
