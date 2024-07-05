@@ -1,7 +1,6 @@
 import 'package:chinese_lunar_calendar/chinese_lunar_calendar.dart';
 import 'package:equatable/equatable.dart';
 
-
 /// 阴历日期
 class LunarDate extends Equatable {
   /// 阴历年
