@@ -111,25 +111,12 @@ extension LunarDateMoonPhase on LunarDate {
 }
 
 extension LunarDateCN on LunarDate {
-  /// 汉字阴历年
-  String get lunarYearCN =>
-      lunarYear.number.digits.map((e) => upperCNNum[e]).toList().join();
-
-  /// 闰月前缀
-  Located get leapMonthPrefix => lunarMonth.isLeapMonth ? run : Located.empty;
-
-  /// 大小月后缀
-  String get monthLengthSuffix => lunarMonth.isLongMonth ? da : xiao;
-
-  /// 汉字阴历月
-  Located get lunarMonthCN => lunarMonthNameList[lunarMonth.number - 1];
-
   /// 汉字阴历日
   String get lunarDayCN => lunarDayNameList[lunarDay - 1];
 
   /// 汉字阴历日期
   String get fullCNString {
-    return '$lunarYearCN$nian $leapMonthPrefix$lunarMonthCN$monthLengthSuffix$lunarDayCN';
+    return '${lunarYear.lunarYearCN}$nian ${lunarMonth.leapMonthPrefix}${lunarMonth.lunarMonthCN}${lunarMonth.monthLengthSuffix}$lunarDayCN';
   }
 }
 

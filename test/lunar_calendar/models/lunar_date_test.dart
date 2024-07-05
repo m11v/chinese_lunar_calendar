@@ -62,7 +62,7 @@ void main() {
         lunarMonth: lunarYear2023.getNonLeapLunarMonthFromNumber(6),
         lunarDay: 6,
       );
-      expect(lunarDate.lunarYearCN, '二零二三');
+      expect(lunarDate.lunarYear.lunarYearCN, '二零二三');
     });
 
     test('Test lunarMonthCN', () {
@@ -72,7 +72,7 @@ void main() {
         lunarDay: 24,
       );
       expect(
-          '${lunarDate.leapMonthPrefix.sValue}${lunarDate.lunarMonthCN.sValue}${lunarDate.monthLengthSuffix}',
+          '${lunarDate.lunarMonth.leapMonthPrefix.sValue}${lunarDate.lunarMonth.lunarMonthCN.sValue}${lunarDate.lunarMonth.monthLengthSuffix}',
           '六月小');
 
       final lunarDate2 = LunarDate(
@@ -81,7 +81,7 @@ void main() {
         lunarDay: 15,
       );
       expect(
-          '${lunarDate2.leapMonthPrefix.sValue}${lunarDate2.lunarMonthCN.sValue}${lunarDate2.monthLengthSuffix}',
+          '${lunarDate2.lunarMonth.leapMonthPrefix.sValue}${lunarDate2.lunarMonth.lunarMonthCN.sValue}${lunarDate2.lunarMonth.monthLengthSuffix}',
           '七月大');
 
       final lunarDate3 = LunarDate(
@@ -90,7 +90,7 @@ void main() {
         lunarDay: 26,
       );
       expect(
-          '${lunarDate3.leapMonthPrefix.sValue}${lunarDate3.lunarMonthCN.sValue}${lunarDate3.monthLengthSuffix}',
+          '${lunarDate3.lunarMonth.leapMonthPrefix.sValue}${lunarDate3.lunarMonth.lunarMonthCN.sValue}${lunarDate3.lunarMonth.monthLengthSuffix}',
           '闰二月小');
 
       final lunarDate4 = LunarDate(
@@ -99,7 +99,7 @@ void main() {
         lunarDay: 10,
       );
       expect(
-          '${lunarDate4.leapMonthPrefix.sValue}${lunarDate4.lunarMonthCN.sValue}${lunarDate4.monthLengthSuffix}',
+          '${lunarDate4.lunarMonth.leapMonthPrefix.sValue}${lunarDate4.lunarMonth.lunarMonthCN.sValue}${lunarDate4.lunarMonth.monthLengthSuffix}',
           '二月大');
     });
 
