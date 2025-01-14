@@ -89,3 +89,7 @@
 ## 1.0.3
 
 - Refactor extensions in 'LunarDate'.
+
+## 1.0.4
+
+- Add 2027 solar terms data.
