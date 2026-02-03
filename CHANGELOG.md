@@ -93,3 +93,7 @@
 ## 1.0.4
 
 - Add 2027 solar terms data.
+
+## 1.0.5
+
+- Add 2028 solar terms data.
